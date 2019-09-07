@@ -1,0 +1,54 @@
+    <div class="popular-news-area section-padding-80-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-8">
+                    <div class="section-heading">
+                        <h6>Latest News</h6>
+                    </div>
+
+                    <div class="row">
+
+                        <!-- Single Post -->
+                        @foreach($secondModules as $secondModule)
+                        <div class="col-12 col-md-6">
+                            <div class="single-blog-post style-3">
+                                <div class="post-thumb">
+                                    <a href="#"><img src="{{ URL::to('/')}}/uploads/{{ $secondModule['image'] }}" alt=""></a>
+                                </div>
+                                <div class="post-data">
+                                    <a href="{{ URL::to('/').'/'.$secondModule['content'] }}" class="post-catagory">{{ $secondModule['content'] }}</a>
+                                    <a href="{{ URL::to('/').'/'.$secondModule['content'].'/'.$secondModule['category'].'/'.$secondModule['alias'] }}" class="post-title">
+                                        <h6>{{ str_limit(strip_tags($secondModule['description']),50) }}</h6>
+                                    </a>
+                                    <div class="post-meta d-flex align-items-center">
+                                        <a href="#" class="post-like"><img src="{{ URL::to('/')}}/frontend/img/core-img/like.png" alt=""> <span>392</span></a>
+                                        <a href="#" class="post-comment"><img src="{{ URL::to('/')}}/frontend/img/core-img/chat.png" alt=""> <span>10</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach    
+                
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-4">
+                    <div class="section-heading">
+                        <h6>Info</h6>
+                    </div>
+                   {!! $howToArticles !!}
+
+                    <!-- Newsletter Widget -->
+                    <div class="newsletter-widget">
+                        <h4>Newsletter</h4>
+                        <p>Please Insert your detailes to subscribe our newsletter.</p>
+                        {!! Form::open(['route' => 'news.letters']) !!}
+                            {!! Form::text('name', null, array('placeholder' => 'Name')) !!}
+                            {!! Form::text('email', null, array('placeholder'=> 'Email')) !!}
+                            {!! Form::button('Subscribe', ['class' => 'btn w-100']) !!}
+                        {!! Form::close() !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
