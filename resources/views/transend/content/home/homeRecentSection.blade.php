@@ -12,9 +12,7 @@
                                     <a href="#"><img src="{{ URL::to('/')}}/upload/{{ $firstModule['image'] }}" alt=""></a>
                                 </div>
                                 <div class="post-data">
-                                    {{-- {{ URL::to('/').'/hi/'.$trendingArticle['content']->content_type_name.'/'.$trendingArticle['category']->name }} --}}
-                                    {{-- {{ dd($firstModule['content'], $firstModule['category'], $firstModule['alias'], $firstModule['id'])}} --}}
-                                    <a href="{{ URL::to('/').'/hi/'.$firstModule['content'].'/'.$firstModule['category'].'/'.$firstModule['alias'] .'-'.$firstModule['id']}}" class="post-catagory">{{ $firstModule['title'] }}</a>
+                                    <a href="{{ URL::to('/').'/hi/'.$firstModule['content'].'/'.$firstModule['category'].'/'.$firstModule['alias'] .'-'.$firstModule['article_id']}}" class="post-catagory">{{ $firstModule['title'] }}</a>
                                     <a href="{{ URL::to('/').'/hi/'.$firstModule['content'].'/'.$firstModule['category'].'/'.$firstModule['alias'] .'-'.$firstModule['id']}}" class="post-title">
                                         <h6>{{ str_limit(strip_tags($firstModule['description']),50) }}</h6>
                                     </a>
