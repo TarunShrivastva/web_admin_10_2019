@@ -43,7 +43,7 @@ class HomePageController extends Controller
             $firstModules[$key]['image'] = $article->image;
             $firstModules[$key]['title'] = $article->title;
             $firstModules[$key]['description'] = $article->description;
-            $firstModules[$key]['content'] = $article->content['content_type_name'];
+            $firstModules[$key]['content'] = $article->content['url'];
             $firstModules[$key]['category'] = $article->category['url'];
         }
         $trendingArticles = $this->trendingArticles();
@@ -64,7 +64,7 @@ class HomePageController extends Controller
                 $secondModules[$key]['image'] = $article->image;
                 $secondModules[$key]['title'] = $article->title;
                 $secondModules[$key]['description'] = $article->description;
-                $secondModules[$key]['content'] = $article->content['content_type_name'];
+                $secondModules[$key]['content'] = $article->content['url'];
                 $secondModules[$key]['category'] = $article->category['name'];
             
         }
@@ -82,12 +82,12 @@ class HomePageController extends Controller
         $thirdModules = ThirdModule::where('language_id','=','2')->where('status','1')->orderBy('order')->get()->toArray();
         foreach ($thirdModules as $key => $value){
             $article = Article::where('status','1')->findOrFail($value['article_id']);
-            $secondModules[$key]['alias'] = $article->alias;
+            $thirdModules[$key]['alias'] = $article->alias;
             $thirdModules[$key]['image'] = $article->image;
             $thirdModules[$key]['title'] = $article->title;
             $thirdModules[$key]['description'] = $article->description;
             $thirdModules[$key]['category'] = $article->category['name'];
-            $secondModules[$key]['content'] = $article->content['content_type_name'];
+            $thirdModules[$key]['content'] = $article->content['url'];
             $thirdModules[$key]['date'] = date('d F Y', strtotime($article->created_at));
         }
         return view('transend.content.home.homePopularSection',compact('thirdModules'));

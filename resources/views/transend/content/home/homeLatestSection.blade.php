@@ -10,14 +10,15 @@
 
                         <!-- Single Post -->
                         @foreach($secondModules as $secondModule)
+                        {{-- {{ dd($secondModule) }} --}}
                         <div class="col-12 col-md-6">
                             <div class="single-blog-post style-3">
                                 <div class="post-thumb">
                                     <a href="#"><img src="{{ URL::to('/')}}/upload/{{ $secondModule['image'] }}" alt=""></a>
                                 </div>
                                 <div class="post-data">
-                                    <a href="{{ URL::to('/').'/'.$secondModule['content'] }}" class="post-catagory">{{ $secondModule['content'] }}</a>
-                                    <a href="{{ URL::to('/').'/'.$secondModule['content'].'/'.$secondModule['category'].'/'.$secondModule['alias'] }}" class="post-title">
+                                    <a href="{{ URL::to('/').'/hi/'.$secondModule['content'] }}" class="post-catagory">{{ $secondModule['content'] }}</a>
+                                    <a href="{{ URL::to('/').'/hi/'.$secondModule['content'].'/'.$secondModule['category'].'/'.$secondModule['alias'] .'-'.$secondModule['article_id']}}" class="post-title">
                                         <h6>{{ str_limit(strip_tags($secondModule['description']),50) }}</h6>
                                     </a>
                                     <div class="post-meta d-flex align-items-center">

@@ -17,7 +17,7 @@
                                     <a href="#"><img src="{{ URL::to('/')}}/upload/{{ $thirdModule['image'] }}" alt=""></a>
                                 </div>
                                 <div class="post-data">
-                                    <a href="#" class="post-title">
+                                    <a href="{{ URL::to('/').'/hi/'.$thirdModule['content'].'/'.$thirdModule['category'].'/'.$thirdModule['alias'] .'-'.$thirdModule['article_id']}}" class="post-title">
                                         <h6>{{ $thirdModule['title'] }}</h6>
                                     </a>
                                     <div class="post-meta">

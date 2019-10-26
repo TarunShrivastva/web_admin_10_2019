@@ -13,7 +13,7 @@
                                 </div>
                                 <div class="post-data">
                                     <a href="{{ URL::to('/').'/hi/'.$firstModule['content'].'/'.$firstModule['category'].'/'.$firstModule['alias'] .'-'.$firstModule['article_id']}}" class="post-catagory">{{ $firstModule['title'] }}</a>
-                                    <a href="{{ URL::to('/').'/hi/'.$firstModule['content'].'/'.$firstModule['category'].'/'.$firstModule['alias'] .'-'.$firstModule['id']}}" class="post-title">
+                                    <a href="{{ URL::to('/').'/hi/'.$firstModule['content'].'/'.$firstModule['category'].'/'.$firstModule['alias'] .'-'.$firstModule['article_id']}}" class="post-title">
                                         <h6>{{ str_limit(strip_tags($firstModule['description']),50) }}</h6>
                                     </a>
                                     <div class="post-meta d-flex align-items-center">
