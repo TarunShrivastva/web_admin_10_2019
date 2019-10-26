@@ -65,7 +65,7 @@ class HomePageController extends Controller
                 $secondModules[$key]['title'] = $article->title;
                 $secondModules[$key]['description'] = $article->description;
                 $secondModules[$key]['content'] = $article->content['url'];
-                $secondModules[$key]['category'] = $article->category['name'];
+                $secondModules[$key]['category'] = $article->category['url'];
             
         }
         $howToArticles = $this->howToArticles();
@@ -82,11 +82,12 @@ class HomePageController extends Controller
         $thirdModules = ThirdModule::where('language_id','=','2')->where('status','1')->orderBy('order')->get()->toArray();
         foreach ($thirdModules as $key => $value){
             $article = Article::where('status','1')->findOrFail($value['article_id']);
+            $thirdModules[$key]['article_id'] = $article->id;
             $thirdModules[$key]['alias'] = $article->alias;
             $thirdModules[$key]['image'] = $article->image;
             $thirdModules[$key]['title'] = $article->title;
             $thirdModules[$key]['description'] = $article->description;
-            $thirdModules[$key]['category'] = $article->category['name'];
+            $thirdModules[$key]['category'] = $article->category['url'];
             $thirdModules[$key]['content'] = $article->content['url'];
             $thirdModules[$key]['date'] = date('d F Y', strtotime($article->created_at));
         }
