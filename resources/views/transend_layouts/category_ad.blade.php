@@ -1,15 +1,15 @@
 {{-- <div class="hero-area"> --}}
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-12 col-lg-8">
-                    <ol class = "breadcrumb breadcrumb-background">
-                       @php 
-                        $url = '' 
-                        @endphp
-                       @foreach($data as $key => $value)
-                       <li><a href = "{{ URL::to('') }}/{{ strtolower($value) == 'home'? $url .= 'hi': $url .= '/' . strtolower($value) }}">{{ strtoupper($value) }}</a></li>
-                       @endforeach
-                    </ol>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-12 col-lg-8">
+                <ol class = "breadcrumb breadcrumb-background">
+                   @php 
+                    $url = '' 
+                    @endphp
+                   @foreach($data as $key => $value)
+                   <li><a href = "{{ $key < count($data)-1? (URL::to('').'/'.(strtolower($value) == 'home'? $url .= 'hi': $url.='/'.strtolower($value))):'#'}}">{{ strtoupper($value) }}</a></li>
+                   @endforeach
+                </ol>
                     <!-- Breaking News Widget -->
                    {{--  <div class="breaking-news-area d-flex align-items-center">
                         <div class="news-title">
@@ -45,7 +45,6 @@
                         <a href="#"><img src="{{ URL::to('frontend/img/bg-img/hero-add.gif')}}" alt=""></a>
                     </div>
                 </div> --}}
-            
             </div>
         </div>
     </div>

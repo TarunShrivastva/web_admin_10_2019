@@ -30,6 +30,7 @@ class BreadCrumb
         $data[$key] = $value;
       }
     }
+    $data = array_values($data);
     $view->with('data', $data);    
   }
 
