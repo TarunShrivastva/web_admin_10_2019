@@ -2,7 +2,8 @@
 
 namespace App\Admin\Controllers;
 
-use App\Author;
+use App\Category;
+use App;
 
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -11,7 +12,7 @@ use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
 
-class AuthorController extends Controller
+class CategoryController extends Controller
 {
     use ModelForm;
 
@@ -24,8 +25,8 @@ class AuthorController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('Author');
-            $content->description('List');
+            $content->header('header');
+            $content->description('description');
 
             $content->body($this->grid());
         });
@@ -41,8 +42,8 @@ class AuthorController extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
 
-            $content->header('Author');
-            $content->description('Edit');
+            $content->header('header');
+            $content->description('description');
 
             $content->body($this->form()->edit($id));
         });
@@ -57,8 +58,8 @@ class AuthorController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('Author');
-            $content->description('create');
+            $content->header('header');
+            $content->description('description');
 
             $content->body($this->form());
         });
@@ -71,24 +72,18 @@ class AuthorController extends Controller
      */
     protected function grid()
     {
-        return Admin::grid(Author::class, function (Grid $grid) {
+        return Admin::grid(Category::class, function (Grid $grid) {
+
+            $grid->id('ID')->sortable();
+            $grid->name('Name');
+            $grid->url('Url');
             $states = [
                 '1'  => ['value' => 1, 'text' => 'YES', 'color' => 'primary'],
                 '0' => ['value' => 0, 'text' => 'NO', 'color' => 'default'],
-            ];
-            $grid->id('ID')->sortable();
-            $grid->author('author','Author');
-            $grid->author_email('author_email','Email');
-            $grid->address('address','Address');
-            $grid->image()->image('http://localhost:8000/upload/', 100, 100);
+            ];    
             $grid->status('status')->switch($states);
             $grid->created_at();
             $grid->updated_at();
-            $grid->filter(function ($filter) {
-                $filter->like('author');
-                $filter->between('created_at')->datetime();
-                $filter->useModal();
-            });
         });
     }
 
@@ -99,13 +94,11 @@ class AuthorController extends Controller
      */
     protected function form()
     {
-        return Admin::form(Author::class, function (Form $form) {
+        return Admin::form(Category::class, function (Form $form) {
 
             $form->display('id', 'ID');
-            $form->text('author','Author');
-            $form->email('author_email','Email');
-            $form->textarea('address','Address');
-            $form->image('image','Image')->uniqueName()->rules('required|mimes:jpg,jpeg,png');
+            $form->text('Name', 'name');
+            $form->text('url', 'Url');
             $form->switch('status','status')->rules('required');
             $form->display('created_at', 'Created At');
             $form->display('updated_at', 'Updated At');

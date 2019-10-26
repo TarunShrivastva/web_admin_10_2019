@@ -182,6 +182,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         App\Providers\FrontMenuServiceProvider::class,
         App\Providers\BreadCrumbServiceProvider::class,
+        // Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
     ],
 
     /*
@@ -233,6 +234,12 @@ return [
         'MetaTag'   => Torann\LaravelMetaTags\Facades\MetaTag::class,
         'Agent' => Jenssegers\Agent\Facades\Agent::class,
         'Form' => Collective\Html\FormFacade::class,
+        'SEOMeta'   => Artesaos\SEOTools\Facades\SEOMeta::class,
+        'OpenGraph' => Artesaos\SEOTools\Facades\OpenGraph::class,
+        'Twitter'   => Artesaos\SEOTools\Facades\TwitterCard::class,
+        'JsonLd'   => Artesaos\SEOTools\Facades\JsonLd::class,
+        // or
+        // 'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
     ],
 
 ];

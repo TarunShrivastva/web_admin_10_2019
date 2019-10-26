@@ -22,33 +22,100 @@
                                     </div>
                                 </div>
                             </div>
+                <!-- Comment Area Start -->
+                <div class="comment_area clearfix">
+                    <h5 class="title">3 Comments</h5>
+                    <ol>
+                        <!-- Single Comment Area -->
+                        <li class="single_comment_area">
+                            <!-- Comment Content -->
+                            <div class="comment-content d-flex">
+                                <!-- Comment Author -->
+                                <div class="comment-author">
+                                    <img src="img/bg-img/30.jpg" alt="author">
+                                </div>
+                                <!-- Comment Meta -->
+                                <div class="comment-meta">
+                                    <a href="#" class="post-author">Christian Williams</a>
+                                    <a href="#" class="post-date">April 15, 2018</a>
+                                    <p>Donec turpis erat, scelerisque id euismod sit amet, fermentum vel dolor. Nulla facilisi. Sed pellen tesque lectus et accu msan aliquam. Fusce lobortis cursus quam, id mattis sapien.</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+                @if (!(Auth::check()))        
+                    <div class="contact-form-area">    
+                        <div class="post-a-comment-area section-padding-80-0">
+                            <h4>Leave a comment</h4>    
+                            <!-- Reply Form -->
+                            <div class="contact-form-area">
+                                <form action="{{ route('register') }}" method="post">
+                                    {{ csrf_field() }}
+                                    <div class="row">
+                                        <div class="col-12 col-lg-6{{ $errors->has('name') ? ' has-error' : '' }}">
+                                            <input type="text" class="form-control" id="name" placeholder="Name*" name="name" value="{{ old('name') }}">
+                                            @if ($errors->has('name'))
+                                                <span class="help-block">
+                                                    <p style="color:red">{{ $errors->first('name') }}</p>
+                                                </span>
+                                            @endif
+                                        </div>
+                                    <div class="col-12 col-lg-6{{ $errors->has('email') ? ' has-error' : '' }}">
+                                        <input type="email" class="form-control" id="email" placeholder="Email*" name="email" value="{{ old('email') }}">
+                                        @if ($errors->has('email'))
+                                            <span class="help-block">
+                                                <p style="color:red">{{ $errors->first('email') }}</p>
+                                            </span>
+                                        @endif
+                                    </div>
+                                    <div class="col-12 col-lg-6{{ $errors->has('password') ? ' has-error' : '' }}">
+                                        <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
+                                        @if ($errors->has('password'))
+                                            <span class="help-block">
+                                                <p style="color:red">{{ $errors->first('password') }}</p>
+                                            </span>
+                                        @endif
+                                    </div>
+                                    <div class="col-12 col-lg-6">
+                                        <input type="password" class="form-control" id="password-confirm" name="password_confirmation" placeholder="Password confirmation">
+                                    </div>
+                                        <div class="col-12 text-center">
+                                            <button class="btn newspaper-btn mt-30 w-100" type="submit">Submit Comment</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
+                @endif    
                     </div>
+                </div>
+            </div>
 @endsection
 @section('side_section')
     <div class="col-12 col-lg-4">
-                    <div class="blog-sidebar-area">
-                        {!! $recentArticles !!}
-                        <!-- Popular News Widget -->
-                        <div class="popular-news-widget mb-50">
-                            <h3>5 {{ __('hi.Most Popular News') }}</h3>
-                                {!! $trendingArticles !!}
-                        </div>
+        <div class="blog-sidebar-area">
+            {!! $recentArticles !!}
+            <!-- Popular News Widget -->
+            <div class="popular-news-widget mb-50">
+                <h3>5 {{ __('hi.Most Popular News') }}</h3>
+                    {!! $trendingArticles !!}
+            </div>
 
-                        <!-- Newsletter Widget -->
-                        <div class="newsletter-widget mb-50">
-                            <h4>{{ __('hi.Newsletter') }}</h4>
-                        <p>Please Insert your detailes to subscribe our newsletter.</p>
-                        {!! Form::open(['route' => 'news.letters']) !!}
-                            {!! Form::text('name', null, array('placeholder' => 'Name', 'required', "oninvalid"=>"this.setCustomValidity('Please Enter Name')","oninput"=>"setCustomValidity('')", "autocomplete" => "off")) !!}
-                            {!! Form::text('email', null, array('placeholder'=> 'Email','required',"oninvalid"=>"this.setCustomValidity('Please Enter Email Address')","oninput"=>"setCustomValidity('')","pattern"=>"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$", "autocomplete" => "off")) !!}
-                            @if($errors->any())
-                                <p style="color:red">{{ $errors->first() }}</p>
-                            @endif
-                            {!! Form::button('Subscribe', ['class' => 'btn w-100', 'type' => 'submit']) !!}
-                        {!! Form::close() !!}
-                        </div>
-                    </div>
-                </div>
+            <!-- Newsletter Widget -->
+            <div class="newsletter-widget mb-50">
+                <h4>{{ __('hi.Newsletter') }}</h4>
+                <p>Please Insert your detailes to subscribe our newsletter.</p>
+                {!! Form::open(['route' => 'news.letters']) !!}
+                    {!! Form::text('name', null, array('placeholder' => 'Name', 'required', "oninvalid"=>"this.setCustomValidity('Please Enter Name')","oninput"=>"setCustomValidity('')", "autocomplete" => "off")) !!}
+                    {!! Form::text('email', null, array('placeholder'=> 'Email','required',"oninvalid"=>"this.setCustomValidity('Please Enter Email Address')","oninput"=>"setCustomValidity('')","pattern"=>"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$", "autocomplete" => "off")) !!}
+                @if($errors->any())
+                    <p style="color:red">{{ $errors->first() }}</p>
+                @endif
+                    {!! Form::button('Subscribe', ['class' => 'btn w-100', 'type' => 'submit']) !!}
+                {!! Form::close() !!}
+            </div>
+        </div>
+    </div>
 @endsection

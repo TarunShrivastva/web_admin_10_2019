@@ -44,7 +44,7 @@ class HomePageController extends Controller
             $firstModules[$key]['title'] = $article->title;
             $firstModules[$key]['description'] = $article->description;
             $firstModules[$key]['content'] = $article->content['content_type_name'];
-            $firstModules[$key]['category'] = $article->category['name'];
+            $firstModules[$key]['category'] = $article->category['url'];
         }
         $trendingArticles = $this->trendingArticles();
         return view('transend.content.home.homeRecentSection',compact('firstModules','trendingArticles'));
