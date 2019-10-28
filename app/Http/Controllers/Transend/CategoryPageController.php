@@ -30,9 +30,6 @@ class CategoryPageController extends Controller
             $$key = $value;
         }
         $locale = str_replace('/', '', $request->route()->getPrefix());
-        App::setLocale($locale);
-        MetaTag::set('description', 'All about this detail page');
-        MetaTag::set('image', asset('images/detail-logo.png'));
         if(isset($content)){
             if($content != ''){
                 $content = Content::where('status','1')->where('url', '=', $content)->get();
@@ -84,9 +81,7 @@ class CategoryPageController extends Controller
         foreach ($parameters as $key => $value) {
             $$key = $value;
         }
-        //dd($content, $category, $alias, $id);
         $locale = str_replace('/', '', $request->route()->getPrefix());
-        App::setLocale($locale);
         $alias = str_replace(" ","-",$alias);
         $language = Language::where('alias',$locale)->get();
         $content = Content::where('status','1')->where('url', '=', $content)->get();
@@ -104,8 +99,8 @@ class CategoryPageController extends Controller
                 $articles = Article::where('status','1')->where('category_id','=',$category[0]->id)->where('content_id','=',$content[0]->id)->where('language_id',$language[0]->id)->with('author','content','category','language')->findOrFail($id);
             }
         }
-        $recentArticles = $this->recentArticles();
-        $trendingArticles = $this->trendingArticles();
+        $recentArticles = $this->recentArticles($articles->id);
+        $trendingArticles = $this->trendingArticles($articles->id);
         if(Str::lower($articles->alias) == Str::lower($alias)){
             return view('transend.content.category.singleArticle',compact('articles','recentArticles','trendingArticles'));
         }else{
@@ -113,17 +108,17 @@ class CategoryPageController extends Controller
         }
     }
 
-    public function recentArticles(){
+    public function recentArticles($id=null){
         $locale = App::getLocale();
         $language = Language::where('alias',$locale)->get();
-        $recentArticles = Article::where('status','1')->where('language_id','=',$language[0]->id)->where('recent','1')->take(5)->get();
+        $recentArticles = Article::where('status','1')->where('language_id','=',$language[0]->id)->where('recent','1')->where('id','!=',$id)->take(5)->get();
         return view('transend.content.category.recentArticle',compact('recentArticles'));
     }
 
-    public function trendingArticles(){
+    public function trendingArticles($id=null){
         $locale = App::getLocale();
         $language = Language::where('alias',$locale)->get();
-        $trendingArticles = Article::where('status','1')->where('language_id','=',$language[0]->id)->where('trending','1')->take(5)->get();
+        $trendingArticles = Article::where('status','1')->where('language_id','=',$language[0]->id)->where('trending','1')->where('id','!=',$id)->take(5)->get();
         return view('transend.content.category.trendingArticle',compact('trendingArticles'));
     }
 
