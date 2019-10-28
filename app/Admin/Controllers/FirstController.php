@@ -2,7 +2,7 @@
 
 namespace App\Admin\Controllers;
 
-use App\ThirdModule;
+use App\FirstModule;
 use App\Article;
 use App\Language;
 
@@ -19,39 +19,37 @@ use Encore\Admin\Layout\Column;
 use Encore\Admin\Auth\Database\Menu;
 use Illuminate\Support\Facades\URL;
 
-class ThirdController extends Controller
+class FirstController extends Controller
 {
     use ModelForm;
 
     public function index()
     {
         return Admin::content(function (Content $content) {
-            $content->header('Third Module');
+            $content->header('First Module');
             $content->description('Description');
             $content->row(function (Row $row) {
                 $row->column(6, $this->treeView()->render());
                 $row->column(6, function (Column $column) {
                     $articles = Article::where('language_id','=','2')->get()->pluck('alias','id');
                     $form = new \Encore\Admin\Widgets\Form();
-                    $form->action(admin_url('thirdmodule'));
+                    $form->action(admin_url('firstmodule'));
+                    // $form->select('parent_id')->options(FirstModule::selectOptions())->rules('required');
                     $form->select('language_id','Language')->options(Language::all()->pluck('name', 'id'))->rules('required');
                     $articles = Article::where('language_id', '=','2')->get()->pluck('alias','id');
                     $form->select('article_id')->options($articles);
                     $form->switch('status','status');
                     $form->display('created_at', trans('admin::lang.created_at'));
                     $form->display('updated_at', trans('admin::lang.updated_at'));
-                    $column->append((new Box('Add Third Module', $form))->style('success'));
+                    $column->append((new Box('Add First Module', $form))->style('success'));
+                });
             });
-
-
-            });
-
         });
     }
     
     public function treeView()
     {
-        return ThirdModule::tree(function (Tree $tree) { 
+        return FirstModule::tree(function (Tree $tree) { 
             $tree->disableCreate();
 
             $tree->branch(function ($branch) {
@@ -75,7 +73,7 @@ class ThirdController extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
 
-            $content->header('Third Module');
+            $content->header('First Module');
             $content->description('Edit');
             $content->body($this->form()->edit($id));
         });
@@ -89,8 +87,9 @@ class ThirdController extends Controller
      */
     public function form()
     {
-        return ThirdModule::form(function (Form $form) {
+        return FirstModule::form(function (Form $form) {
             $form->display('id', 'ID');
+            // $form->select('parent_id')->options(FirstModule::selectOptions())->rules('required');
             $form->select('language_id','Language')->options(Language::all()->pluck('name', 'id'))->rules('required');
             $articles = Article::where('language_id', '=', '2')->get()->pluck('alias','id');
             $form->select('article_id')->options($articles)->rules('required');

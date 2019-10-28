@@ -5,7 +5,6 @@ namespace App\Admin\Controllers;
 use App\SecondModule;
 use App\Article;
 use App\Language;
-use URL;
 
 use App\Http\Controllers\Controller;
 use Encore\Admin\Form;
@@ -18,6 +17,7 @@ use Encore\Admin\Layout\Row;
 use Encore\Admin\Auth\Database\Role;
 use Encore\Admin\Layout\Column;
 use Encore\Admin\Auth\Database\Menu;
+use Illuminate\Support\Facades\URL;
 
 class SecondController extends Controller
 {
