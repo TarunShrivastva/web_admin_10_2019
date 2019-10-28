@@ -31,12 +31,10 @@ class ThirdController extends Controller
             $content->row(function (Row $row) {
                 $row->column(6, $this->treeView()->render());
                 $row->column(6, function (Column $column) {
-                    $articles = Article::where('language_id','=','2')->get()->pluck('alias','id');
                     $form = new \Encore\Admin\Widgets\Form();
                     $form->action(admin_url('thirdmodule'));
-                    $form->select('language_id','Language')->options(Language::all()->pluck('name', 'id'))->rules('required');
-                    $articles = Article::where('language_id', '=','2')->get()->pluck('alias','id');
-                    $form->select('article_id')->options($articles);
+                    $form->select('language_id','Language')->options(Language::all()->pluck('name', 'id'))->rules('required')->load('article_id','/admin/get_data');
+                    $form->select('article_id')->options(Article::where('language_id', '=','1')->get()->pluck('alias','id'));
                     $form->switch('status','status');
                     $form->display('created_at', trans('admin::lang.created_at'));
                     $form->display('updated_at', trans('admin::lang.updated_at'));
@@ -91,9 +89,8 @@ class ThirdController extends Controller
     {
         return ThirdModule::form(function (Form $form) {
             $form->display('id', 'ID');
-            $form->select('language_id','Language')->options(Language::all()->pluck('name', 'id'))->rules('required');
-            $articles = Article::where('language_id', '=', '2')->get()->pluck('alias','id');
-            $form->select('article_id')->options($articles)->rules('required');
+            $form->select('language_id','Language')->options(Language::all()->pluck('name', 'id'))->rules('required')->load('article_id','/admin/get_data');
+            $form->select('article_id')->options(Article::where('language_id', '=','1')->get()->pluck('alias','id'))->rules('required');
             $form->switch('status','status')->rules('required');
             $form->display('created_at', trans('admin::lang.created_at'));
             $form->display('updated_at', trans('admin::lang.updated_at'));
