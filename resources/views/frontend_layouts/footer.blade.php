@@ -1,7 +1,5 @@
 <!-- ##### Footer Add Area Start ##### -->
-    
-{{--
-    <div class="footer-add-area">
+    {{-- <div class="footer-add-area"> 
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -11,8 +9,7 @@
                 </div>
             </div>
         </div>
-    </div> 
---}}    
+    </div> --}}
     <!-- ##### Footer Add Area End ##### -->
 
     <!-- ##### Footer Area Start ##### -->
@@ -28,7 +25,7 @@
                         <div class="footer-widget-area mt-80">
                             <!-- Footer Logo -->
                             <div class="footer-logo">
-                                <a href="index.html"><img src="{{ URL::to('frontend/img/core-img/logo.png') }}" alt=""></a>
+                                <a href="index.html"><img src="img/core-img/logo.png" alt=""></a>
                             </div>
                             <!-- List -->
                             <ul class="list">
@@ -128,4 +125,4 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     </footer>
     <!-- ##### Footer Area Start ##### -->
 
-    <!-- ##### All Javascript Files #####
+    <!-- ##### All Javascript Files ##### -->

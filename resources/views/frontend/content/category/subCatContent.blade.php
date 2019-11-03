@@ -6,12 +6,12 @@
                     @foreach($articles as $article)    
                         <div class="single-blog-post featured-post mb-30">
                             <div class="post-data">
-                                <a href="{{ URL::to( $article->content['content_type_name']. '/' . $article->category['url']) }}" class="post-catagory">{{ $article->category['url'] }}</a>
-                                <a href="{{ URL::to( $article->content['content_type_name']. '/' . $article->category['url'] . '/' . $article->alias . '-' . $article->id) }}" class="post-title">
+                                <a href="{{ URL::to( app()->getLocale() .'/'. $article->content['content_type_name']. '/' . $article->category['url']) }}" class="post-catagory">{{ $article->category['url'] }}</a>
+                                <a href="{{ URL::to( app()->getLocale() .'/'. $article->content['content_type_name']. '/' . $article->category['url'] . '/' . $article->alias . '-' . $article->id) }}" class="post-title">
                                     <h6>{{ $article->title }}</h6>
                                 </a>
                                 <div class="post-thumb">
-                                    <a href="{{ URL::to( $article->content['content_type_name']. '/' . $article->category['url'] . '/' . $article->alias . '-' . $article->id) }}"><img src="{{ URL::to('uploads/'.$article->image) }}" alt="{{URL::to('uploads/'.$article->image) }}"></a>
+                                    <a href="{{ URL::to( app()->getLocale() .'/'. $article->content['content_type_name']. '/' . $article->category['url'] . '/' . $article->alias . '-' . $article->id) }}"><img src="{{ URL::to('upload/'.$article->image) }}" alt="{{URL::to('uploads/'.$article->image) }}"></a>
                                 </div>
                                 <div class="post-meta">
                                     <p class="post-author">By <a href="#">{{ $article->author['author'] }}</a></p>
@@ -39,19 +39,22 @@
                         {!! $recentArticles !!}
                         <!-- Popular News Widget -->
                         <div class="popular-news-widget mb-50">
-                            <h3>5 {{ __('hi.Most Popular News') }}</h3>
+                            <h3>5 {{'Most Popular News'}}</h3>
                                 {!! $trendingArticles !!}
                             </div>
 
                         <!-- Newsletter Widget -->
                         <div class="newsletter-widget mb-50">
-                            <h4>Newsletter</h4>
-                            <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-                            <form action="#" method="post">
-                                <input type="text" name="text" placeholder="Name">
-                                <input type="email" name="email" placeholder="Email">
-                                <button type="submit" class="btn w-100">Subscribe</button>
-                            </form>
+                                 <h4>{{ 'Newsletter' }}</h4>
+                        <p>Please Insert your detailes to subscribe our newsletter.</p>
+                        {!! Form::open(['route' => 'news.letters']) !!}
+                            {!! Form::text('name', null, array('placeholder' => 'Name', 'required', "oninvalid"=>"this.setCustomValidity('Please Enter Name')","oninput"=>"setCustomValidity('')", "autocomplete" => "off")) !!}
+                            {!! Form::text('email', null, array('placeholder'=> 'Email','required',"oninvalid"=>"this.setCustomValidity('Please Enter Email Address')","oninput"=>"setCustomValidity('')","pattern"=>"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$", "autocomplete" => "off")) !!}
+                            @if($errors->any())
+                                <p style="color:red">{{ $errors->first() }}</p>
+                            @endif
+                            {!! Form::button('Subscribe', ['class' => 'btn w-100', 'type' => 'submit']) !!}
+                        {!! Form::close() !!}
                         </div>
                      </div>
                 </div>
