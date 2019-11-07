@@ -7,7 +7,6 @@ use App\Menu;
 class FrontMenu 
 {
   public function compose(View $view){
-    //$menus = Menu::where('status','1')->where('parent_id',0)->get()->toArray();
     $menus = Menu::where('parent_id',0)->orderBy('order')->get()->toArray();
       if($menus){
         foreach($menus as $key => $value){

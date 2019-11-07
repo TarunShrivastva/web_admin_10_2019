@@ -46,7 +46,7 @@ class CategoryPageController extends Controller
             return abort(404);
         }
         if(isset($category)){
-            if($category != ''){
+            if(!empty($category)){
                 $category = Category::where('status','1')->where('url', '=', $category)->get();
                 if(count($category) ==0){
                     return abort(404);

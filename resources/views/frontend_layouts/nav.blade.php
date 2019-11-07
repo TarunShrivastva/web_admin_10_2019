@@ -62,8 +62,8 @@
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul>
-                                @foreach($menus as $key => $value)
-                                    <li><a href="/{{ $value['title'] == 'home'? '': $value['title']}}">{{$value['title']}}</a>
+                                @foreach($languages as $key => $value)
+                                    <li><a href="/{{ $value['alias'] != 'en'? $value['alias']: ''}}">{{ $value['name'] }}</a>
                                     </li>            
                                 @endforeach
                                 </ul>

@@ -6,12 +6,12 @@
                     @foreach($articles as $article)    
                         <div class="single-blog-post featured-post mb-30">
                             <div class="post-data">
-                                <a href="{{ URL::to( app()->getLocale() .'/'. $article->content['content_type_name']. '/' . $article->category['url']) }}" class="post-catagory">{{ $article->category['url'] }}</a>
-                                <a href="{{ URL::to( app()->getLocale() .'/'. $article->content['content_type_name']. '/' . $article->category['url'] . '/' . $article->alias . '-' . $article->id) }}" class="post-title">
+                                <a href="{{ URL::to( '/'. $article->content['content_type_name']. '/' . $article->category['url']) }}" class="post-catagory">{{ $article->category['url'] }}</a>
+                                <a href="{{ URL::to( '/'. $article->content['content_type_name']. '/' . $article->category['url'] . '/' . $article->alias . '-' . $article->id) }}" class="post-title">
                                     <h6>{{ $article->title }}</h6>
                                 </a>
                                 <div class="post-thumb">
-                                    <a href="{{ URL::to( app()->getLocale() .'/'. $article->content['content_type_name']. '/' . $article->category['url'] . '/' . $article->alias . '-' . $article->id) }}"><img src="{{ URL::to('upload/'.$article->image) }}" alt="{{URL::to('uploads/'.$article->image) }}"></a>
+                                    <a href="{{ URL::to( '/'. $article->content['content_type_name']. '/' . $article->category['url'] . '/' . $article->alias . '-' . $article->id) }}"><img src="{{ URL::to('upload/'.$article->image) }}" alt="{{URL::to('uploads/'.$article->image) }}"></a>
                                 </div>
                                 <div class="post-meta">
                                     <p class="post-author">By <a href="#">{{ $article->author['author'] }}</a></p>
