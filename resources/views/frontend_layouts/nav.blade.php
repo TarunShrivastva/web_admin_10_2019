@@ -26,20 +26,20 @@
                             <div class="classynav">
                                 <ul>
                                 @foreach($menus as $key => $value)
-                                    <li><a href="{{url('/')}}/{{ $value['url'] == '/'?'': $value['url']}}">{{$value['display']}}</a>
+                                    <li><a href="/{{ $value['title'] == 'home'? '': $value['title']}}">{{$value['title']}}</a>
                                         @if(count($value['child_module']))
                                             <ul class="dropdown">
                                                 @foreach($value['child_module'] as $key1 => $value1)
                                                     <li class="{{ count($value1['child__child_module'])? 'has-down':''}}">
                                                         <a href="
-                                                        {{ count($value1['child__child_module']) == 0 ? url('/').'/'.$value['url'].'/'.$value1['url']: ''}}">{{ $value1['display']}}
-                                                        </a>
+                                                        {{ count($value1['child__child_module']) == 0 ? '/'.$value['title'].'/'.$value1['title']: 'javascript:void(0)'}}">{{ $value1['title']}}
+                                                        </a>    
                                                         @if(count($value1['child__child_module']) > 0)
                                                             <ul class="dropdown">
                                                             @foreach($value1['child__child_module'] as $key2 => $value2)
                                                                 <li>
-                                                                    <a href="{{url('/')}}/{{ $value['url'] }}/{{ $value2['url']}}">
-                                                                            {{ $value2['display'] }}
+                                                                    <a href="/{{ $value['title'] }}/{{ $value2['title']}}">
+                                                                            {{ $value2['title'] }}
                                                                     </a>
                                                                 </li>
                                                             @endforeach
@@ -50,12 +50,30 @@
                                             </ul>
                                         @endif
                                     </li>            
-                                @endforeach 
+                                @endforeach
                                 </ul>
                             </div>
                             <!-- Nav End -->
                         </div>
+
+                         <!-- Menu -->
+                        <div class="classy-menu">
+
+                            <!-- Nav Start -->
+                            <div class="classynav">
+                                <ul>
+                                @foreach($languages as $key => $value)
+                                    <li><a href="/{{ $value['alias'] != 'en'? $value['alias']: ''}}">{{ $value['name'] }}</a>
+                                    </li>            
+                                @endforeach
+                                </ul>
+                            </div>
+                            <!-- Nav End -->
+                        </div>
+
                     </nav>
+
+
                 </div>
             </div>
         </div>

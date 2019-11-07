@@ -9,11 +9,11 @@
                         <div class="col-12 col-md-6">
                             <div class="single-blog-post style-3">
                                 <div class="post-thumb">
-                                    <a href="#"><img src="{{ URL::to('/')}}/uploads/{{ $firstModule['image'] }}" alt=""></a>
+                                    <a href="#"><img src="{{ URL::to('/')}}/upload/{{ $firstModule['image'] }}" alt=""></a>
                                 </div>
                                 <div class="post-data">
-                                    <a href="{{ URL::to('/').'/'.$firstModule['content'].'/'.$firstModule['category'].'/'.$firstModule['alias'] }}" class="post-catagory">{{ $firstModule['title'] }}</a>
-                                    <a href="#" class="post-title">
+                                    <a href="{{ URL::to('/').'/hi/'.$firstModule['content'].'/'.$firstModule['category'].'/'.$firstModule['alias'] .'-'.$firstModule['article_id']}}" class="post-catagory">{{ $firstModule['title'] }}</a>
+                                    <a href="{{ URL::to('/').'/hi/'.$firstModule['content'].'/'.$firstModule['category'].'/'.$firstModule['alias'] .'-'.$firstModule['article_id']}}" class="post-title">
                                         <h6>{{ str_limit(strip_tags($firstModule['description']),50) }}</h6>
                                     </a>
                                     <div class="post-meta d-flex align-items-center">

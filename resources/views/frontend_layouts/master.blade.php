@@ -23,5 +23,9 @@
     <script src="{{ URL::to('frontend/js/plugins/plugins.js') }}"></script>
     <!-- Active js -->
     <script src="{{ URL::to('frontend/js/active.js') }}"></script>
+    <!-- Google Maps -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwuyLRa1uKNtbgx6xAJVmWy-zADgegA2s"></script>
+    <script src="{{ URL::to('frontend/js/google-map/map-active.js')}}"></script>
+
 </body>
 </html>

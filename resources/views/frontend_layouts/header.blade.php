@@ -16,8 +16,19 @@
                             <div class="login-search-area d-flex align-items-center">
                                 <!-- Login -->
                                 <div class="login d-flex">
-                                    <a href="#">Login</a>
-                                    <a href="#">Register</a>
+                                    @if (Auth::check())
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    @else    
+                                        <a href="{{ URL::to('/login') }}">Login</a>
+                                        <a href="{{ URL::to('/register') }}">Register</a>
+                                    @endif    
                                 </div>
                                 <!-- Search Form -->
                                 <div class="search-form">
@@ -32,6 +43,6 @@
                 </div>
             </div>
         </div>
-           @include('frontend_layouts.nav') 
+           @include('frontend_layouts.nav')
     </header>
     <!-- ##### Header Area End ##### -->
