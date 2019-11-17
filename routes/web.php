@@ -15,6 +15,9 @@
 //     return view('welcome');
 // });
 
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::POST('newsletters','Transend\HomePageController@newsLetters')->name('news.letters');
 
 Route::group(['prefix' => 'hi' ], function () {	
@@ -26,15 +29,9 @@ Route::group(['prefix' => 'hi' ], function () {
 	});
 
 Route::group(['prefix' => '' ], function () {	
-		Route::GET('/','Frontend\HomePageController@index');
+		Route::GET('/','Frontend\HomePageController@index'); 
 		Route::GET('/about','Frontend\CategoryPageController@about');
 		Route::GET('/contact','Frontend\CategoryPageController@contact');
 		Route::GET('{content}/{category?}','Frontend\CategoryPageController@index');
 		Route::GET('{content}/{category}/{alias}-{id}','Frontend\CategoryPageController@show')->where(['id' => '[0-9]+', 'alias' => '[a-z0-9,-]+']);
 	});
-
-
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
