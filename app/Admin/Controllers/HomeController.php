@@ -28,13 +28,13 @@ class HomeController extends Controller
             $content->header('Dashboard');
             $content->description('Description...');
 
-            $content->row(function ($row) {
+            /* $content->row(function ($row) {
                 $row->column(3, new InfoBox('New Users', 'users', 'aqua', '/admin/users', '1024'));
                 $row->column(3, new InfoBox('New Orders', 'shopping-cart', 'green', '/admin/orders', '150%'));
                 $row->column(3, new InfoBox('Articles', 'book', 'yellow', '/admin/articles', '2786'));
                 $row->column(3, new InfoBox('Documents', 'file', 'red', '/admin/files', '698726'));
             });
-
+            
             $content->row(function (Row $row) {
 
                 $row->column(6, function (Column $column) {
@@ -99,7 +99,7 @@ class HomeController extends Controller
                 });
 
             });
-
+            */
             $headers = ['Id', 'Email', 'Name', 'Company', 'Last Login', 'Status'];
             $rows = [
                 [1, 'labore21@yahoo.com', 'Ms. Clotilde Gibson', 'Goodwin-Watsica', '1997-08-13 13:59:21', 'open'],
