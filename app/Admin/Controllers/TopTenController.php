@@ -75,8 +75,6 @@ class TopTenController extends Controller
         
         try {
             
-            dd($request->get('fields'));
-
         } catch (\Exception $exception) {
             // Delete generated files if exception thrown.
             return $this->backWithException($exception);
