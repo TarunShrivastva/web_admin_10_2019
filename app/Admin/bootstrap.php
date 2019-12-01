@@ -19,8 +19,9 @@
  */
 use Encore\Admin\Form;
 use App\Admin\Extensions\Form\CKEditor;
+use App\Admin\Extensions\Form\TopTenEditor;
+
 
 Encore\Admin\Form::forget(['map', 'editor']);
-
-
 Form::extend('ckeditor', CKEditor::class);
+Form::extend('topteneditor', TopTenEditor::class);

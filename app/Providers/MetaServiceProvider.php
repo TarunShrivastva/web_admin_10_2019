@@ -15,7 +15,7 @@ class MetaServiceProvider extends ServiceProvider
     public function boot()
     {
         // View::composer(['transend_layouts\home_meta','frontend_layouts\home_meta'], 
-                'App\Http\SeoView\Seo');
+                // 'App\Http\SeoView\Seo');
     }
 
     /**

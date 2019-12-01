@@ -20,5 +20,6 @@ Route::group([
     $router->Resource('/secondmodule', SecondController::class);
     $router->Resource('/thirdmodule', ThirdController::class);
     $router->Resource('/category', CategoryController::class);
+    $router->Resource('/topten', TopTenController::class);
     $router->get('/get_data', 'FirstController@getData');
 });

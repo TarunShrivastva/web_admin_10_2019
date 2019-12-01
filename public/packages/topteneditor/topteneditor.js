@@ -1,0 +1,4 @@
+function topten()
+{
+	alert('sadasd');
+}
