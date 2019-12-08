@@ -3,6 +3,11 @@
 namespace App\Admin\Controllers;
 
 use App\TopTen;
+use App\Product;
+use App\Author;
+use App\Contenttype;
+use App\Category;
+use App\Language;
 
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -23,7 +28,6 @@ class TopTenController extends Controller
     public function index()
     {
         return Admin::content(function (Content $content) {
-
             $content->header('Top Ten');
             $content->description('description');
 
@@ -74,7 +78,7 @@ class TopTenController extends Controller
         return Admin::grid(TopTen::class, function (Grid $grid) {
 
             $grid->id('ID')->sortable();
-
+            $grid->title('TopTen Title')->limit(20);
             $grid->created_at();
             $grid->updated_at();
         });
@@ -87,12 +91,19 @@ class TopTenController extends Controller
      */
     protected function form()
     {
+        // $form->topteneditor('topten','Top Ten');
         return Admin::form(TopTen::class, function (Form $form) {
-
-            $form->display('id', 'ID');
-            $form->topteneditor('topten','Top Ten');
-            $form->display('created_at', 'Created At');
-            $form->display('updated_at', 'Updated At');
+                $form->display('id', 'ID');
+                $form->text('title','Title')->rules('required|min:3');
+                $form->ckeditor('description','Description')->rules('required');
+                $form->multipleSelect('product', 'TopTen Products')->options(Product::all()->pluck('title', 'id'));
+                $form->select('author_id','Author')->options(Author::all()->pluck('author', 'id'))->rules('required');
+                $form->select('content_id','Content')->options(Contenttype::all()->pluck('content_type_name', 'id'))->rules('required');
+                $form->select('category_id','Category')->options(Category::all()->pluck('name', 'id'))->rules('required');
+                $form->select('language_id','Language')->options(Language::all()->pluck('name', 'id'))->rules('required');
+                $form->switch('status','status')->rules('required');
+                $form->display('created_at', 'Created At');
+                $form->display('updated_at', 'Updated At');    
         });
     }
 }

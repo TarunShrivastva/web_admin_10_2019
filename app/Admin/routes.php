@@ -21,5 +21,8 @@ Route::group([
     $router->Resource('/thirdmodule', ThirdController::class);
     $router->Resource('/category', CategoryController::class);
     $router->Resource('/topten', TopTenController::class);
-    $router->get('/get_data', 'FirstController@getData');
+    $router->Resource('/products', ProductController::class);
+    $router->Resource('/specifications', SpecificationController::class);
+    $router->get('/admin/new/panel/get_data', 'FirstController@getData');
+    $router->get('/get_child_specification', 'SpecificationController@getChildSpecifications');
 });

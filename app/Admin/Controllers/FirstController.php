@@ -34,7 +34,7 @@ class FirstController extends Controller
                     $form = new \Encore\Admin\Widgets\Form();
                     $form->action(admin_url('firstmodule'));
                     $articles = Article::where('language_id', '=', '1')->where('status','1')->pluck('title', 'id');
-                    $form->select('language_id','Language')->options(Language::all()->pluck('name', 'id'))->rules('required')->load('article_id','/admin/get_data');
+                    $form->select('language_id','Language')->options(Language::all()->pluck('name', 'id'))->rules('required')->load('article_id','admin/new/panel/get_data');
                     $form->select('article_id')->options($articles)->rules('required');
                     $form->switch('status','status');
                     $form->display('created_at', trans('admin::lang.created_at'));
@@ -88,7 +88,7 @@ class FirstController extends Controller
         return FirstModule::form(function (Form $form) {
             $form->action(admin_url('firstmodule'));
             $form->display('id', 'ID');
-            $form->select('language_id','Language')->options(Language::all()->pluck('name', 'id'))->rules('required')->load('article_id','/admin/get_data');
+            $form->select('language_id','Language')->options(Language::all()->pluck('name', 'id'))->rules('required')->load('article_id','admin/new/panel/get_data');
             $form->select('article_id')->options(Article::where('status','1')->pluck('title', 'id'))->rules('required');
             $form->switch('status','status')->rules('required');
             $form->display('created_at', trans('admin::lang.created_at'));

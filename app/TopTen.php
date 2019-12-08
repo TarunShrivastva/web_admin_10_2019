@@ -15,7 +15,7 @@ class TopTen extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'content','author_id','image','language_id','status'
+        'title', 'description', 'content_id', 'category_id', 'author_id','language_id','status'
     ];
 
     /**
@@ -33,4 +33,12 @@ class TopTen extends Model
      * @var string
      */
     protected $table = 'toptens';
+
+    /**
+     * Get the comments for the blog post.
+     */
+    public function product()
+    {
+        return $this->belongsToMany(Product::class)->withTimestamps()->withPivot('deleted_at');
+    }
 }
