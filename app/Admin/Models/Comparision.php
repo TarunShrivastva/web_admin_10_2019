@@ -1,0 +1,35 @@
+<?php
+
+namespace App\Admin\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class Comparision extends Model
+{
+ 	use SoftDeletes;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'title', 'top_ten_id', 'status'
+    ];
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'comparisions';
+
+    /**
+     * Get the comments for the blog post.
+     */
+    public function product()
+    {
+        return $this->belongsToMany(Product::class,'compare_product','compare_id','product_id')->withTimestamps()->withPivot('deleted_at');
+    }   
+}

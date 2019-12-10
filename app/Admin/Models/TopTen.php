@@ -41,4 +41,5 @@ class TopTen extends Model
     {
         return $this->belongsToMany(Product::class)->withTimestamps()->withPivot('deleted_at');
     }
+    
 }

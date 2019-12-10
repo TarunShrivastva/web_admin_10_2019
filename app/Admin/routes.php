@@ -23,6 +23,7 @@ Route::group([
     $router->Resource('/toptens', TopTenController::class);
     $router->Resource('/products', ProductController::class);
     $router->Resource('/specifications', SpecificationController::class);
+    $router->Resource('/compares', CompareController::class);
     $router->get('/admin/new/panel/get_data', 'FirstController@getData');
     $router->get('/get_child_specification', 'SpecificationController@getChildSpecifications');
 });

@@ -41,4 +41,12 @@ class Product extends Model
         return $this->belongsToMany(TopTen::class)->withTimestamps()->withPivot('deleted_at');
     }
 
+    /**
+     * Get the comments for the blog post.
+     */
+    public function compare()
+    {
+        return $this->belongsToMany(Comparision::class,'compare_product','compare_id','product_id')->withTimestamps()->withPivot('deleted_at');
+    }
+
 }
