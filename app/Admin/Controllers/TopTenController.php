@@ -95,12 +95,14 @@ class TopTenController extends Controller
         return Admin::form(TopTen::class, function (Form $form) {
                 $form->display('id', 'ID');
                 $form->text('title','Title')->rules('required|min:3');
+                $form->text('alias','Alias')->rules('required|min:3');
                 $form->ckeditor('description','Description')->rules('required');
                 $form->multipleSelect('product', 'TopTen Products')->options(Product::all()->pluck('title', 'id'));
                 $form->select('author_id','Author')->options(Author::all()->pluck('author', 'id'))->rules('required');
                 $form->select('content_id','Content')->options(Contenttype::all()->pluck('content_type_name', 'id'))->rules('required');
                 $form->select('category_id','Category')->options(Category::all()->pluck('name', 'id'))->rules('required');
                 $form->select('language_id','Language')->options(Language::all()->pluck('name', 'id'))->rules('required');
+                $form->image('image','Image')->uniqueName()->rules('required|mimes:jpg,jpeg,png');
                 $form->switch('status','status')->rules('required');
                 $form->display('created_at', 'Created At');
                 $form->display('updated_at', 'Updated At');    

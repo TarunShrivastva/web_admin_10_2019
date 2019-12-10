@@ -24,6 +24,8 @@ Route::group(['prefix' => 'hi' ], function () {
 		Route::GET('/','Transend\HomePageController@index');
 		Route::GET('/about','Transend\CategoryPageController@about');
 		Route::GET('/contact','Transend\CategoryPageController@contact');
+		Route::GET('/top-products','Transend\ToptenController@index');
+		Route::GET('/top-products/{alias}-{id}','Transend\ToptenController@show');
 		Route::GET('{content}/{category?}','Transend\CategoryPageController@index');
 		Route::GET('{content}/{category}/{alias}-{id}','Transend\CategoryPageController@show')->where(['id' => '[0-9]+', 'alias' => '[a-z0-9,-]+']);
 	});

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 10, 2019 at 05:04 PM
+-- Generation Time: Dec 09, 2019 at 09:00 PM
 -- Server version: 5.7.28-0ubuntu0.16.04.2
 -- PHP Version: 7.2.23-1+ubuntu16.04.1+deb.sury.org+1
 
@@ -101,7 +101,7 @@ INSERT INTO `admin_menu` (`id`, `parent_id`, `order`, `title`, `icon`, `uri`, `c
 (22, 19, 21, 'secondmodule', 'fa-american-sign-language-interpreting', 'secondmodule', '2019-06-22 22:32:58', '2019-06-22 22:36:25'),
 (23, 19, 20, 'thirdmodule', 'fa-american-sign-language-interpreting', 'thirdmodule', '2019-06-22 22:33:54', '2019-06-22 22:36:25'),
 (25, 12, 16, 'Languages', 'fa-american-sign-language-interpreting', 'languages', '2019-06-22 23:41:08', '2019-06-29 00:38:29'),
-(26, 15, 0, 'TopTen', 'fa-american-sign-language-interpreting', 'toptens', '2019-11-17 05:35:10', '2019-12-10 02:00:46'),
+(26, 15, 0, 'TopTen', 'fa-american-sign-language-interpreting', 'topten', '2019-11-17 05:35:10', '2019-11-17 05:35:33'),
 (27, 12, 0, 'Specifications', 'fa-american-sign-language-interpreting', 'specifications', '2019-12-07 05:10:52', '2019-12-07 05:20:51'),
 (28, 15, 0, 'Specifications', 'fa-american-sign-language-interpreting', 'specifications', '2019-12-07 05:22:24', '2019-12-08 09:19:27'),
 (29, 15, 0, 'Products', 'fa-american-sign-language-interpreting', 'products', '2019-12-08 07:32:29', '2019-12-08 07:33:14');
@@ -122,20 +122,6 @@ CREATE TABLE `admin_operation_log` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `admin_operation_log`
---
-
-INSERT INTO `admin_operation_log` (`id`, `user_id`, `path`, `method`, `ip`, `input`, `created_at`, `updated_at`) VALUES
-(1, 1, 'admin/new/panel/toptens', 'GET', '127.0.0.1', '[]', '2019-12-10 06:03:54', '2019-12-10 06:03:54'),
-(2, 1, 'admin/new/panel/toptens', 'GET', '127.0.0.1', '{"_pjax":"#pjax-container"}', '2019-12-10 06:03:57', '2019-12-10 06:03:57'),
-(3, 1, 'admin/new/panel/toptens', 'GET', '127.0.0.1', '{"_pjax":"#pjax-container"}', '2019-12-10 06:04:00', '2019-12-10 06:04:00'),
-(4, 1, 'admin/new/panel/toptens/create', 'GET', '127.0.0.1', '{"_pjax":"#pjax-container"}', '2019-12-10 06:04:01', '2019-12-10 06:04:01'),
-(5, 1, 'admin/new/panel/toptens', 'GET', '127.0.0.1', '{"_pjax":"#pjax-container"}', '2019-12-10 06:04:05', '2019-12-10 06:04:05'),
-(6, 1, 'admin/new/panel/toptens/9/edit', 'GET', '127.0.0.1', '{"_pjax":"#pjax-container"}', '2019-12-10 06:04:07', '2019-12-10 06:04:07'),
-(7, 1, 'admin/new/panel/toptens', 'GET', '127.0.0.1', '{"_pjax":"#pjax-container"}', '2019-12-10 06:04:12', '2019-12-10 06:04:12'),
-(8, 1, 'admin/new/panel/auth/logout', 'GET', '127.0.0.1', '{"_pjax":"#pjax-container"}', '2019-12-10 06:04:14', '2019-12-10 06:04:14');
 
 -- --------------------------------------------------------
 
@@ -302,7 +288,7 @@ CREATE TABLE `admin_users` (
 --
 
 INSERT INTO `admin_users` (`id`, `username`, `password`, `name`, `avatar`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', '$2y$10$DsPdA37R93kMBmhe81nA/u1qWTqc3coMA6xaxPITM4TLsahbXTiFi', 'Administrator', NULL, 'vIwygR5RVFN5JlmV2bmF2YZxf7LyDeab8LVFhd1w7NfLhcQQ8VFqljLtDdr2', '2019-06-22 07:42:22', '2019-06-22 07:42:22'),
+(1, 'admin', '$2y$10$DsPdA37R93kMBmhe81nA/u1qWTqc3coMA6xaxPITM4TLsahbXTiFi', 'Administrator', NULL, 't4sDsjyNe0uSin1Z5pNcIQV9jXGqeeXgNhKKjtVWvPL1h0mSCz7QyTOrOMXK', '2019-06-22 07:42:22', '2019-06-22 07:42:22'),
 (2, 'Luckas Editor', '$2y$10$JO2tEDOtJJhew7fAYFv6G.QCtj/lP33BfI6/URe3A/3RJTq7LcixS', 'Luckas Chauhan', 'image/admin.png', 'pIouaYqY2S1Wb0rZdxIVEDcJjTguu4xxXvkUyTNdKnewnqg1G1pSUHZLwrxp', '2019-06-22 08:38:39', '2019-12-08 08:13:15');
 
 -- --------------------------------------------------------
@@ -421,8 +407,8 @@ CREATE TABLE `authors` (
 --
 
 INSERT INTO `authors` (`id`, `author`, `author_email`, `address`, `image`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Tarun Shrivastva', 'shrivastvatarun@gmail.com', '278 Fatak Karor', 'image/0f32da4fbc5484ee02993a0d64a4b1cf.jpeg', 1, '2019-04-21 09:26:04', '2019-12-10 05:21:20', NULL),
-(2, 'Arun Shrivastva', 'arun@gmail.com', '278 Fatak Karor Ajmeri Gate Delhi 110006', 'image/ba54e9a216579739b4c2ff4721add2af.jpeg', 1, '2019-04-27 11:11:58', '2019-12-10 05:21:30', NULL);
+(1, 'Tarun Shrivastva', 'shrivastvatarun@gmail.com', '278 Fatak Karor', 'image/ff223dc8e7551929026c30a7f8f1940d.jpeg', 1, '2019-04-21 09:26:04', '2019-06-22 23:27:48', NULL),
+(2, 'Arun Shrivastva', 'arun@gmail.com', '278 Fatak Karor Ajmeri Gate Delhi 110006', 'image/6f59f778c01642a9358d57f79f813e72.jpeg', 1, '2019-04-27 11:11:58', '2019-06-22 23:28:01', NULL);
 
 -- --------------------------------------------------------
 
@@ -480,22 +466,6 @@ CREATE TABLE `comments` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comparisions`
---
-
-CREATE TABLE `comparisions` (
-  `id` int(11) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `topten_id` int(11) NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '0',
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `content_types`
 --
 
@@ -519,8 +489,7 @@ INSERT INTO `content_types` (`id`, `content_type_name`, `url`, `status`, `create
 (3, 'how-to', 'how-to', '1', '2019-04-21 09:17:51', '2019-04-21 09:17:51', NULL),
 (4, 'reviews', 'reviews', '1', '2019-04-21 09:18:00', '2019-04-21 09:18:00', NULL),
 (5, 'deal-story', 'deal-story', '1', '2019-04-21 09:18:18', '2019-04-21 09:18:18', NULL),
-(6, 'general', 'general', '1', '2019-04-27 11:43:41', '2019-04-27 11:43:41', NULL),
-(7, 'Top Products', 'top-products', '0', '2019-12-10 01:57:30', '2019-12-10 01:57:30', NULL);
+(6, 'general', 'general', '1', '2019-04-27 11:43:41', '2019-04-27 11:43:41', NULL);
 
 -- --------------------------------------------------------
 
@@ -549,12 +518,7 @@ INSERT INTO `first_modules` (`id`, `article_id`, `order`, `parent_id`, `language
 (10, 4, 0, 0, 2, 1, '2019-10-28 03:12:07', '2019-10-28 03:12:07', NULL),
 (11, 2, 0, 0, 2, 1, '2019-10-28 03:12:37', '2019-10-28 03:12:37', NULL),
 (12, 9, 0, 0, 2, 1, '2019-10-28 03:12:53', '2019-10-28 03:12:53', NULL),
-(13, 27, 0, 0, 2, 1, '2019-10-28 03:27:02', '2019-10-28 03:27:02', NULL),
-(14, 2, 0, 0, 2, 1, '2019-12-10 04:31:57', '2019-12-10 04:31:57', NULL),
-(15, 14, 0, 0, 2, 1, '2019-12-10 04:32:04', '2019-12-10 04:32:25', NULL),
-(16, 14, 0, 0, 2, 1, '2019-12-10 04:32:43', '2019-12-10 04:32:43', NULL),
-(17, 28, 0, 0, 2, 1, '2019-12-10 04:32:55', '2019-12-10 04:32:55', NULL),
-(18, 36, 0, 0, 2, 1, '2019-12-10 04:33:09', '2019-12-10 04:33:09', NULL);
+(13, 27, 0, 0, 2, 1, '2019-10-28 03:27:02', '2019-10-28 03:27:02', NULL);
 
 -- --------------------------------------------------------
 
@@ -607,13 +571,12 @@ INSERT INTO `menus` (`id`, `title`, `parent_id`, `order`, `created_at`, `updated
 (5, 'telecom', 2, 3, '2019-04-21 10:27:22', '2019-06-29 06:41:16', NULL),
 (6, 'social-media', 2, 8, '2019-04-21 10:28:16', '2019-06-29 06:41:16', NULL),
 (7, 'how-to', 0, 10, '2019-05-25 11:25:49', '2019-06-23 01:27:23', NULL),
-(8, 'about', 0, 13, '2019-04-21 11:24:12', '2019-12-10 02:02:19', NULL),
+(8, 'about', 0, 12, '2019-04-21 11:24:12', '2019-06-23 01:27:23', NULL),
 (9, 'mobile', 3, 5, '2019-05-16 12:30:00', '2019-10-28 06:44:08', NULL),
 (10, 'tv', 3, 6, '2019-05-16 12:30:00', '2019-10-28 06:44:08', NULL),
-(11, 'contact', 0, 14, '2019-04-21 11:24:50', '2019-12-10 02:02:19', NULL),
+(11, 'contact', 0, 13, '2019-04-21 11:24:50', '2019-06-23 01:27:23', NULL),
 (14, 'jio', 7, 11, '2019-05-25 12:13:52', '2019-06-23 01:27:23', NULL),
-(15, 'science', 2, 9, '2019-05-27 06:41:24', '2019-06-29 06:41:16', NULL),
-(16, 'top-products', 0, 12, '2019-12-10 02:01:56', '2019-12-10 02:02:19', NULL);
+(15, 'science', 2, 9, '2019-05-27 06:41:24', '2019-06-29 06:41:16', NULL);
 
 -- --------------------------------------------------------
 
@@ -709,9 +672,7 @@ CREATE TABLE `product_top_ten` (
 
 INSERT INTO `product_top_ten` (`product_id`, `top_ten_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 1, '2019-12-08 08:54:45', '2019-12-08 08:54:45', NULL),
-(2, 1, '2019-12-08 08:54:45', '2019-12-08 08:54:45', NULL),
-(1, 2, '2019-12-10 02:39:04', '2019-12-10 02:39:04', NULL),
-(2, 2, '2019-12-10 02:39:04', '2019-12-10 02:39:04', NULL);
+(2, 1, '2019-12-08 08:54:45', '2019-12-08 08:54:45', NULL);
 
 -- --------------------------------------------------------
 
@@ -819,13 +780,11 @@ INSERT INTO `third_modules` (`id`, `article_id`, `order`, `parent_id`, `language
 CREATE TABLE `toptens` (
   `id` int(11) NOT NULL,
   `title` varchar(255) DEFAULT NULL,
-  `alias` varchar(255) NOT NULL,
   `description` text,
   `content_id` int(11) DEFAULT NULL,
   `category_id` int(11) DEFAULT NULL,
   `author_id` int(11) DEFAULT NULL,
   `language_id` int(11) DEFAULT NULL,
-  `image` varchar(255) DEFAULT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
@@ -836,16 +795,8 @@ CREATE TABLE `toptens` (
 -- Dumping data for table `toptens`
 --
 
-INSERT INTO `toptens` (`id`, `title`, `alias`, `description`, `content_id`, `category_id`, `author_id`, `language_id`, `image`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'HUAWEI MATE 30 PRO 5G 256GB', 'huawei-mate-30-pro-5G-256GB', '<p>Huawei Mate 30 Pro 5G 256GB is announced to be launched in November 2019 &amp; will run on Android 10 OS. The Smartphone will be available in more than three color options i.e.Black, Space Silver, Cosmic Purple, Emerald Green, Orange, Forest Green &amp; will also have a built in fingerprint sensor as the primary security feature, along with the host of connectivity options in terms of 3G, 4G, GPS, Wifi Bluetooth capabilities. The phone will come with 256GB of internal storage.</p>\r\n\r\n<p>The Smartphone will be powered by 2.86 GHz Octa core HiSilicon Kirin 990 (7 nm+) Processor. A 8 GB of RAM will ensure phone runs smoothly even the most memory intensive applications &amp; show no signs of lag. 256GB of internal storage will be open for expansion upto 256 GB via a microSD card.</p>\r\n\r\n<p>The Phone will come with a powerful 4500 mAh battery to support it&#39;s 6.53 inch screen with OLED display having a resolution of 1176 X 2400 at 409 ppi. The screen is to be protected by a durable Scratch Resistant glass.</p>\r\n\r\n<p>Huawei Mate 30 Pro 5G 256GB will boast of dual front camera of 32 + 3D TOF megapixel and dual rear Camera of 40 + 8 + 40 + 3D TOF megapixel. The Smartphone will have a low camera aperture of f/1.6. It will support Face Detection and high dynamic range(HDR) imaging as well.</p>', 1, 1, 1, 1, 'image/ca4f9da7af4d6e36f0d3d58f26113de3.jpeg', 1, '2019-12-08 14:24:45', '2019-12-10 11:18:25', NULL),
-(2, 'BEST ANDROID MOBILE PHONES IN INDIA', 'best-android-mobile-phones-in-india', '<p>Google&rsquo;s Android operating system accounts for a vast majority in today&rsquo;s smartphone market. The purpose of Android was to create an open eco-system of devices, and as a result, we have a large number of smartphones that could easily be considered as the best android phones in India in 2019. These smartphones now come with with 6GB-10GB of DDR4 RAM, equivalent to the RAM available on a normal laptop. While you might still be using a Full HD television at home, the screen resolution on top tier phones has moved up to 2K, and in some cases, even 4K. The camera quality has also improved massively and is steadily progressing with each new smartphone. There was never a better time to be a smartphone buyer. With so many options to go through, we have curated a list of smartphones, each of which could easily be considered as the best Android Mobile in India. These smartphones offer the right mix of performance and features. Click on each of the recommended top 10 mobile phones to read their detailed reviews, and get more information.</p>', 1, 1, 1, 1, 'image/acbb14e7928f82697010ba059e7dbbab.jpeg', 1, '2019-12-10 08:09:04', '2019-12-10 11:18:57', NULL),
-(3, 'HUAWEI MATE 30 PRO 5G 256GB 3', 'huawei-mate-30-pro-5G-256GB-3', '<p>Huawei Mate 30 Pro 5G 256GB is announced to be launched in November 2019 &amp; will run on Android 10 OS. The Smartphone will be available in more than three color options i.e.Black, Space Silver, Cosmic Purple, Emerald Green, Orange, Forest Green &amp; will also have a built in fingerprint sensor as the primary security feature, along with the host of connectivity options in terms of 3G, 4G, GPS, Wifi Bluetooth capabilities. The phone will come with 256GB of internal storage.</p>\r\n\r\n<p>The Smartphone will be powered by 2.86 GHz Octa core HiSilicon Kirin 990 (7 nm+) Processor. A 8 GB of RAM will ensure phone runs smoothly even the most memory intensive applications &amp; show no signs of lag. 256GB of internal storage will be open for expansion upto 256 GB via a microSD card.</p>\r\n\r\n<p>The Phone will come with a powerful 4500 mAh battery to support it&#39;s 6.53 inch screen with OLED display having a resolution of 1176 X 2400 at 409 ppi. The screen is to be protected by a durable Scratch Resistant glass.</p>\r\n\r\n<p>Huawei Mate 30 Pro 5G 256GB will boast of dual front camera of 32 + 3D TOF megapixel and dual rear Camera of 40 + 8 + 40 + 3D TOF megapixel. The Smartphone will have a low camera aperture of f/1.6. It will support Face Detection and high dynamic range(HDR) imaging as well.</p>', 1, 1, 1, 1, 'image/ca4f9da7af4d6e36f0d3d58f26113de3.jpeg', 1, '2019-12-08 14:24:45', '2019-12-10 11:18:25', NULL),
-(4, 'HUAWEI MATE 30 PRO 5G 256GB 4', 'huawei-mate-30-pro-5G-256GB-4', '<p>Huawei Mate 30 Pro 5G 256GB is announced to be launched in November 2019 &amp; will run on Android 10 OS. The Smartphone will be available in more than three color options i.e.Black, Space Silver, Cosmic Purple, Emerald Green, Orange, Forest Green &amp; will also have a built in fingerprint sensor as the primary security feature, along with the host of connectivity options in terms of 3G, 4G, GPS, Wifi Bluetooth capabilities. The phone will come with 256GB of internal storage.</p>\r\n\r\n<p>The Smartphone will be powered by 2.86 GHz Octa core HiSilicon Kirin 990 (7 nm+) Processor. A 8 GB of RAM will ensure phone runs smoothly even the most memory intensive applications &amp; show no signs of lag. 256GB of internal storage will be open for expansion upto 256 GB via a microSD card.</p>\r\n\r\n<p>The Phone will come with a powerful 4500 mAh battery to support it&#39;s 6.53 inch screen with OLED display having a resolution of 1176 X 2400 at 409 ppi. The screen is to be protected by a durable Scratch Resistant glass.</p>\r\n\r\n<p>Huawei Mate 30 Pro 5G 256GB will boast of dual front camera of 32 + 3D TOF megapixel and dual rear Camera of 40 + 8 + 40 + 3D TOF megapixel. The Smartphone will have a low camera aperture of f/1.6. It will support Face Detection and high dynamic range(HDR) imaging as well.</p>', 1, 1, 1, 1, 'image/ca4f9da7af4d6e36f0d3d58f26113de3.jpeg', 1, '2019-12-08 14:24:45', '2019-12-10 11:18:25', NULL),
-(5, 'HUAWEI MATE 30 PRO 5G 256GB 5', 'huawei-mate-30-pro-5G-256GB-5', '<p>Huawei Mate 30 Pro 5G 256GB is announced to be launched in November 2019 &amp; will run on Android 10 OS. The Smartphone will be available in more than three color options i.e.Black, Space Silver, Cosmic Purple, Emerald Green, Orange, Forest Green &amp; will also have a built in fingerprint sensor as the primary security feature, along with the host of connectivity options in terms of 3G, 4G, GPS, Wifi Bluetooth capabilities. The phone will come with 256GB of internal storage.</p>\r\n\r\n<p>The Smartphone will be powered by 2.86 GHz Octa core HiSilicon Kirin 990 (7 nm+) Processor. A 8 GB of RAM will ensure phone runs smoothly even the most memory intensive applications &amp; show no signs of lag. 256GB of internal storage will be open for expansion upto 256 GB via a microSD card.</p>\r\n\r\n<p>The Phone will come with a powerful 4500 mAh battery to support it&#39;s 6.53 inch screen with OLED display having a resolution of 1176 X 2400 at 409 ppi. The screen is to be protected by a durable Scratch Resistant glass.</p>\r\n\r\n<p>Huawei Mate 30 Pro 5G 256GB will boast of dual front camera of 32 + 3D TOF megapixel and dual rear Camera of 40 + 8 + 40 + 3D TOF megapixel. The Smartphone will have a low camera aperture of f/1.6. It will support Face Detection and high dynamic range(HDR) imaging as well.</p>', 1, 1, 1, 1, 'image/ca4f9da7af4d6e36f0d3d58f26113de3.jpeg', 1, '2019-12-08 14:24:45', '2019-12-10 11:18:25', NULL),
-(6, 'HUAWEI MATE 30 PRO 5G 256GB 6', 'huawei-mate-30-pro-5G-256GB-6', '<p>Huawei Mate 30 Pro 5G 256GB is announced to be launched in November 2019 &amp; will run on Android 10 OS. The Smartphone will be available in more than three color options i.e.Black, Space Silver, Cosmic Purple, Emerald Green, Orange, Forest Green &amp; will also have a built in fingerprint sensor as the primary security feature, along with the host of connectivity options in terms of 3G, 4G, GPS, Wifi Bluetooth capabilities. The phone will come with 256GB of internal storage.</p>\r\n\r\n<p>The Smartphone will be powered by 2.86 GHz Octa core HiSilicon Kirin 990 (7 nm+) Processor. A 8 GB of RAM will ensure phone runs smoothly even the most memory intensive applications &amp; show no signs of lag. 256GB of internal storage will be open for expansion upto 256 GB via a microSD card.</p>\r\n\r\n<p>The Phone will come with a powerful 4500 mAh battery to support it&#39;s 6.53 inch screen with OLED display having a resolution of 1176 X 2400 at 409 ppi. The screen is to be protected by a durable Scratch Resistant glass.</p>\r\n\r\n<p>Huawei Mate 30 Pro 5G 256GB will boast of dual front camera of 32 + 3D TOF megapixel and dual rear Camera of 40 + 8 + 40 + 3D TOF megapixel. The Smartphone will have a low camera aperture of f/1.6. It will support Face Detection and high dynamic range(HDR) imaging as well.</p>', 1, 1, 1, 1, 'image/ca4f9da7af4d6e36f0d3d58f26113de3.jpeg', 1, '2019-12-08 14:24:45', '2019-12-10 11:18:25', NULL),
-(7, 'HUAWEI MATE 30 PRO 5G 256GB 7', 'huawei-mate-30-pro-5G-256GB-7', '<p>Huawei Mate 30 Pro 5G 256GB is announced to be launched in November 2019 &amp; will run on Android 10 OS. The Smartphone will be available in more than three color options i.e.Black, Space Silver, Cosmic Purple, Emerald Green, Orange, Forest Green &amp; will also have a built in fingerprint sensor as the primary security feature, along with the host of connectivity options in terms of 3G, 4G, GPS, Wifi Bluetooth capabilities. The phone will come with 256GB of internal storage.</p>\r\n\r\n<p>The Smartphone will be powered by 2.86 GHz Octa core HiSilicon Kirin 990 (7 nm+) Processor. A 8 GB of RAM will ensure phone runs smoothly even the most memory intensive applications &amp; show no signs of lag. 256GB of internal storage will be open for expansion upto 256 GB via a microSD card.</p>\r\n\r\n<p>The Phone will come with a powerful 4500 mAh battery to support it&#39;s 6.53 inch screen with OLED display having a resolution of 1176 X 2400 at 409 ppi. The screen is to be protected by a durable Scratch Resistant glass.</p>\r\n\r\n<p>Huawei Mate 30 Pro 5G 256GB will boast of dual front camera of 32 + 3D TOF megapixel and dual rear Camera of 40 + 8 + 40 + 3D TOF megapixel. The Smartphone will have a low camera aperture of f/1.6. It will support Face Detection and high dynamic range(HDR) imaging as well.</p>', 1, 1, 1, 1, 'image/ca4f9da7af4d6e36f0d3d58f26113de3.jpeg', 1, '2019-12-08 14:24:45', '2019-12-10 11:18:25', NULL),
-(8, 'HUAWEI MATE 30 PRO 5G 256GB 8', 'huawei-mate-30-pro-5G-256GB-8', '<p>Huawei Mate 30 Pro 5G 256GB is announced to be launched in November 2019 &amp; will run on Android 10 OS. The Smartphone will be available in more than three color options i.e.Black, Space Silver, Cosmic Purple, Emerald Green, Orange, Forest Green &amp; will also have a built in fingerprint sensor as the primary security feature, along with the host of connectivity options in terms of 3G, 4G, GPS, Wifi Bluetooth capabilities. The phone will come with 256GB of internal storage.</p>\r\n\r\n<p>The Smartphone will be powered by 2.86 GHz Octa core HiSilicon Kirin 990 (7 nm+) Processor. A 8 GB of RAM will ensure phone runs smoothly even the most memory intensive applications &amp; show no signs of lag. 256GB of internal storage will be open for expansion upto 256 GB via a microSD card.</p>\r\n\r\n<p>The Phone will come with a powerful 4500 mAh battery to support it&#39;s 6.53 inch screen with OLED display having a resolution of 1176 X 2400 at 409 ppi. The screen is to be protected by a durable Scratch Resistant glass.</p>\r\n\r\n<p>Huawei Mate 30 Pro 5G 256GB will boast of dual front camera of 32 + 3D TOF megapixel and dual rear Camera of 40 + 8 + 40 + 3D TOF megapixel. The Smartphone will have a low camera aperture of f/1.6. It will support Face Detection and high dynamic range(HDR) imaging as well.</p>', 1, 1, 1, 1, 'image/ca4f9da7af4d6e36f0d3d58f26113de3.jpeg', 1, '2019-12-08 14:24:45', '2019-12-10 11:18:25', NULL),
-(9, 'HUAWEI MATE 30 PRO 5G 256GB 9', 'huawei-mate-30-pro-5G-256GB-9', '<p>Huawei Mate 30 Pro 5G 256GB is announced to be launched in November 2019 &amp; will run on Android 10 OS. The Smartphone will be available in more than three color options i.e.Black, Space Silver, Cosmic Purple, Emerald Green, Orange, Forest Green &amp; will also have a built in fingerprint sensor as the primary security feature, along with the host of connectivity options in terms of 3G, 4G, GPS, Wifi Bluetooth capabilities. The phone will come with 256GB of internal storage.</p>\r\n\r\n<p>The Smartphone will be powered by 2.86 GHz Octa core HiSilicon Kirin 990 (7 nm+) Processor. A 8 GB of RAM will ensure phone runs smoothly even the most memory intensive applications &amp; show no signs of lag. 256GB of internal storage will be open for expansion upto 256 GB via a microSD card.</p>\r\n\r\n<p>The Phone will come with a powerful 4500 mAh battery to support it&#39;s 6.53 inch screen with OLED display having a resolution of 1176 X 2400 at 409 ppi. The screen is to be protected by a durable Scratch Resistant glass.</p>\r\n\r\n<p>Huawei Mate 30 Pro 5G 256GB will boast of dual front camera of 32 + 3D TOF megapixel and dual rear Camera of 40 + 8 + 40 + 3D TOF megapixel. The Smartphone will have a low camera aperture of f/1.6. It will support Face Detection and high dynamic range(HDR) imaging as well.</p>', 1, 1, 1, 1, 'image/ca4f9da7af4d6e36f0d3d58f26113de3.jpeg', 1, '2019-12-08 14:24:45', '2019-12-10 11:18:25', NULL);
+INSERT INTO `toptens` (`id`, `title`, `description`, `content_id`, `category_id`, `author_id`, `language_id`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'HUAWEI MATE 30 PRO 5G 256GB', '<p>Huawei Mate 30 Pro 5G 256GB is announced to be launched in November 2019 &amp; will run on Android 10 OS. The Smartphone will be available in more than three color options i.e.Black, Space Silver, Cosmic Purple, Emerald Green, Orange, Forest Green &amp; will also have a built in fingerprint sensor as the primary security feature, along with the host of connectivity options in terms of 3G, 4G, GPS, Wifi Bluetooth capabilities. The phone will come with 256GB of internal storage.</p>\r\n\r\n<p>The Smartphone will be powered by 2.86 GHz Octa core HiSilicon Kirin 990 (7 nm+) Processor. A 8 GB of RAM will ensure phone runs smoothly even the most memory intensive applications &amp; show no signs of lag. 256GB of internal storage will be open for expansion upto 256 GB via a microSD card.</p>\r\n\r\n<p>The Phone will come with a powerful 4500 mAh battery to support it&#39;s 6.53 inch screen with OLED display having a resolution of 1176 X 2400 at 409 ppi. The screen is to be protected by a durable Scratch Resistant glass.</p>\r\n\r\n<p>Huawei Mate 30 Pro 5G 256GB will boast of dual front camera of 32 + 3D TOF megapixel and dual rear Camera of 40 + 8 + 40 + 3D TOF megapixel. The Smartphone will have a low camera aperture of f/1.6. It will support Face Detection and high dynamic range(HDR) imaging as well.</p>', 1, 1, 1, 1, 1, '2019-12-08 14:24:45', '2019-12-08 14:24:45', NULL);
 
 -- --------------------------------------------------------
 
@@ -967,12 +918,6 @@ ALTER TABLE `comments`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `comparisions`
---
-ALTER TABLE `comparisions`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `content_types`
 --
 ALTER TABLE `content_types`
@@ -1075,12 +1020,12 @@ ALTER TABLE `add_specifications`
 -- AUTO_INCREMENT for table `admin_menu`
 --
 ALTER TABLE `admin_menu`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `admin_operation_log`
 --
 ALTER TABLE `admin_operation_log`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `admin_permissions`
 --
@@ -1117,20 +1062,15 @@ ALTER TABLE `categories`
 ALTER TABLE `comments`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `comparisions`
---
-ALTER TABLE `comparisions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT for table `content_types`
 --
 ALTER TABLE `content_types`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `first_modules`
 --
 ALTER TABLE `first_modules`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `languages`
 --
@@ -1140,7 +1080,7 @@ ALTER TABLE `languages`
 -- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `migrations`
 --
@@ -1175,7 +1115,7 @@ ALTER TABLE `third_modules`
 -- AUTO_INCREMENT for table `toptens`
 --
 ALTER TABLE `toptens`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `users`
 --

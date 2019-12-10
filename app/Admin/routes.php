@@ -20,7 +20,7 @@ Route::group([
     $router->Resource('/secondmodule', SecondController::class);
     $router->Resource('/thirdmodule', ThirdController::class);
     $router->Resource('/category', CategoryController::class);
-    $router->Resource('/topten', TopTenController::class);
+    $router->Resource('/toptens', TopTenController::class);
     $router->Resource('/products', ProductController::class);
     $router->Resource('/specifications', SpecificationController::class);
     $router->get('/admin/new/panel/get_data', 'FirstController@getData');
