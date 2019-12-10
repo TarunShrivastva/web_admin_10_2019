@@ -76,7 +76,7 @@ class CompareController extends Controller
         return Admin::grid(Comparision::class, function (Grid $grid) {
 
             $grid->id('ID')->sortable();
-
+            $grid->title('Compare Title');
             $grid->created_at();
             $grid->updated_at();
         });
