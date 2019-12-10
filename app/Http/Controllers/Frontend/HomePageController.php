@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\FirstModule;
-use App\SecondModule;
-use App\ThirdModule;
-use App\Article;
-use App\Contenttype as Content;
-use App\NewsLetter;
+use App\Admin\Models\FirstModule;
+use App\Admin\Models\SecondModule;
+use App\Admin\Models\ThirdModule;
+use App\Admin\Models\Article;
+use App\Admin\Models\Contenttype as Content;
+use App\Admin\Models\NewsLetter;
 use App;
 
 class HomePageController extends Controller

@@ -1,19 +1,19 @@
 <?php
 
-namespace App;
+namespace App\Admin\Models;
 
 use Encore\Admin\Traits\AdminBuilder;
 use Encore\Admin\Traits\ModelTree;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ThirdModule extends Model
+class FirstModule extends Model
 {
     use ModelTree, AdminBuilder, SoftDeletes;
 
-    protected $fillable = ['article_id', 'status', 'parent_id', 'order', 'language_id'];
+	protected $fillable = ['article_id', 'status', 'parent_id', 'order', 'language_id'];
 
-    /**
+	/**
      * The attributes that aren't mass assignable.
      *
      * @var array
@@ -25,9 +25,9 @@ class ThirdModule extends Model
      *
      * @var string
      */
-    protected $table = 'third_modules';
+    protected $table = 'first_modules';
 
-    /**
+	/**
      * The attributes that should be mutated to dates.
      *
      * @var array
@@ -42,7 +42,7 @@ class ThirdModule extends Model
 
    public function language()
     {
-        return $this->belongsTo('App\Language','language_id');
+        return $this->belongsTo('App\Admin\Models\Language','language_id');
     }
 
     public function article()

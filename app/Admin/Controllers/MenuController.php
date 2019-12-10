@@ -2,7 +2,7 @@
 
 namespace App\Admin\Controllers;
 
-use App\FrontMenu;
+use App\Admin\Models\FrontMenu;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Form;
 use Encore\Admin\Facades\Admin;

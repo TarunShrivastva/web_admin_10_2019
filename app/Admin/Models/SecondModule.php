@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Admin\Models;
 
 use Encore\Admin\Traits\AdminBuilder;
 use Encore\Admin\Traits\ModelTree;
@@ -42,11 +42,11 @@ class SecondModule extends Model
 
    public function language()
     {
-        return $this->belongsTo('App\Language','language_id');
+        return $this->belongsTo('App\Admin\Models\Language','language_id');
     }
 
     public function article()
     {
-        return $this->hasOne('App\Article','id');
+        return $this->hasOne('App\Admin\Models\Article','id');
     }
 }

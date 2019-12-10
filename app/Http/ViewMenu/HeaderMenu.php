@@ -3,8 +3,8 @@ namespace App\Http\ViewMenu;
 
 use Illuminate\View\View;
 use Auth;
-use App\User;
-use App\AdminModel\Module;
+use App\Admin\Models\User;
+use App\Admin\Models\Module;
 
 class HeaderMenu 
 {

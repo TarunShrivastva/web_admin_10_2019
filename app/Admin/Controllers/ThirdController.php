@@ -2,9 +2,9 @@
 
 namespace App\Admin\Controllers;
 
-use App\ThirdModule;
-use App\Article;
-use App\Language;
+use App\Admin\Models\ThirdModule;
+use App\Admin\Models\Article;
+use App\Admin\Models\Language;
 
 use App\Http\Controllers\Controller;
 use Encore\Admin\Form;

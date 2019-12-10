@@ -2,7 +2,7 @@
 
 namespace App\Admin\Controllers;
 
-use App\Category;
+use App\Admin\Models\Category;
 use App;
 
 use Encore\Admin\Form;

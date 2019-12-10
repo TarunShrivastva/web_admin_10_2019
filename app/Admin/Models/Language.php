@@ -1,19 +1,20 @@
 <?php
 
-namespace App;
+namespace App\Admin\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Comment extends Model
+class Language extends Model
 {
     use SoftDeletes;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['article_id' ,'user_id', 'comment'];
+    protected $fillable = ['name','alias'];
 
     /**
      * The attributes that aren't mass assignable.
@@ -21,13 +22,6 @@ class Comment extends Model
      * @var array
      */
     protected $guarded = ['created_at','updated_at'];
-    
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'comments';
 
     /**
      * The attributes that should be mutated to dates.
@@ -35,4 +29,10 @@ class Comment extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    
+    public function article()
+    {
+        return $this->hasMany('App\Article');
+    }
 }

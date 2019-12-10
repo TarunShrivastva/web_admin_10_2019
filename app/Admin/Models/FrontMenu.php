@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Admin\Models;
 
 use Encore\Admin\Traits\AdminBuilder;
 use Encore\Admin\Traits\ModelTree;

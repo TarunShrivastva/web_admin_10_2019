@@ -1,22 +1,17 @@
 <?php
 
-namespace App;
+namespace App\Admin\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Language extends Model
+class Menu extends Model
 {
     use SoftDeletes;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = ['name','alias'];
+	protected $fillable = ['title', 'parent_id', 'order'];
 
-    /**
+	/**
      * The attributes that aren't mass assignable.
      *
      * @var array
@@ -28,11 +23,13 @@ class Language extends Model
      *
      * @var array
      */
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at'];	
 
+    public function children() {
+        return $this->hasMany('App\Admin\Models\Menu','id');
+    }
     
-    public function article()
-    {
-        return $this->hasMany('App\Article');
+    public function parent() {
+        return $this->belongsTo('App\Admin\Models\Menu','parent_id');
     }
 }

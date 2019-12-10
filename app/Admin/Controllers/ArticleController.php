@@ -2,11 +2,11 @@
 
 namespace App\Admin\Controllers;
 
-use App\Article;
-use App\Author;
-use App\Contenttype;
-use App\Category;
-use App\Language;
+use App\Admin\Models\Article;
+use App\Admin\Models\Author;
+use App\Admin\Models\Contenttype;
+use App\Admin\Models\Category;
+use App\Admin\Models\Language;
 
 use Encore\Admin\Form;
 use Encore\Admin\Grid;

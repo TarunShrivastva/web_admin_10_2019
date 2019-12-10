@@ -2,9 +2,9 @@
 
 namespace App\Admin\Controllers;
 
-use App\Product;
-use App\Specification;
-use App\AddSpecification;
+use App\Admin\Models\Product;
+use App\Admin\Models\Specification;
+use App\Admin\Models\AddSpecification;
 
 use Encore\Admin\Form;
 use Encore\Admin\Grid;

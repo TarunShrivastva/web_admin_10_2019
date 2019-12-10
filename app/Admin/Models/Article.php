@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Admin\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -37,26 +37,26 @@ class Article extends Model
 
     public function author()
     {
-        return $this->belongsTo('App\Author','author_id');
+        return $this->belongsTo('App\Admin\Models\Author','author_id');
     }
 
     public function content()
     {
-        return $this->belongsTo('App\Contenttype','content_id');
+        return $this->belongsTo('App\Admin\Models\Contenttype','content_id');
     }
 
     public function category()
     {
-        return $this->belongsTo('App\Category','category_id');
+        return $this->belongsTo('App\Admin\Models\Category','category_id');
     }
 
     public function language()
     {
-        return $this->belongsTo('App\Language','language_id');
+        return $this->belongsTo('App\Admin\Models\Language','language_id');
     }
     
     public function firstmodule()
     {
-        return $this->belongsTo('App\FirstModule','article_id');
+        return $this->belongsTo('App\Admin\Models\FirstModule','article_id');
     }    
 }

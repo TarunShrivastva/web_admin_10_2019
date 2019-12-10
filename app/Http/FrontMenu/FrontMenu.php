@@ -2,7 +2,7 @@
 namespace App\Http\FrontMenu;
 
 use Illuminate\View\View;
-use App\Menu;
+use App\Admin\Models\Menu;
 
 class FrontMenu 
 {
