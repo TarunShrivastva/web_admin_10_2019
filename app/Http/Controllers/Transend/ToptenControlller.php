@@ -58,7 +58,8 @@ class ToptenController extends Controller
      */
     public function show($id)
     {
-        //
+        $toptens = TopTen::where('status','1')->get();
+        return view('transend.top-products.toptenCompare',compact('toptens'));
     }
 
     /**

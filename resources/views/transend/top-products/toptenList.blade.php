@@ -10,8 +10,8 @@
                         <a href="#"><img src="{{ URL::to('/')}}/upload/{{ $toptenModule->image }}" alt=""></a>
                     </div>
                     <div class="post-data">
-                        <a href="{{ URL::to('/').'/hi/'.$toptenModule->content.'/'.$toptenModule->category.'/'.$toptenModule->alias .'-'.$toptenModule->article_id}}" class="post-catagory">{{ $toptenModule->title }}</a>
-                        <a href="{{ URL::to('/').'/hi/'.$toptenModule->content.'/'.$toptenModule->category.'/'.$toptenModule->alias .'-'.$toptenModule->article_id}}" class="post-title">
+                        <a href="{{ URL::to('/').'/hi/top-products/'.$toptenModule->alias .'-'.$toptenModule->article_id}}" class="post-catagory">{{ $toptenModule->title }}</a>
+                        <a href="{{ URL::to('/').'/hi/top-products/'.$toptenModule->alias .'-'.$toptenModule->article_id}}" class="post-title">
                             <h6>{{ str_limit(strip_tags($toptenModule->description),50) }}</h6>
                         </a>
                     </div>
