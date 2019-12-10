@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 10, 2019 at 05:04 PM
+-- Generation Time: Dec 10, 2019 at 08:10 PM
 -- Server version: 5.7.28-0ubuntu0.16.04.2
 -- PHP Version: 7.2.23-1+ubuntu16.04.1+deb.sury.org+1
 
@@ -104,7 +104,8 @@ INSERT INTO `admin_menu` (`id`, `parent_id`, `order`, `title`, `icon`, `uri`, `c
 (26, 15, 0, 'TopTen', 'fa-american-sign-language-interpreting', 'toptens', '2019-11-17 05:35:10', '2019-12-10 02:00:46'),
 (27, 12, 0, 'Specifications', 'fa-american-sign-language-interpreting', 'specifications', '2019-12-07 05:10:52', '2019-12-07 05:20:51'),
 (28, 15, 0, 'Specifications', 'fa-american-sign-language-interpreting', 'specifications', '2019-12-07 05:22:24', '2019-12-08 09:19:27'),
-(29, 15, 0, 'Products', 'fa-american-sign-language-interpreting', 'products', '2019-12-08 07:32:29', '2019-12-08 07:33:14');
+(29, 15, 0, 'Products', 'fa-american-sign-language-interpreting', 'products', '2019-12-08 07:32:29', '2019-12-08 07:33:14'),
+(30, 15, 0, 'Topten Compare', 'fa-american-sign-language-interpreting', 'compares', '2019-12-10 07:18:45', '2019-12-10 07:19:03');
 
 -- --------------------------------------------------------
 
@@ -122,20 +123,6 @@ CREATE TABLE `admin_operation_log` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `admin_operation_log`
---
-
-INSERT INTO `admin_operation_log` (`id`, `user_id`, `path`, `method`, `ip`, `input`, `created_at`, `updated_at`) VALUES
-(1, 1, 'admin/new/panel/toptens', 'GET', '127.0.0.1', '[]', '2019-12-10 06:03:54', '2019-12-10 06:03:54'),
-(2, 1, 'admin/new/panel/toptens', 'GET', '127.0.0.1', '{"_pjax":"#pjax-container"}', '2019-12-10 06:03:57', '2019-12-10 06:03:57'),
-(3, 1, 'admin/new/panel/toptens', 'GET', '127.0.0.1', '{"_pjax":"#pjax-container"}', '2019-12-10 06:04:00', '2019-12-10 06:04:00'),
-(4, 1, 'admin/new/panel/toptens/create', 'GET', '127.0.0.1', '{"_pjax":"#pjax-container"}', '2019-12-10 06:04:01', '2019-12-10 06:04:01'),
-(5, 1, 'admin/new/panel/toptens', 'GET', '127.0.0.1', '{"_pjax":"#pjax-container"}', '2019-12-10 06:04:05', '2019-12-10 06:04:05'),
-(6, 1, 'admin/new/panel/toptens/9/edit', 'GET', '127.0.0.1', '{"_pjax":"#pjax-container"}', '2019-12-10 06:04:07', '2019-12-10 06:04:07'),
-(7, 1, 'admin/new/panel/toptens', 'GET', '127.0.0.1', '{"_pjax":"#pjax-container"}', '2019-12-10 06:04:12', '2019-12-10 06:04:12'),
-(8, 1, 'admin/new/panel/auth/logout', 'GET', '127.0.0.1', '{"_pjax":"#pjax-container"}', '2019-12-10 06:04:14', '2019-12-10 06:04:14');
 
 -- --------------------------------------------------------
 
@@ -480,18 +467,54 @@ CREATE TABLE `comments` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `compare_product`
+--
+
+CREATE TABLE `compare_product` (
+  `id` int(11) NOT NULL,
+  `compare_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `compare_product`
+--
+
+INSERT INTO `compare_product` (`id`, `compare_id`, `product_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 1, '2019-12-10 08:12:13', '2019-12-10 08:12:13', NULL),
+(2, 1, 2, '2019-12-10 08:12:13', '2019-12-10 08:12:13', NULL),
+(3, 2, 1, '2019-12-10 08:19:48', '2019-12-10 08:19:48', NULL),
+(4, 2, 2, '2019-12-10 08:19:48', '2019-12-10 08:19:48', NULL),
+(5, 3, 1, '2019-12-10 08:22:48', '2019-12-10 08:22:48', NULL),
+(6, 3, 2, '2019-12-10 08:22:48', '2019-12-10 08:22:48', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `comparisions`
 --
 
 CREATE TABLE `comparisions` (
   `id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
-  `topten_id` int(11) NOT NULL,
+  `top_ten_id` int(11) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `comparisions`
+--
+
+INSERT INTO `comparisions` (`id`, `title`, `top_ten_id`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'this is test compare', 1, 0, '2019-12-10 08:10:38', '2019-12-10 08:20:18', NULL),
+(2, 'test 2', 2, 0, '2019-12-10 08:19:48', '2019-12-10 08:20:22', NULL),
+(3, 'Test 3', 5, 0, '2019-12-10 08:22:48', '2019-12-10 08:24:35', NULL);
 
 -- --------------------------------------------------------
 
@@ -967,6 +990,12 @@ ALTER TABLE `comments`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `compare_product`
+--
+ALTER TABLE `compare_product`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `comparisions`
 --
 ALTER TABLE `comparisions`
@@ -1080,7 +1109,7 @@ ALTER TABLE `admin_menu`
 -- AUTO_INCREMENT for table `admin_operation_log`
 --
 ALTER TABLE `admin_operation_log`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `admin_permissions`
 --
@@ -1117,10 +1146,15 @@ ALTER TABLE `categories`
 ALTER TABLE `comments`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `compare_product`
+--
+ALTER TABLE `compare_product`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
 -- AUTO_INCREMENT for table `comparisions`
 --
 ALTER TABLE `comparisions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `content_types`
 --
