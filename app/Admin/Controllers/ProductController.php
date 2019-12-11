@@ -110,8 +110,8 @@ class ProductController extends Controller
                     $firstSpecsId = Specification::where('parent_id','=','0')->first()->toArray();
                     $addSpecs = Specification::where('parent_id','=', $firstSpecsId)->get()->pluck('title', 'id');
                     $form->display('id', 'ID');
-                    $form->select('specification_id','Parent Specification')->options(Specification::where('parent_id','=','0')->get()->pluck('title', 'id'))->rules('required')->load('specs_name','/admin/new/panel/get_child_specification');
-                    $form->select('specs_name','Specification')->options($addSpecs)->rules('required');
+                    $form->select('parent_specification_id','Parent Specification')->options(Specification::where('parent_id','=','0')->get()->pluck('title', 'id'))->rules('required')->load('specification_id','/admin/new/panel/get_child_specification');
+                    $form->select('specification_id','Specification')->options($addSpecs)->rules('required');
                     $form->text('value','Value')->rules('required');
                 });
             });

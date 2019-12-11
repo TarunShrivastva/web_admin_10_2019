@@ -15,7 +15,7 @@ class AddSpecification extends Model
      * @var array
      */
     protected $fillable = [
-        'product_id', 'specs_name','value'
+        'product_id', 'specification_id', 'parent_specification_id', 'value'
     ];
 
     /**
