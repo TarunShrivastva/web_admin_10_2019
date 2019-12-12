@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Transend;
 
 use Illuminate\Http\Request;
 use App\Admin\Models\TopTen;
+use App\Admin\Models\Comparision;
 use App\Admin\Models\Article;
 use App\Http\Controllers\Controller;
 
@@ -58,8 +59,48 @@ class ToptenController extends Controller
      */
     public function show($id)
     {
-        $toptens = TopTen::where('status','1')->get();
-        return view('transend.top-products.toptenCompare',compact('toptens'));
+        $compares = Comparision::where('status','1')->get();
+        $data = array();
+        $compArray = array();
+        $specification1 = array();
+        $specification2 = array();
+        foreach ($compares as $key => $compare) {
+            $data = ['products' => [
+                            [
+                            'title' => [$compare->product[0]->title, $compare->product[1]->title],
+                            'specifications' => [
+                                    [
+                                        $compare->product[0]->add_specification->toArray(),
+                                        $compare->product[1]->add_specification->toArray()
+                                        ]
+                                ],
+                            ]
+                        ]
+                ];
+            array_push($compArray, $data);
+        }
+        dd($compArray);
+        //     foreach ($compare->product[0]->add_specification as $key => $specs) {
+        //         array_push($specification1,[ $specs->specification->title => $specs->value]);
+        //     }
+        //     foreach ($compare->product[1]->add_specification as $key => $specs) {
+        //         array_push($specification2,[ $specs->specification->title => $specs->value]);
+        //     }
+        //     $data = [
+        //                 'title' =>  $compare->title,
+        //                 'products'  =>  [
+        //                                     [ 'title1' => $compare->product[0]->title,
+        //                                       'specification1' => $specification1
+        //                                     ],
+        //                                     [ 'title2' => $compare->product[1]->title,
+        //                                       'specification2' => $specification2
+        //                                     ]
+        //                                 ]
+        //             ];
+        //         array_push($compArray, $data);    
+        // }
+        dd($compArray);
+        return view('transend.top-products.toptenCompare',compact('compArray'));
     }
 
     /**

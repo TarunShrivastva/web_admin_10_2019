@@ -4,11 +4,11 @@
                     <div class="blog-posts-area">
                         <div class="single-blog-post featured-post single-post">
                             <h2 align="center">Topten Products</h2>
-                            @foreach($toptens as $topten)
+                            @foreach($compArray as $compare)
                             <table align="center" class="table-n" style="margin-bottom: 15px">
                                 <tr>
                                     <td colspan="3" align="center">
-                                        <h4>{{ $topten->title }}</h4>
+                                        <h4>{{ $compare['title'] }}</h4>
                                     </td>
                                 </tr>
                                 <tr>
@@ -16,21 +16,21 @@
                                     <td> --}}
                                         <table class="" cellpadding="0" cellspacing="0" style="font-size: 18px">
                                             <tr class="visible-sm">
-                                                <td align="center"><strong>{{ $topten->title }}</strong><br><img src="{{ URL::to('upload/'.$topten->image) }}" width="30px"></td>
+                                                <td align="center"><strong>{{ $compare['products'][0]['title1'] }}</strong><br><img src="{{ URL::to('upload/') }}" width="30px"></td>
                                                 <td></td>
-                                                <td align="center"><strong>{{ $topten->title }}</strong><br><img src="{{ URL::to('upload/'.$topten->image) }}" width="30px"></td>
+                                                <td align="center"><strong>{{ $compare['products'][1]['title2'] }}</strong><br><img src="{{ URL::to('upload/') }}" width="30px"></td>
                                             </tr>
                                             <tr>
                                                 <td style="width:80px">6.26-inch, 720x1520 pixels</td>
                                                 <td style="width:80px">Display</td>
                                                 <td style="width:80px">6.1-inch, 1560 x 720 pixels</td>
                                             </tr>
-                                            <tr>
+                                            {{-- <tr>
                                                 <td>Qualcomm</td>
                                                 <td>Processor</td>
                                                 <td>Qualcomm Snapdragon</td>
-                                            </tr>
-                                            <tr>
+                                            </tr> --}}
+                                            {{-- <tr>
                                                 <td>3GB</td>
                                                 <td>RAM</td>
                                                 <td>3GB</td>
@@ -69,7 +69,8 @@
                                                     <div><img src="logo-3.jpg" height="25px"> <span>4450</span></div>
                                                     <div><img src="logo-4.jpg" height="25px"> <span>3450</span></div>
                                                 </td>
-                                            </tr>
+                                            </tr> --}}
+                                            {{ dd('end') }} 
                                         </table>
                                     </td>
                                     <td align="center" valign="top" class="hidden-xs"><strong>Xiaomi Redmi 7</strong><br><img src="2.png" width="150px"></td>

@@ -32,4 +32,12 @@ class AddSpecification extends Model
     {
         return $this->belongsTo(Product::class);
     }
+
+    /**
+     * Get the post that owns the comment.
+     */
+    public function specification()
+    {
+        return $this->belongsTo(Specification::class);
+    }
 }
