@@ -10,8 +10,8 @@
                         <a href="#"><img src="{{ URL::to('/')}}/upload/{{ $toptenModule->image }}" alt=""></a>
                     </div>
                     <div class="post-data">
-                        <a href="{{ URL::to('/').'/hi/top-products/'.$toptenModule->alias .'-'.$toptenModule->article_id}}" class="post-catagory">{{ $toptenModule->title }}</a>
-                        <a href="{{ URL::to('/').'/hi/top-products/'.$toptenModule->alias .'-'.$toptenModule->article_id}}" class="post-title">
+                        <a href="{{ URL::to('/').'/hi/top-products/'.$toptenModule->alias .'-'.$toptenModule->id}}" class="post-catagory">{{ $toptenModule->title }}</a>
+                        <a href="{{ URL::to('/').'/hi/top-products/'.$toptenModule->alias .'-'.$toptenModule->id}}" class="post-title">
                             <h6>{{ str_limit(strip_tags($toptenModule->description),50) }}</h6>
                         </a>
                     </div>
@@ -35,7 +35,6 @@
                             <h3>5 {{ __('hi.Most Popular News') }}</h3>
                              {{-- {!! $trendingArticles !!}                   --}}
                         </div>
-
                         <!-- Newsletter Widget -->
                         <div class="newsletter-widget mb-50">
                             <h4>{{ __('hi.Newsletter') }}</h4>

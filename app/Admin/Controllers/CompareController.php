@@ -94,6 +94,7 @@ class CompareController extends Controller
             $form->display('id', 'ID');
             $form->text('title','Compare Title')->rules('required|min:3');
             $form->select('top_ten_id','topten')->options(TopTen::all()->pluck('title', 'id'))->rules('required');
+            $form->switch('status','Status')->rules('required');
             $form->multipleSelect('product','Compared Product')->options(Product::all()->pluck('title', 'id'))->rules('required');
 
             $form->display('created_at', 'Created At');

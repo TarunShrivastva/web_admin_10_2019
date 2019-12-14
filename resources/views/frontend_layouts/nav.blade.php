@@ -9,15 +9,12 @@
                         <div class="logo">
                             <a href="index.html"><img src="img/core-img/logo.png" alt=""></a>
                         </div>
-
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
                             <span class="navbarToggler"><span></span><span></span><span></span></span>
                         </div>
-
                         <!-- Menu -->
                         <div class="classy-menu">
-
                             <!-- close btn -->
                             <div class="classycloseIcon">
                                 <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
@@ -51,29 +48,19 @@
                                         @endif
                                     </li>            
                                 @endforeach
+                                <li class="cn-dropdown-item has-down"><a href="javascript:void(0)">Language</a>
+                                    <ul class="dropdown">
+                                      @foreach($languages as $key => $value)
+                                        <li><a href="/{{ $value['alias'] != 'en'? $value['alias']: ''}}">{{ $value['name'] }}</a></li>
+                                      @endforeach
+                                    </ul>
+                                  </li>
                                 </ul>
                             </div>
                             <!-- Nav End -->
                         </div>
-
-                         <!-- Menu -->
-                        <div class="classy-menu">
-
-                            <!-- Nav Start -->
-                            <div class="classynav">
-                                <ul>
-                                @foreach($languages as $key => $value)
-                                    <li><a href="/{{ $value['alias'] != 'en'? $value['alias']: ''}}">{{ $value['name'] }}</a>
-                                    </li>            
-                                @endforeach
-                                </ul>
-                            </div>
-                            <!-- Nav End -->
-                        </div>
-
+                       <!-- Menu -->
                     </nav>
-
-
                 </div>
             </div>
         </div>

@@ -10,7 +10,7 @@
                         <td colspan="3" align="center"><h2>{{ $compare['object'][$key]->title }}</h4></td>
                     </tr>
                     <tr>
-                        <td align="center" valign="top" class="hidden-xs"><strong>{{ $compare['title'][0] }}</strong><br><img src="{{ URL::to('upload/'. $compare['image'][0]) }}" width="150px"></td>
+                        <td align="center" valign="top" class="hidden-xs"><strong>Xiaomi Redmi 7</strong><br><img src="1.png" width="150px"></td>
                         <td>
                             <table class="" cellpadding="0" cellspacing="0" style="font-size: 18px">
                                 <tr class="visible-sm">
@@ -27,22 +27,22 @@
                                 @endforeach
                                 <tr>
                                     <td>
-                                        <div><img src="{{ URL::to('frontend/img/logo-1.jpg') }}" height="25px"> <span>6450</span></div>
-                                        <div><img src="{{ URL::to('frontend/img/logo-2.jpg') }}" height="25px"> <span>5450</span></div>
-                                        <div><img src="{{ URL::to('frontend/img/logo-3.jpg') }}" height="25px"> <span>4450</span></div>
-                                        <div><img src="{{ URL::to('frontend/img/logo-4.jpg') }}" height="25px"> <span>3450</span></div>
+                                        <div><img src="logo-1.jpg" height="25px"> <span>6450</span></div>
+                                        <div><img src="logo-2.jpg" height="25px"> <span>5450</span></div>
+                                        <div><img src="logo-3.jpg" height="25px"> <span>4450</span></div>
+                                        <div><img src="logo-4.jpg" height="25px"> <span>3450</span></div>
                                     </td>
                                     <td align="center">Price</td>
                                     <td>
-                                        <div><img src="{{ URL::to('frontend/img/logo-1.jpg') }}" height="25px"> <span>6450</span></div>
-                                        <div><img src="{{ URL::to('frontend/img/logo-2.jpg') }}" height="25px"> <span>5450</span></div>
-                                        <div><img src="{{ URL::to('frontend/img/logo-3.jpg') }}" height="25px"> <span>4450</span></div>
-                                        <div><img src="{{ URL::to('frontend/img/logo-4.jpg') }}" height="25px"> <span>3450</span></div>
+                                        <div><img src="logo-1.jpg" height="25px"> <span>6450</span></div>
+                                        <div><img src="logo-2.jpg" height="25px"> <span>5450</span></div>
+                                        <div><img src="logo-3.jpg" height="25px"> <span>4450</span></div>
+                                        <div><img src="logo-4.jpg" height="25px"> <span>3450</span></div>
                                     </td>
                                 </tr>
                             </table>
                         </td>
-                        <td align="center" valign="top" class="hidden-xs"><strong>{{ $compare['title'][1] }}</strong><br><img src="{{ URL::to('upload/'. $compare['image'][1]) }}" width="150px"></td>
+                        {{-- <td align="center" valign="top" class="hidden-xs"><strong>Xiaomi Redmi 7</strong><br><img src="2.png" width="150px"></td> --}}
                     </tr>
                 </table>
                 @endforeach

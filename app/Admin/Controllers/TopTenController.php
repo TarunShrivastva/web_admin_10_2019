@@ -102,7 +102,7 @@ class TopTenController extends Controller
                 $form->select('content_id','Content')->options(Contenttype::all()->pluck('content_type_name', 'id'))->rules('required');
                 $form->select('category_id','Category')->options(Category::all()->pluck('name', 'id'))->rules('required');
                 $form->select('language_id','Language')->options(Language::all()->pluck('name', 'id'))->rules('required');
-                $form->image('image','Image')->uniqueName()->rules('required|mimes:jpg,jpeg,png');
+                $form->image('image','Image')->uniqueName()->rules('mimes:jpg,jpeg,png');
                 $form->switch('status','status')->rules('required');
                 $form->display('created_at', 'Created At');
                 $form->display('updated_at', 'Updated At');    

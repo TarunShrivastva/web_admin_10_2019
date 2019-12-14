@@ -18,15 +18,6 @@ class ToptenController extends Controller
     public function index()
     {
         $toptenModules = TopTen::where('status','1')->paginate(8);
-        // foreach ($toptenModules as $key => $value){
-        //     $article = Article::where('status','1')->find($value['article_id']);
-        //     $firstModules[$key]['alias'] = $article->alias;
-        //     $firstModules[$key]['image'] = $article->image;
-        //     $firstModules[$key]['title'] = $article->title;
-        //     $firstModules[$key]['description'] = $article->description;
-        //     $firstModules[$key]['content'] = $article->content['url'];
-        //     $firstModules[$key]['category'] = $article->category['url'];
-        // }
         return view('transend.top-products.toptenList',compact('toptenModules'));
     }
 
@@ -57,49 +48,43 @@ class ToptenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($alias, $id)
     {
-        $compares = Comparision::where('status','1')->get();
-        $data = array();
-        $compArray = array();
-        $specification1 = array();
-        $specification2 = array();
-        foreach ($compares as $key => $compare) {
-            $data = ['products' => [
-                            [
-                            'title' => [$compare->product[0]->title, $compare->product[1]->title],
-                            'specifications' => [
-                                    [
-                                        $compare->product[0]->add_specification->toArray(),
-                                        $compare->product[1]->add_specification->toArray()
-                                        ]
-                                ],
-                            ]
-                        ]
-                ];
+        $compares = Comparision::where('status','1')->where('id','=',$id)->get();
+        $data = $compArray = $specification1 = $specification2 = array();
+        foreach ($compares as $key => $compare){
+                $specsProductOne = $specsProductTwo = $keyArrayOne = $keyArrayTwo = array();
+                foreach($compare->product[0]->add_specification as $key1 => $value1){
+                    array_push($specsProductOne, [$value1->specification->title => $value1->value]);
+                }
+
+                foreach($compare->product[1]->add_specification as $key2 => $value2){
+                    array_push($specsProductTwo, [ $value2->specification->title => $value2->value]);
+                }
+                
+                foreach ($specsProductTwo as $product){
+                    $key = array_keys($product);
+                    array_push($keyArrayOne, $key[0]);
+                }
+
+                foreach ($specsProductTwo as $product){
+                    $key = array_keys($product);
+                    array_push($keyArrayTwo, $key[0]);
+                }
+                
+                foreach ($keyArrayTwo as $key => $value){
+                    $data = array_search($value,$keyArrayOne);
+                    if($data !== false){
+                        $specsProductOne[$data] = array($value, $specsProductOne[$data][$value],$specsProductTwo[$data][$value]); 
+                    }
+                }
+            $data = [   'object' => $compares,
+                        'title' => [$compare->product[0]->title, $compare->product[1]->title],
+                        'image'=> [$compare->product[0]->image, $compare->product[1]->image],
+                        'specifications' => $specsProductOne
+                    ];
             array_push($compArray, $data);
         }
-        dd($compArray);
-        //     foreach ($compare->product[0]->add_specification as $key => $specs) {
-        //         array_push($specification1,[ $specs->specification->title => $specs->value]);
-        //     }
-        //     foreach ($compare->product[1]->add_specification as $key => $specs) {
-        //         array_push($specification2,[ $specs->specification->title => $specs->value]);
-        //     }
-        //     $data = [
-        //                 'title' =>  $compare->title,
-        //                 'products'  =>  [
-        //                                     [ 'title1' => $compare->product[0]->title,
-        //                                       'specification1' => $specification1
-        //                                     ],
-        //                                     [ 'title2' => $compare->product[1]->title,
-        //                                       'specification2' => $specification2
-        //                                     ]
-        //                                 ]
-        //             ];
-        //         array_push($compArray, $data);    
-        // }
-        dd($compArray);
         return view('transend.top-products.toptenCompare',compact('compArray'));
     }
 

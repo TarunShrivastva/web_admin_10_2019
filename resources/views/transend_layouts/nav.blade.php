@@ -51,19 +51,16 @@
                                         @endif
                                     </li>            
                                 @endforeach
+                                <li class="cn-dropdown-item has-down"><a href="javascript:void(0)">Language</a>
+                                    <ul class="dropdown">
+                                      @foreach($languages as $key => $value)
+                                        <li><a href="/{{ $value['alias'] != 'en'? $value['alias']: ''}}">{{ $value['name'] }}</a></li>
+                                      @endforeach
+                                    </ul>
+                                  </li>
                                 </ul>
                             </div>
                             <!-- Nav End -->
-                        </div>
-                        <div class="classy-menu">
-                            <div class="classynav">
-                                <ul>
-                                @foreach($languages as $key => $value)
-                                    <li><a href="/{{ $value['alias'] != 'en'? $value['alias']: ''}}">{{ $value['name'] }}</a>
-                                    </li>            
-                                @endforeach
-                                </ul>
-                            </div>
                         </div>
                     </nav>
                 </div>
