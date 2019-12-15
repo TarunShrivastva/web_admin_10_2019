@@ -17,8 +17,8 @@ class ToptenController extends Controller
      */
     public function index()
     {
-        $toptenModules = TopTen::where('status','1')->paginate(8);
-        return view('transend.top-products.toptenList',compact('toptenModules'));
+        $toptens = TopTen::where('status','1')->paginate(8);
+        return view('transend.top-products.toptenList',compact('toptens'));
     }
 
     /**
@@ -62,11 +62,15 @@ class ToptenController extends Controller
                     array_push($specsProductTwo, [ $value2->specification->title => $value2->value]);
                 }
                 
-                foreach ($specsProductTwo as $product){
+                foreach ($specsProductOne as $product){
                     $key = array_keys($product);
                     array_push($keyArrayOne, $key[0]);
                 }
 
+                $specsProductOneLength = count($specsProductOne);
+                $specsProductTwoLength = count($specsProductTwo);
+                
+                
                 foreach ($specsProductTwo as $product){
                     $key = array_keys($product);
                     array_push($keyArrayTwo, $key[0]);

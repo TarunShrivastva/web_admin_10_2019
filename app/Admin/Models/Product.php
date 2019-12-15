@@ -15,7 +15,7 @@ class Product extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'description', 'image', 'status'
+        'title', 'description', 'image', 'status', 'paytm_price', 'flipkart_price', 'amazon_price', 'tata_cliq_price'
     ];
 
     /**

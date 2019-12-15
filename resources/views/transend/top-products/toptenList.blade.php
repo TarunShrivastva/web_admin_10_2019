@@ -3,25 +3,27 @@
  <div class="col-12 col-lg-8">
     <div class="row">
         <!-- Single Post -->
-        @foreach($toptenModules as $toptenModule)
+        @foreach($toptens as $topten)
+            @if(isset($topten->compare->id))
             <div class="col-12 col-md-6">
                 <div class="single-blog-post style-3">
                     <div class="post-thumb">
-                        <a href="#"><img src="{{ URL::to('/')}}/upload/{{ $toptenModule->image }}" alt=""></a>
+                        <a href="#"><img src="{{ URL::to('/')}}/upload/{{ $topten->image }}" alt=""></a>
                     </div>
                     <div class="post-data">
-                        <a href="{{ URL::to('/').'/hi/top-products/'.$toptenModule->alias .'-'.$toptenModule->id}}" class="post-catagory">{{ $toptenModule->title }}</a>
-                        <a href="{{ URL::to('/').'/hi/top-products/'.$toptenModule->alias .'-'.$toptenModule->id}}" class="post-title">
-                            <h6>{{ str_limit(strip_tags($toptenModule->description),50) }}</h6>
+                        <a href="{{ URL::to('/').'/hi/top-products/'.$topten->compare->alias .'-'. $topten->compare->id}}" class="post-catagory">{{ $topten->title }}</a>
+                        <a href="{{ URL::to('/').'/hi/top-products/'.$topten->compare->alias .'-'. $topten->compare->id}}" class="post-title">
+                            <h6>{{ str_limit(strip_tags($topten->description),50) }}</h6>
                         </a>
                     </div>
                 </div>
             </div>
+            @endif
         @endforeach
     </div>
     <nav class="bottom-space">
         <ul class="pagination justify-content-end">
-            {{$toptenModules->links('vendor.pagination.bootstrap-4')}}
+            {{$toptens->links('vendor.pagination.bootstrap-4')}}
         </ul>
     </nav>
 </div>

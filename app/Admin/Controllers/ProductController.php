@@ -98,6 +98,10 @@ class ProductController extends Controller
             $form->tab('Product',function(Form $form){
                 $form->display('id', 'ID');
                 $form->text('title','Title')->rules('required|min:3');
+                $form->text('paytm_price','Paytm Price')->attribute(['placeholder' => 'N/A'])->rule('integer');
+                $form->text('flipkart_price','flipkart Price')->attribute(['placeholder' => 'N/A'])->rule('integer');
+                $form->text('amazon_price','Amazon Price')->attribute(['placeholder' => 'N/A'])->rule('integer');
+                $form->text('tata_cliq_price','Tata Cliq Price')->attribute(['placeholder' => 'N/A'])->rule('integer');
                 $form->ckeditor('description','Description')->rules('required');
                 $form->image('image','Image')->uniqueName()->rules('mimes:jpg,jpeg,png');
                 $form->switch('status','Status')->rules('required');
@@ -108,7 +112,7 @@ class ProductController extends Controller
             $form->tab('Add Specification',function(Form $form){
                 $form->hasMany('add_specification', function (Form\NestedForm $form){
                     $firstSpecsId = Specification::where('parent_id','=','0')->first()->toArray();
-                    $addSpecs = Specification::where('parent_id','=', $firstSpecsId)->get()->pluck('title', 'id');
+                    $addSpecs = Specification::all()->pluck('title', 'id');
                     $form->display('id', 'ID');
                     $form->select('parent_specification_id','Parent Specification')->options(Specification::where('parent_id','=','0')->get()->pluck('title', 'id'))->rules('required')->load('specification_id','/admin/new/panel/get_child_specification');
                     $form->select('specification_id','Specification')->options($addSpecs)->rules('required');

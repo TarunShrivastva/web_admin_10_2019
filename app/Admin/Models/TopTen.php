@@ -41,5 +41,13 @@ class TopTen extends Model
     {
         return $this->belongsToMany(Product::class)->withTimestamps()->withPivot('deleted_at');
     }
+
+    /**
+     * Get the comments for the blog post.
+     */
+    public function compare()
+    {
+        return $this->hasOne(Comparision::class,'top_ten_id');
+    }
     
 }

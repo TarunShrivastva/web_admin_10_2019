@@ -15,7 +15,7 @@ class Comparision extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'top_ten_id', 'status'
+        'title', 'alias', 'top_ten_id', 'status'
     ];
 
     /**
@@ -31,5 +31,13 @@ class Comparision extends Model
     public function product()
     {
         return $this->belongsToMany(Product::class,'compare_product','compare_id','product_id')->withTimestamps()->withPivot('deleted_at');
+    }
+
+    /**
+     * Get the comments for the blog post.
+     */
+    public function topten()
+    {
+        return $this->belongsTo(TopTen::class,'id');
     }   
 }

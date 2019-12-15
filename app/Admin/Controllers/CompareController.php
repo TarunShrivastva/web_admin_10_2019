@@ -75,8 +75,14 @@ class CompareController extends Controller
     {
         return Admin::grid(Comparision::class, function (Grid $grid) {
 
+            $states = [
+                '1'  => ['value' => 1, 'text' => 'YES', 'color' => 'primary'],
+                '0' => ['value' => 0, 'text' => 'NO', 'color' => 'default'],
+            ];
             $grid->id('ID')->sortable();
             $grid->title('Compare Title');
+            $grid->image()->image('http://localhost:8000/upload/', 50, 50);
+            $grid->status('status')->switch($states);
             $grid->created_at();
             $grid->updated_at();
         });
@@ -93,6 +99,8 @@ class CompareController extends Controller
 
             $form->display('id', 'ID');
             $form->text('title','Compare Title')->rules('required|min:3');
+            $form->text('alias','Alias')->rules('required|min:3');
+            $form->image('image','Image')->uniqueName()->rules('required|mimes:jpg,jpeg,png');
             $form->select('top_ten_id','topten')->options(TopTen::all()->pluck('title', 'id'))->rules('required');
             $form->switch('status','Status')->rules('required');
             $form->multipleSelect('product','Compared Product')->options(Product::all()->pluck('title', 'id'))->rules('required');

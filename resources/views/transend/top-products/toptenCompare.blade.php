@@ -20,9 +20,9 @@
                                 </tr>
                                 @foreach($compare['specifications'] as $key=>$specification)
                                 <tr>
-                                    <td style="width:80px">{{ $compare['specifications'][$key][1] }}</td>
-                                    <td style="width:80px">{{ $compare['specifications'][$key][0] }}</td>
-                                    <td style="width:80px">{{ $compare['specifications'][$key][2] }}</td>
+                                    <td style="width:80px">{{ isset($compare['specifications'][$key][1])? $compare['specifications'][$key][1] : 'N/A'}}</td>
+                                    <td style="width:80px">{{ isset($compare['specifications'][$key][0])? $compare['specifications'][$key][0] : ''}}</td>
+                                    <td style="width:80px">{{ isset($compare['specifications'][$key][2])? $compare['specifications'][$key][2] : 'N/A'}}</td>
                                 </tr>
                                 @endforeach
                                 <tr>
