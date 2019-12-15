@@ -67,21 +67,34 @@ class ToptenController extends Controller
                     array_push($keyArrayOne, $key[0]);
                 }
 
-                $specsProductOneLength = count($specsProductOne);
-                $specsProductTwoLength = count($specsProductTwo);
-                
-                
                 foreach ($specsProductTwo as $product){
                     $key = array_keys($product);
                     array_push($keyArrayTwo, $key[0]);
                 }
                 
-                foreach ($keyArrayTwo as $key => $value){
-                    $data = array_search($value,$keyArrayOne);
-                    if($data !== false){
-                        $specsProductOne[$data] = array($value, $specsProductOne[$data][$value],$specsProductTwo[$data][$value]); 
+                $keyArrayOne = array_unique($keyArrayOne);
+                $keyArrayTwo = array_unique($keyArrayTwo);
+
+                if(count($specsProductOne) >= count($specsProductTwo)){
+                    foreach ($keyArrayOne as $key => $value){
+                        $data = array_search($value,$keyArrayTwo);
+                        if($data !== false){
+                            $specsProductOne[$data] = array($value, $specsProductOne[$data][$value],$specsProductTwo[$data][$value]); 
+                        }else{
+                            $specsProductOne[$key] = array($value, $specsProductOne[$key][$value], 'N/A'); 
+                        }
                     }
+                }else{
+                    foreach ($keyArrayTwo as $key => $value){
+                        $data = array_search($value,$keyArrayOne);
+                        if($data !== false){
+                            $specsProductOne[$data] = array($value, $specsProductOne[$data][$value], $specsProductTwo[$data][$value]);
+                        }else{
+                            $specsProductOne[$key] = array($value, 'N/A', $specsProductTwo[$key][$value]); 
+                        }
+                    }    
                 }
+
             $data = [   'object' => $compares,
                         'title' => [$compare->product[0]->title, $compare->product[1]->title],
                         'image'=> [$compare->product[0]->image, $compare->product[1]->image],

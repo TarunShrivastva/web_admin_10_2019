@@ -112,7 +112,7 @@ class ProductController extends Controller
             $form->tab('Add Specification',function(Form $form){
                 $form->hasMany('add_specification', function (Form\NestedForm $form){
                     $firstSpecsId = Specification::where('parent_id','=','0')->first()->toArray();
-                    $addSpecs = Specification::all()->pluck('title', 'id');
+                    $addSpecs = Specification::where('parent_id','!=', '0')->get()->pluck('title', 'id');
                     $form->display('id', 'ID');
                     $form->select('parent_specification_id','Parent Specification')->options(Specification::where('parent_id','=','0')->get()->pluck('title', 'id'))->rules('required')->load('specification_id','/admin/new/panel/get_child_specification');
                     $form->select('specification_id','Specification')->options($addSpecs)->rules('required');
