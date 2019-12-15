@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 10, 2019 at 08:10 PM
+-- Generation Time: Dec 15, 2019 at 07:07 PM
 -- Server version: 5.7.28-0ubuntu0.16.04.2
 -- PHP Version: 7.2.23-1+ubuntu16.04.1+deb.sury.org+1
 
@@ -30,7 +30,7 @@ CREATE TABLE `add_specifications` (
   `id` int(11) UNSIGNED NOT NULL,
   `product_id` int(11) UNSIGNED NOT NULL,
   `specification_id` int(11) NOT NULL DEFAULT '0',
-  `specs_name` varchar(255) NOT NULL,
+  `parent_specification_id` int(11) NOT NULL DEFAULT '0',
   `value` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -41,20 +41,80 @@ CREATE TABLE `add_specifications` (
 -- Dumping data for table `add_specifications`
 --
 
-INSERT INTO `add_specifications` (`id`, `product_id`, `specification_id`, `specs_name`, `value`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 1, '2', 'Vivo', '2019-12-08 07:58:05', '2019-12-08 07:58:05', NULL),
-(2, 1, 1, '6', 'V17', '2019-12-08 07:58:05', '2019-12-08 07:58:05', NULL),
-(3, 1, 3, '7', '6.38', '2019-12-08 07:58:05', '2019-12-08 07:58:05', NULL),
-(4, 1, 3, '8', '1080 x 2340', '2019-12-08 07:58:05', '2019-12-08 07:58:05', NULL),
-(5, 1, 4, '9', '48 + 8 + 2 + 2', '2019-12-08 07:58:05', '2019-12-08 07:58:05', NULL),
-(6, 1, 4, '10', '32', '2019-12-08 07:58:05', '2019-12-08 07:58:05', NULL),
-(7, 1, 5, '11', '4500', '2019-12-08 07:58:05', '2019-12-08 07:58:05', NULL),
-(8, 2, 0, '2', 'Huawei', '2019-12-08 08:08:49', '2019-12-08 08:08:49', NULL),
-(9, 2, 0, '6', 'Huawei Mate 30 5G', '2019-12-08 08:08:49', '2019-12-08 08:08:49', NULL),
-(10, 2, 0, '7', '6.62', '2019-12-08 08:08:49', '2019-12-08 08:08:49', NULL),
-(11, 2, 0, '7', '1080 X 2340', '2019-12-08 08:08:49', '2019-12-08 08:08:49', NULL),
-(12, 2, 0, '9', '40 + 16 + 8', '2019-12-08 08:08:49', '2019-12-08 08:08:49', NULL),
-(13, 2, 0, '11', '4200', '2019-12-08 08:08:49', '2019-12-08 08:08:49', NULL);
+INSERT INTO `add_specifications` (`id`, `product_id`, `specification_id`, `parent_specification_id`, `value`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 2, 1, 'Apple', '2019-12-11 11:01:26', '2019-12-11 11:01:26', NULL),
+(2, 1, 6, 1, 'Apple iPhone 11 Pro', '2019-12-11 11:01:26', '2019-12-11 11:01:26', NULL),
+(3, 1, 7, 3, '5.8', '2019-12-11 11:01:26', '2019-12-15 04:59:02', NULL),
+(4, 1, 8, 3, '1125 X 2436', '2019-12-11 11:01:26', '2019-12-15 04:59:02', NULL),
+(5, 1, 9, 4, '12 + 12 + 12', '2019-12-11 11:01:26', '2019-12-15 04:59:02', NULL),
+(6, 1, 10, 4, '12', '2019-12-11 11:01:26', '2019-12-15 04:59:02', NULL),
+(7, 1, 11, 5, '3190', '2019-12-11 11:01:26', '2019-12-15 04:59:02', NULL),
+(15, 2, 2, 1, 'Huawei', '2019-12-11 11:03:38', '2019-12-11 11:03:38', NULL),
+(16, 2, 6, 1, 'Huawei P30 Pro', '2019-12-11 11:03:38', '2019-12-11 11:03:38', NULL),
+(17, 2, 7, 3, '6.47', '2019-12-11 11:03:38', '2019-12-15 04:56:04', NULL),
+(18, 2, 8, 3, '1080 X 2340', '2019-12-11 11:03:38', '2019-12-15 04:56:04', NULL),
+(19, 2, 9, 4, '40 + 20 + 8 + TOF', '2019-12-11 11:03:38', '2019-12-15 04:56:04', NULL),
+(20, 2, 10, 4, '32', '2019-12-11 11:03:38', '2019-12-15 04:56:04', NULL),
+(21, 2, 11, 5, '4200', '2019-12-11 11:03:38', '2019-12-15 04:56:04', NULL),
+(22, 3, 2, 1, 'Samsung', '2019-12-11 11:07:51', '2019-12-11 11:07:51', NULL),
+(23, 3, 6, 1, 'Samsung Galaxy Note10 Plus', '2019-12-11 11:07:51', '2019-12-11 11:07:51', NULL),
+(24, 3, 7, 3, '6.8', '2019-12-11 11:07:51', '2019-12-15 05:00:04', NULL),
+(25, 3, 8, 3, '1440 X 3040', '2019-12-11 11:07:51', '2019-12-15 05:00:04', NULL),
+(26, 3, 9, 4, '12 + 16 + 12 + TOF', '2019-12-11 11:07:51', '2019-12-15 05:00:04', NULL),
+(27, 3, 10, 4, '10', '2019-12-11 11:07:51', '2019-12-15 05:00:04', NULL),
+(28, 3, 11, 5, '4300', '2019-12-11 11:07:51', '2019-12-15 05:00:04', NULL),
+(29, 4, 2, 1, 'Huawei', '2019-12-14 08:09:13', '2019-12-14 08:09:13', NULL),
+(30, 4, 6, 1, 'Huawei P30 Pro', '2019-12-14 08:09:13', '2019-12-14 08:09:13', NULL),
+(31, 4, 7, 3, '6.47', '2019-12-14 08:09:13', '2019-12-15 05:01:04', NULL),
+(32, 4, 8, 3, '1080 X 2340', '2019-12-14 08:09:13', '2019-12-15 05:01:04', NULL),
+(33, 4, 9, 4, '40 + 20 + 8 + TOF', '2019-12-14 08:09:13', '2019-12-15 05:01:04', NULL),
+(34, 4, 10, 4, '32', '2019-12-14 08:09:13', '2019-12-15 05:01:04', NULL),
+(35, 4, 11, 5, '4200', '2019-12-14 08:09:13', '2019-12-15 05:01:04', NULL),
+(36, 5, 2, 1, 'Samsung', '2019-12-14 08:13:29', '2019-12-14 08:13:29', NULL),
+(37, 5, 6, 1, 'Samsung Galaxy S10 Plus', '2019-12-14 08:13:29', '2019-12-14 08:13:29', NULL),
+(38, 5, 7, 3, '6.4', '2019-12-14 08:13:29', '2019-12-15 05:01:43', NULL),
+(39, 5, 8, 3, '1440 X 3040', '2019-12-14 08:13:29', '2019-12-15 05:01:43', NULL),
+(40, 5, 9, 4, '12 + 12 + 16', '2019-12-14 08:13:29', '2019-12-15 05:01:43', NULL),
+(41, 5, 9, 4, '10 + 8', '2019-12-14 08:13:29', '2019-12-15 05:01:43', NULL),
+(42, 5, 11, 5, '4100', '2019-12-14 08:13:29', '2019-12-15 05:01:43', NULL),
+(43, 6, 2, 1, 'OnePlus', '2019-12-14 08:17:31', '2019-12-14 08:17:31', NULL),
+(44, 6, 6, 1, 'OnePlus 7T Pro', '2019-12-14 08:17:31', '2019-12-14 08:17:31', NULL),
+(45, 6, 7, 3, '6.67', '2019-12-14 08:17:31', '2019-12-15 05:02:39', NULL),
+(46, 6, 8, 3, '1440 x 3120', '2019-12-14 08:17:31', '2019-12-15 05:02:39', NULL),
+(47, 6, 9, 4, '48 + 16 + 8', '2019-12-14 08:17:31', '2019-12-15 05:02:39', NULL),
+(48, 6, 10, 4, '720p@960fps, Auto HDR, gyro-EIS', '2019-12-14 08:17:31', '2019-12-15 05:02:39', NULL),
+(49, 6, 11, 5, '4085', '2019-12-14 08:17:31', '2019-12-15 05:02:39', NULL),
+(50, 7, 2, 1, 'OnePlus', '2019-12-14 08:19:46', '2019-12-14 08:19:46', NULL),
+(51, 7, 6, 1, 'OnePlus 7T', '2019-12-14 08:19:46', '2019-12-14 08:19:46', NULL),
+(52, 7, 7, 3, '6.55', '2019-12-14 08:19:46', '2019-12-15 05:05:07', NULL),
+(53, 7, 8, 3, '1080 x 2400', '2019-12-14 08:19:46', '2019-12-15 05:05:07', NULL),
+(54, 7, 9, 4, '48 + 12 + 16', '2019-12-14 08:19:46', '2019-12-15 05:05:07', NULL),
+(55, 7, 10, 4, '2160p@30/60fps, 1080p@30/60/240fps, 24-bit/192kHz stereo sound rec., HDR10 video, gyro-EIS', '2019-12-14 08:19:46', '2019-12-15 05:05:07', NULL),
+(56, 7, 11, 5, '3800', '2019-12-14 08:19:46', '2019-12-15 05:05:07', NULL),
+(57, 8, 2, 1, 'Asus', '2019-12-14 08:24:08', '2019-12-14 08:24:08', NULL),
+(58, 8, 6, 1, 'Asus ROG Phone II', '2019-12-14 08:24:08', '2019-12-14 08:24:08', NULL),
+(59, 8, 7, 3, '6.59', '2019-12-14 08:24:08', '2019-12-15 05:05:59', NULL),
+(60, 8, 8, 3, '1080 x 2340', '2019-12-14 08:24:08', '2019-12-15 05:05:59', NULL),
+(61, 8, 9, 4, '48 + 13', '2019-12-14 08:24:08', '2019-12-15 05:05:59', NULL),
+(62, 8, 10, 4, '2160p@30/60fps, 1080p@30/60/240fps, 720p@480fps; gyro-EIS (except @240/480fps)', '2019-12-14 08:24:08', '2019-12-15 05:05:59', NULL),
+(63, 8, 11, 5, '6000', '2019-12-14 08:24:08', '2019-12-15 05:05:59', NULL),
+(64, 9, 2, 1, 'Realme', '2019-12-14 08:26:27', '2019-12-14 08:26:27', NULL),
+(65, 9, 6, 1, 'Realme X2 Pro', '2019-12-14 08:26:27', '2019-12-14 08:26:27', NULL),
+(66, 9, 7, 3, '6.5', '2019-12-14 08:26:27', '2019-12-15 05:06:41', NULL),
+(67, 9, 8, 3, '1080 x 2400', '2019-12-14 08:26:27', '2019-12-15 05:06:41', NULL),
+(68, 9, 9, 4, '64 + 13 + 8 + 2', '2019-12-14 08:26:27', '2019-12-15 05:06:41', NULL),
+(69, 9, 10, 4, '2160p@30/60fps, 1080p@30/60/120fps, 720p@960fps, gyro-EIS', '2019-12-14 08:26:27', '2019-12-15 05:06:41', NULL),
+(70, 9, 11, 5, '4000', '2019-12-14 08:26:27', '2019-12-15 05:06:41', NULL),
+(71, 10, 2, 1, 'Oppo', '2019-12-14 08:28:56', '2019-12-14 08:28:56', NULL),
+(72, 10, 6, 1, 'Oppo Reno 10x zoom', '2019-12-14 08:28:56', '2019-12-14 08:28:56', NULL),
+(73, 10, 7, 3, '6.6', '2019-12-14 08:28:56', '2019-12-15 05:07:41', NULL),
+(74, 10, 8, 3, '1080 X 2340', '2019-12-14 08:28:56', '2019-12-15 05:07:41', NULL),
+(75, 10, 9, 4, '48 + 13 + 8', '2019-12-14 08:28:56', '2019-12-15 05:07:41', NULL),
+(76, 10, 10, 4, '2160p@30fps', '2019-12-14 08:28:56', '2019-12-15 05:07:41', NULL),
+(77, 10, 11, 5, '4065', '2019-12-14 08:28:56', '2019-12-15 05:07:41', NULL),
+(78, 1, 15, 14, 'Test', '2019-12-15 05:10:21', '2019-12-15 07:26:12', '2019-12-15 07:26:12'),
+(79, 2, 15, 14, 'This is test specs', '2019-12-15 07:26:50', '2019-12-15 07:26:50', NULL),
+(80, 2, 2, 1, 'dasdasdas', '2019-12-15 07:35:35', '2019-12-15 07:35:35', NULL);
 
 -- --------------------------------------------------------
 
@@ -289,7 +349,7 @@ CREATE TABLE `admin_users` (
 --
 
 INSERT INTO `admin_users` (`id`, `username`, `password`, `name`, `avatar`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', '$2y$10$DsPdA37R93kMBmhe81nA/u1qWTqc3coMA6xaxPITM4TLsahbXTiFi', 'Administrator', NULL, 'vIwygR5RVFN5JlmV2bmF2YZxf7LyDeab8LVFhd1w7NfLhcQQ8VFqljLtDdr2', '2019-06-22 07:42:22', '2019-06-22 07:42:22'),
+(1, 'admin', '$2y$10$DsPdA37R93kMBmhe81nA/u1qWTqc3coMA6xaxPITM4TLsahbXTiFi', 'Administrator', NULL, 't9tFgnT1ygpqidmv9DdpOe4IAAj7VWg5lS1gu22ESRnCvxsFlNVhMPP8eOQp', '2019-06-22 07:42:22', '2019-06-22 07:42:22'),
 (2, 'Luckas Editor', '$2y$10$JO2tEDOtJJhew7fAYFv6G.QCtj/lP33BfI6/URe3A/3RJTq7LcixS', 'Luckas Chauhan', 'image/admin.png', 'pIouaYqY2S1Wb0rZdxIVEDcJjTguu4xxXvkUyTNdKnewnqg1G1pSUHZLwrxp', '2019-06-22 08:38:39', '2019-12-08 08:13:15');
 
 -- --------------------------------------------------------
@@ -484,12 +544,8 @@ CREATE TABLE `compare_product` (
 --
 
 INSERT INTO `compare_product` (`id`, `compare_id`, `product_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 1, '2019-12-10 08:12:13', '2019-12-10 08:12:13', NULL),
-(2, 1, 2, '2019-12-10 08:12:13', '2019-12-10 08:12:13', NULL),
-(3, 2, 1, '2019-12-10 08:19:48', '2019-12-10 08:19:48', NULL),
-(4, 2, 2, '2019-12-10 08:19:48', '2019-12-10 08:19:48', NULL),
-(5, 3, 1, '2019-12-10 08:22:48', '2019-12-10 08:22:48', NULL),
-(6, 3, 2, '2019-12-10 08:22:48', '2019-12-10 08:22:48', NULL);
+(1, 1, 1, '2019-12-14 08:54:38', '2019-12-14 08:54:38', NULL),
+(2, 1, 2, '2019-12-14 08:54:38', '2019-12-14 08:54:38', NULL);
 
 -- --------------------------------------------------------
 
@@ -500,6 +556,8 @@ INSERT INTO `compare_product` (`id`, `compare_id`, `product_id`, `created_at`, `
 CREATE TABLE `comparisions` (
   `id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
+  `alias` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
   `top_ten_id` int(11) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
@@ -511,10 +569,8 @@ CREATE TABLE `comparisions` (
 -- Dumping data for table `comparisions`
 --
 
-INSERT INTO `comparisions` (`id`, `title`, `top_ten_id`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'this is test compare', 1, 0, '2019-12-10 08:10:38', '2019-12-10 08:20:18', NULL),
-(2, 'test 2', 2, 0, '2019-12-10 08:19:48', '2019-12-10 08:20:22', NULL),
-(3, 'Test 3', 5, 0, '2019-12-10 08:22:48', '2019-12-10 08:24:35', NULL);
+INSERT INTO `comparisions` (`id`, `title`, `alias`, `image`, `top_ten_id`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'BEST PHONES UNDER 5000 IN INDIA', 'best-phones-under-5000-in-india', 'image/289a2a077fd7f6ed4244bf4381b73101.jpeg', 1, 1, '2019-12-14 08:54:38', '2019-12-14 11:48:45', NULL);
 
 -- --------------------------------------------------------
 
@@ -657,7 +713,8 @@ CREATE TABLE `migrations` (
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2016_01_04_173148_create_admin_tables', 1),
 (2, '2014_10_12_000000_create_users_table', 2),
-(3, '2014_10_12_100000_create_password_resets_table', 2);
+(3, '2014_10_12_100000_create_password_resets_table', 2),
+(4, '0000_00_00_000000_create_comments_table', 3);
 
 -- --------------------------------------------------------
 
@@ -699,6 +756,10 @@ CREATE TABLE `products` (
   `description` text NOT NULL,
   `image` varchar(255) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '0',
+  `paytm_price` int(11) DEFAULT NULL,
+  `flipkart_price` int(11) DEFAULT NULL,
+  `amazon_price` int(11) DEFAULT NULL,
+  `tata_cliq_price` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_At` timestamp NULL DEFAULT NULL
@@ -708,9 +769,17 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `title`, `description`, `image`, `status`, `created_at`, `updated_at`, `deleted_At`) VALUES
-(1, 'VIVO V17', '<p>Vivo V17 is announced to be launched in December 2019 &amp; will run on Android. The Smartphone will be available only in one color i.e. Blue &amp; will also have a built in fingerprint sensor as the primary security feature, along with the host of connectivity options in terms of 3G, 4G, GPS Bluetooth capabilities. The phone will come with 128 GB of internal storage.</p>', 'image/ae825800838e097f8fd397aebf934162.jpeg', 1, '2019-12-08 07:58:05', '2019-12-08 07:58:05', NULL),
-(2, 'HUAWEI MATE 30 5G', '<p>Huawei Mate 30 5G is announced to be launched in December 2019 &amp; will run on Android 9 OS. The Smartphone will be available in more than three color options i.e.Black, Space Silver, Cosmic Purple, Emerald Green, Orange, Forest Green &amp; will also have a built in fingerprint sensor as the primary security feature, along with the host of connectivity options in terms of 3G, 4G, GPS, Wifi, NFC Bluetooth capabilities. The phone will come with 128GB of internal storage.</p>', 'image/5d7e5b4a1fb361433274ce8b77c8f992.jpeg', 1, '2019-12-08 08:08:49', '2019-12-08 08:08:49', NULL);
+INSERT INTO `products` (`id`, `title`, `description`, `image`, `status`, `paytm_price`, `flipkart_price`, `amazon_price`, `tata_cliq_price`, `created_at`, `updated_at`, `deleted_At`) VALUES
+(1, 'VIVO V17', '<p>Vivo V17 is announced to be launched in December 2019 &amp; will run on Android. The Smartphone will be available only in one color i.e. Blue &amp; will also have a built in fingerprint sensor as the primary security feature, along with the host of connectivity options in terms of 3G, 4G, GPS Bluetooth capabilities. The phone will come with 128 GB of internal storage.</p>', 'image/ae825800838e097f8fd397aebf934162.jpeg', 1, 5000, 6000, 5500, 6000, '2019-12-08 07:58:05', '2019-12-15 03:48:47', NULL),
+(2, 'HUAWEI MATE 30 5G', '<p>Huawei Mate 30 5G is announced to be launched in December 2019 &amp; will run on Android 9 OS. The Smartphone will be available in more than three color options i.e.Black, Space Silver, Cosmic Purple, Emerald Green, Orange, Forest Green &amp; will also have a built in fingerprint sensor as the primary security feature, along with the host of connectivity options in terms of 3G, 4G, GPS, Wifi, NFC Bluetooth capabilities. The phone will come with 128GB of internal storage.</p>', 'image/5d7e5b4a1fb361433274ce8b77c8f992.jpeg', 1, 5000, 6000, 5000, 6000, '2019-12-08 08:08:49', '2019-12-15 03:49:30', NULL),
+(3, 'SAMSUNG GALAXY NOTE10 PLUS', '<p>The Samsung Galaxy Note 10+ comes across as a phone very similar to the Galaxy S10+, save for a few new features that may or may not turn out to be useful. There&rsquo;s a lot of reason for old Note users to upgrade to this one. Then there&rsquo;s the smaller Galaxy Note as well which comes with watered-down features including a smaller display and form factor which might find acceptance among a new breed of power users eager to get the Galaxy Note experience. What I really liked about the phone is how Samsung has improved the camera performance, especially in low-light, and the new DeX mode that now works much better than before. Overall, the Galaxy Note 10+ feels like an incremental upgrade, but good enough for old Note users to get a new one.</p>', 'image/aabf16c4054fbc53555cb94554b1efb1.jpeg', 1, 4000, 5000, 6000, 5500, '2019-12-11 11:07:51', '2019-12-15 03:49:53', NULL),
+(4, 'HUAWEI P30 PRO', '<p>The Huawei P30 Pro definitely sets a new benchmark for smartphone photography, whether its in terms of low light capabilities or in terms of how much zoom is packed into a smartphone camera. Anyone who loves taking photos will absolutely love shooting with the P30 Pro. For the rest, you get a solid day and a half of battery life on heavy use, with a 70 minute charge time from 0 to 100. When it comes to performance, the Kirin 980 chipset along with the 8GB of RAM and EMUI 9.1 all work together well to offer a smooth, stutter-free experience, whether it be for gaming or anything else. The only thing we hope you can live with is paying Rs 71,990 for a smartphone with an FHD+ display and expandable storage which only works if you have a Nano-Memory card, which Huawei doesn&#39;t yet sell in India.</p>', 'image/f29960733d17ea06557290ad4af1b112.jpeg', 1, 5600, 5500, 4500, 6000, '2019-12-14 08:09:13', '2019-12-15 03:50:33', NULL),
+(5, 'SAMSUNG GALAXY S10 PLUS', '<p>The Smartphone is powered by 2.7 GHz Octa core Exynos 9820 Octa (8 nm) Processor. A 8GB of RAM ensures phone runs smoothly even the most memory intensive applications &amp; still shows no signs of lag. 128GB of internal storage can be expanded to 512GB via a microSD card.</p>\r\n\r\n<p>The Phone comes with a inch screen with Dynamic AMOLED display having a resolution of 1440 X 3040 at 526 ppi. The screen is also protected by a durable Scratch Resistant glass.</p>\r\n\r\n<p>Samsung Galaxy S10 Plus boasts of dual front camera of 10 + 8 megapixel and 12 + 12 + 16 megapixel dual rear Camera. It also supports Face Detection and high dynamic range(HDR) imaging.</p>\r\n\r\n<p>Samsung Galaxy S10 Plus is the successor to the&nbsp;<a href="https://www.digit.in/mobile-phones/samsung-galaxy-s9-plus-price-100081.html">Galaxy S9 Plus&nbsp;</a>and comes with triple main camera setup and a dual selfie camera for clicking selfies and making video calls. The flagship device supports Fast Qi/PMA wireless charging 15W and Power bank/Reverse wireless charging 9W.</p>', 'image/f97374bc346a6e0db0e4b5ecb1abed75.jpeg', 1, 5400, 5000, 5100, 5300, '2019-12-14 08:13:29', '2019-12-15 03:51:13', NULL),
+(6, 'ONEPLUS 7T PRO 256GB', '<p>The Smartphone is powered by 2.96 GHz Octa core Qualcomm Snapdragon 855 Plus Processor. A 8GB of RAM ensures phone runs smoothly even the most memory intensive applications &amp; still shows no signs of lag. 256GB of internal storage can not be expanded further.</p>\r\n\r\n<p>The Phone comes with a inch screen with QHD + display having a resolution of 1440 x 3120 at 516 ppi. The screen is also protected by a durable Scratch Resistant glass.</p>\r\n\r\n<p>OnePlus 7T Pro 256GB boasts of dual primary camera of 48 + 16 + 8 megapixel and 16 megapixel front Camera. The Smartphone has a low camera aperture of f/1.6. It also supports Face Detection and high dynamic range(HDR) imaging.</p>', 'image/8abeba43f459d1186c79b182372554a6.jpeg', 1, 5600, 6500, 5600, 5000, '2019-12-14 08:15:54', '2019-12-15 03:52:51', NULL),
+(7, 'ONEPLUS 7T 128GB', '<p>The Smartphone is powered by 2.96GHz Octa core Qualcomm Snapdragon 855 Plus Processor. A 8 GB of RAM ensures phone runs smoothly even the most memory intensive applications &amp; still shows no signs of lag. 128GB of internal storage can not be expanded further.</p>\r\n\r\n<p>The Phone comes with a large 3800 mAh battery to support it&#39;s 6.55 inch screen with Super AMOLED display having a resolution of 1080 x 2400 at 402 ppi. The screen is also protected by a Corning Gorilla Glass.</p>\r\n\r\n<p>OnePlus 7T 128GB boasts of dual primary camera of 48 + 12 + 16 megapixel and 16 megapixel front Camera. The Smartphone has a low camera aperture of f/1.6. It also supports Face Detection and high dynamic range(HDR) imaging.</p>', 'image/780ac858e0a6c6dff59215af489bc236.jpeg', 1, 5600, 6000, 6500, 6500, '2019-12-14 08:19:46', '2019-12-15 03:53:21', NULL),
+(8, 'ASUS ROG PHONE II', '<p>The Asus ROG Phone II&nbsp; sports a Snapdragon 855 Plus chipset and has gaming-oriented features. The phone is the ultimate mobile gaming device and has powerful specs. The ROG Phone 2 competes with other gaming smartphones launched in global markets including the Black Shark 2 and Nubia Red Magic 3.</p>\r\n\r\n<p><strong>Design</strong></p>\r\n\r\n<p>The Asus ROG Phone II has a 6.59-inch AMOLED display with 1,080 x 2,340 pixels resolution and a density of 391 PPI. The aspect ratio of 19.5:9 offers an immersive gaming experience. The device has a Corning Gorilla Glass for protection against minor scratches and marks. The device has sleek dimensions of 171 x 77.6 x 9.5 mm and weighs just 240 grams.&nbsp;</p>\r\n\r\n<p><strong>Camera</strong></p>\r\n\r\n<p>It has powerful 48MP and 13MP camera lenses, which has been provided with many features and filters to capture awesome pictures. It also has a 24MP front sensor which clicks good selfies. The phone comes with features like Panorama and HDR.&nbsp;</p>\r\n\r\n<p><strong>Performance</strong></p>\r\n\r\n<p>The&nbsp;ROG Phone II sports a 120Hz OLED display and has a powerful Snapdragon 855 Plus chipset which can handle most games with ease. &nbsp;Equipped with the Qualcomm Snapdragon 855+ chipset with an octa-core processor having a clock speed of up to 2.96GHz it can handle most tasks with ease. Adreno 640 and an 8GB RAM offer a smooth gaming experience. The device runs on Android 9.0 out of the box.&nbsp;Connectivity options included in the phone are 4G VoLTE, Wi-Fi, Mobile Hotspot, Bluetooth, GPS with A-GPS, USB Type-C, etc.</p>\r\n\r\n<p><strong>Storage and Battery</strong></p>\r\n\r\n<p>The Asus ROG Phone II is a gaming-centric flagship smartphone which has a powerful configuration to meet the need of the gamers. It has a powerful battery and comes with huge internal storage which gives ample space for all your music, videos, etc. It has a 6,000mAh battery which can last for a long time. It is equipped with Hyper Quick Charging feature that can refill the battery in a short time. The phone has 128GB of storage which offers ample room for users to keep their files and data.</p>', 'image/eb530ebecd3ca1a16b05ea26d8cc9115.jpeg', 1, 5000, 4500, 5600, 6100, '2019-12-14 08:24:08', '2019-12-15 03:52:31', NULL),
+(9, 'REALME X2 PRO', '<p dir="ltr">The phone comes with features like a 90Hz display, vapour cooling, stereo speakers, a tactile linear motor for haptic feedback, and extremely fast charging. The device comes with a 6.5-inch AMOLED display, which Realme calls the &lsquo;fluid AMOLED&#39; display, which is similar to the display on the OnePlus 7T. The Realme X2 Pro comes with a 90Hz refresh rate, quad rear cameras and has a small notch. The company has also kept the headphone jack on the phone.&nbsp;</p>\r\n\r\n<p dir="ltr">The Realme X2 Pro is available in two variants, one with 8GB/ 128GB of storage which is priced at Rs. 29,999, and the second with 12GB RAM/ 256GB of storage which is priced at Rs. 33,999.</p>\r\n\r\n<p dir="ltr"><strong>Design</strong></p>\r\n\r\n<p dir="ltr">The Realme X2 Pro has a 6.5-inch full-HD+ AMOLED panel with 500nits of sustained brightness and 1000nits of peak brightness according to the company. The display can run at 90Hz instead of the usual 60Hz.&nbsp;</p>\r\n\r\n<p dir="ltr">The Realme X2 Pro comes with an aluminium body with Gorilla Glass 5 on the front and back. The mobile phone comes in Master Edition, in &lsquo;Red Brick&#39; and &lsquo;Concrete&#39; finishes. The Realme logo is placed adjacent to the camera module which is different from the company&rsquo;s other offerings. The phone has a vertically arranged rear camera module which creates a bit of bump on the back of this phone.&nbsp;</p>\r\n\r\n<p dir="ltr"><strong>Camera&nbsp;</strong></p>\r\n\r\n<p dir="ltr">The phone has a 64 MP primary sensor which is similar to the one found on the Realme XT. The phone has a 13 MP telephoto camera, an 8 MP wide-angle sensor with ultra-steady stabilisation mode, and a 2 MP depth sensor to help with portrait shots. The phone has a 16 MP selfie camera for making video calls.&nbsp;</p>\r\n\r\n<p dir="ltr">The phone has a nightscape mode which works for the selfie camera. Users can adjust the level of background blur in Portrait mode. The wide-angle camera can also be used to shoot videos on the device. Realme has also added an &lsquo;Ultra Steady&#39; shooting mode for enhanced stabilisation and the phone can shoot up to 4K 60fps videos.</p>\r\n\r\n<p dir="ltr"><strong>Performance</strong></p>\r\n\r\n<p dir="ltr">The Realme X2 Pro uses Qualcomm&#39;s Snapdragon 855+ SoC which has been used in a number of recent mid-range flagships like the Asus ROG Phone 2 and the OnePlus 7T. The phone is available in 8 GB and 12 GB RAM variants in India. Realme is also using the UFS 3.0 standard on the X2 Pro for its flash storage.&nbsp;</p>\r\n\r\n<p dir="ltr">The phone runs on ColorOS 6.1, based on Android 9.0. The feature comes with a dark mode and Google&#39;s Digital Wellbeing app. Realme has added a number of preinstalled apps such as Game Space and ORoaming on the device. There are a number of preinstalled third-party apps that can be uninstalled for extra space.&nbsp;</p>\r\n\r\n<p dir="ltr"><strong>Battery and Storage</strong></p>\r\n\r\n<p dir="ltr">In terms of battery life, the Realme X2 Pro is backed by a 4000mAh capacity and comes with a 50W Super VOOC charger in the box. The company claims that the charger will be able to fully charge the battery from zero in just 35 minutes.</p>\r\n\r\n<p dir="ltr">Realme X2 Pro comes with common fast charging standards such as Qualcomm&#39;s Quick Charge and USB Type-C Power Delivery (PD), which will allow you to charge the phone quickly even without the bundled charger, says the company.&nbsp;</p>\r\n\r\n<p dir="ltr">The phone is available in two variants one with 128GB of storage and the second with 256GB of storage.&nbsp;</p>\r\n\r\n<p dir="ltr"><strong>Connectivity&nbsp;</strong></p>\r\n\r\n<p dir="ltr">In terms of connectivity, the phone can accommodate two Nano-SIMs and supports dual 4G VoLTE. It has dual-band Wi-Fi, Bluetooth 5.0, and support for three satellite navigation systems. It supports 3G, 4G, 2G, GPRS, EDGE, and GPS. It supports NFC connectivity as well as support for contactless payments.&nbsp;</p>\r\n\r\n<p dir="ltr"><strong>Configuration&nbsp;</strong></p>\r\n\r\n<p dir="ltr">The phone uses Qualcomm&rsquo;s latest Snapdragon 855 plus processor with a 64-bit ARM LTE system on a chip that was introduced in mid-2019. The phone has been developed by TSMC&#39;s 7nm process, the has four Kryo 485 Silver high-efficiency cores operating at 1.8 GHz as well as three high-performance Kryo 485 Gold operating at 2.42 GHz. It also has another higher-performance Kryo 485 Gold core which operates at 2.84 GHz</p>\r\n\r\n<p dir="ltr"><strong>Platform&nbsp;</strong></p>\r\n\r\n<p dir="ltr">The smartphone runs on Android 9.0 OS out of the box and is powered by Qualcomm Snapdragon 855 Plus Soc which has octa-core Kryo cores and integrated Adreno 640 GPU operation at 700 MHz. Qualcomm claims that the processor delivers up to 15% faster graphics rendering and as well as delivers a higher CPU performance from its sibling the Snapdragon 855.&nbsp;</p>\r\n\r\n<p dir="ltr"><strong>Technology&nbsp;</strong></p>\r\n\r\n<p dir="ltr">The mobile phone uses the newer UFS 3.0 storage standard. It has a new tactile linear vibration motor for more nuanced haptic feedback says the company. Apart from this, the phone has a vapour chamber cooling system for the CPU. Other specifications included in the phone are dual-band Wi-Fi, Bluetooth 5.0, and support for three satellite navigation systems.&nbsp;</p>\r\n\r\n<p dir="ltr">The Qualcomm snapdragon 855 plus combines Adreno 640 GPU operation at 700 MHz and comes with an X24 LTE modem which supports Cat 20 uplink and Cat 20 downlink.</p>\r\n\r\n<p dir="ltr"><strong>Multimedia&nbsp;</strong></p>\r\n\r\n<p dir="ltr">The headphone socket, a USB Type-C port, and a speaker are placed on the bottom of the device. The earpiece also doubles as a second speaker for stereo sound on the Realme X2.</p>\r\n\r\n<p dir="ltr">The retail box of the Realme X2 Pro has a 50W SuperVOOC wall charger, a data cable, a SIM eject tool, a case, a warranty leaflet, and a quick start guide. The phone ships with a pre-applied screen guard, but the phone doesn&rsquo;t have any earphones or a headset in the box.</p>\r\n\r\n<p dir="ltr">The device has Widevine L1 DRM certification so there are no restrictions on the streaming resolution in apps like Netflix. It has support for Dolby Atmos, which works via the speakers as well as wired or wireless headphones.</p>\r\n\r\n<p dir="ltr"><strong>Sensors&nbsp;</strong></p>\r\n\r\n<p dir="ltr">The phone comes with an optical in-display fingerprint sensor and Realme has added some customisable unlock animations. The device also has Face unlock for added security. The X2 Pro offers NFC and contactless payment options, although the latter isn&#39;t of much use here in India since services such as Google Pay don&#39;t use it.</p>', 'image/f4270de2424daa8e77dec867a170a972.jpeg', 1, 6000, 7000, 6100, 6100, '2019-12-14 08:26:27', '2019-12-15 03:52:11', NULL),
+(10, 'OPPO RENO 10X ZOOM 256GB', '<p>The Smartphone is powered by 2.84 Octa core Qualcomm SDM855 Snapdragon 855 (7 nm) Processor. A 8GB of RAM ensures phone runs smoothly even the most memory intensive applications &amp; still shows no signs of lag. 256GB of internal storage can be expanded to 256 GB via a microSD card.</p>\r\n\r\n<p>The Phone comes with a inch screen with AMOLED display having a resolution of 1080 X 2340 at 387 ppi. The screen is also protected by a durable Scratch Resistant glass.</p>\r\n\r\n<p>Oppo Reno 10x zoom 256GB boasts of dual primary camera of 48 + 13 + 8 megapixel and 16 megapixel front Camera. The Smartphone is also loaded with Optical Image Stablization and has a low camera aperture of f/1.8. It also supports Face Detection and high dynamic range(HDR) imaging.</p>', 'image/dfe2ec4ef24f09a69feea033356e4fbe.jpeg', 1, 6000, 5000, 5600, 4500, '2019-12-14 08:28:56', '2019-12-15 03:51:43', NULL);
 
 -- --------------------------------------------------------
 
@@ -733,8 +802,8 @@ CREATE TABLE `product_top_ten` (
 INSERT INTO `product_top_ten` (`product_id`, `top_ten_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 1, '2019-12-08 08:54:45', '2019-12-08 08:54:45', NULL),
 (2, 1, '2019-12-08 08:54:45', '2019-12-08 08:54:45', NULL),
-(1, 2, '2019-12-10 02:39:04', '2019-12-10 02:39:04', NULL),
-(2, 2, '2019-12-10 02:39:04', '2019-12-10 02:39:04', NULL);
+(3, 2, '2019-12-14 08:35:59', '2019-12-14 08:35:59', NULL),
+(4, 2, '2019-12-14 08:35:59', '2019-12-14 08:35:59', NULL);
 
 -- --------------------------------------------------------
 
@@ -799,7 +868,9 @@ INSERT INTO `specifications` (`id`, `title`, `parent_id`, `order`, `created_at`,
 (9, 'Rear Camera', 4, 0, '2019-12-07 05:19:16', '2019-12-07 05:19:16', NULL),
 (10, 'Front Camera', 4, 0, '2019-12-07 05:19:32', '2019-12-07 05:19:32', NULL),
 (11, 'Capacity', 5, 0, '2019-12-07 05:19:53', '2019-12-07 05:19:53', NULL),
-(13, NULL, 0, 0, '2019-12-07 23:10:35', '2019-12-07 23:10:35', NULL);
+(13, NULL, 0, 0, '2019-12-07 23:10:35', '2019-12-15 05:09:15', '2019-12-15 05:09:15'),
+(14, 'Type', 0, 0, '2019-12-15 05:09:05', '2019-12-15 05:09:05', NULL),
+(15, 'Test', 14, 0, '2019-12-15 05:10:02', '2019-12-15 05:10:02', NULL);
 
 -- --------------------------------------------------------
 
@@ -860,15 +931,8 @@ CREATE TABLE `toptens` (
 --
 
 INSERT INTO `toptens` (`id`, `title`, `alias`, `description`, `content_id`, `category_id`, `author_id`, `language_id`, `image`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'HUAWEI MATE 30 PRO 5G 256GB', 'huawei-mate-30-pro-5G-256GB', '<p>Huawei Mate 30 Pro 5G 256GB is announced to be launched in November 2019 &amp; will run on Android 10 OS. The Smartphone will be available in more than three color options i.e.Black, Space Silver, Cosmic Purple, Emerald Green, Orange, Forest Green &amp; will also have a built in fingerprint sensor as the primary security feature, along with the host of connectivity options in terms of 3G, 4G, GPS, Wifi Bluetooth capabilities. The phone will come with 256GB of internal storage.</p>\r\n\r\n<p>The Smartphone will be powered by 2.86 GHz Octa core HiSilicon Kirin 990 (7 nm+) Processor. A 8 GB of RAM will ensure phone runs smoothly even the most memory intensive applications &amp; show no signs of lag. 256GB of internal storage will be open for expansion upto 256 GB via a microSD card.</p>\r\n\r\n<p>The Phone will come with a powerful 4500 mAh battery to support it&#39;s 6.53 inch screen with OLED display having a resolution of 1176 X 2400 at 409 ppi. The screen is to be protected by a durable Scratch Resistant glass.</p>\r\n\r\n<p>Huawei Mate 30 Pro 5G 256GB will boast of dual front camera of 32 + 3D TOF megapixel and dual rear Camera of 40 + 8 + 40 + 3D TOF megapixel. The Smartphone will have a low camera aperture of f/1.6. It will support Face Detection and high dynamic range(HDR) imaging as well.</p>', 1, 1, 1, 1, 'image/ca4f9da7af4d6e36f0d3d58f26113de3.jpeg', 1, '2019-12-08 14:24:45', '2019-12-10 11:18:25', NULL),
-(2, 'BEST ANDROID MOBILE PHONES IN INDIA', 'best-android-mobile-phones-in-india', '<p>Google&rsquo;s Android operating system accounts for a vast majority in today&rsquo;s smartphone market. The purpose of Android was to create an open eco-system of devices, and as a result, we have a large number of smartphones that could easily be considered as the best android phones in India in 2019. These smartphones now come with with 6GB-10GB of DDR4 RAM, equivalent to the RAM available on a normal laptop. While you might still be using a Full HD television at home, the screen resolution on top tier phones has moved up to 2K, and in some cases, even 4K. The camera quality has also improved massively and is steadily progressing with each new smartphone. There was never a better time to be a smartphone buyer. With so many options to go through, we have curated a list of smartphones, each of which could easily be considered as the best Android Mobile in India. These smartphones offer the right mix of performance and features. Click on each of the recommended top 10 mobile phones to read their detailed reviews, and get more information.</p>', 1, 1, 1, 1, 'image/acbb14e7928f82697010ba059e7dbbab.jpeg', 1, '2019-12-10 08:09:04', '2019-12-10 11:18:57', NULL),
-(3, 'HUAWEI MATE 30 PRO 5G 256GB 3', 'huawei-mate-30-pro-5G-256GB-3', '<p>Huawei Mate 30 Pro 5G 256GB is announced to be launched in November 2019 &amp; will run on Android 10 OS. The Smartphone will be available in more than three color options i.e.Black, Space Silver, Cosmic Purple, Emerald Green, Orange, Forest Green &amp; will also have a built in fingerprint sensor as the primary security feature, along with the host of connectivity options in terms of 3G, 4G, GPS, Wifi Bluetooth capabilities. The phone will come with 256GB of internal storage.</p>\r\n\r\n<p>The Smartphone will be powered by 2.86 GHz Octa core HiSilicon Kirin 990 (7 nm+) Processor. A 8 GB of RAM will ensure phone runs smoothly even the most memory intensive applications &amp; show no signs of lag. 256GB of internal storage will be open for expansion upto 256 GB via a microSD card.</p>\r\n\r\n<p>The Phone will come with a powerful 4500 mAh battery to support it&#39;s 6.53 inch screen with OLED display having a resolution of 1176 X 2400 at 409 ppi. The screen is to be protected by a durable Scratch Resistant glass.</p>\r\n\r\n<p>Huawei Mate 30 Pro 5G 256GB will boast of dual front camera of 32 + 3D TOF megapixel and dual rear Camera of 40 + 8 + 40 + 3D TOF megapixel. The Smartphone will have a low camera aperture of f/1.6. It will support Face Detection and high dynamic range(HDR) imaging as well.</p>', 1, 1, 1, 1, 'image/ca4f9da7af4d6e36f0d3d58f26113de3.jpeg', 1, '2019-12-08 14:24:45', '2019-12-10 11:18:25', NULL),
-(4, 'HUAWEI MATE 30 PRO 5G 256GB 4', 'huawei-mate-30-pro-5G-256GB-4', '<p>Huawei Mate 30 Pro 5G 256GB is announced to be launched in November 2019 &amp; will run on Android 10 OS. The Smartphone will be available in more than three color options i.e.Black, Space Silver, Cosmic Purple, Emerald Green, Orange, Forest Green &amp; will also have a built in fingerprint sensor as the primary security feature, along with the host of connectivity options in terms of 3G, 4G, GPS, Wifi Bluetooth capabilities. The phone will come with 256GB of internal storage.</p>\r\n\r\n<p>The Smartphone will be powered by 2.86 GHz Octa core HiSilicon Kirin 990 (7 nm+) Processor. A 8 GB of RAM will ensure phone runs smoothly even the most memory intensive applications &amp; show no signs of lag. 256GB of internal storage will be open for expansion upto 256 GB via a microSD card.</p>\r\n\r\n<p>The Phone will come with a powerful 4500 mAh battery to support it&#39;s 6.53 inch screen with OLED display having a resolution of 1176 X 2400 at 409 ppi. The screen is to be protected by a durable Scratch Resistant glass.</p>\r\n\r\n<p>Huawei Mate 30 Pro 5G 256GB will boast of dual front camera of 32 + 3D TOF megapixel and dual rear Camera of 40 + 8 + 40 + 3D TOF megapixel. The Smartphone will have a low camera aperture of f/1.6. It will support Face Detection and high dynamic range(HDR) imaging as well.</p>', 1, 1, 1, 1, 'image/ca4f9da7af4d6e36f0d3d58f26113de3.jpeg', 1, '2019-12-08 14:24:45', '2019-12-10 11:18:25', NULL),
-(5, 'HUAWEI MATE 30 PRO 5G 256GB 5', 'huawei-mate-30-pro-5G-256GB-5', '<p>Huawei Mate 30 Pro 5G 256GB is announced to be launched in November 2019 &amp; will run on Android 10 OS. The Smartphone will be available in more than three color options i.e.Black, Space Silver, Cosmic Purple, Emerald Green, Orange, Forest Green &amp; will also have a built in fingerprint sensor as the primary security feature, along with the host of connectivity options in terms of 3G, 4G, GPS, Wifi Bluetooth capabilities. The phone will come with 256GB of internal storage.</p>\r\n\r\n<p>The Smartphone will be powered by 2.86 GHz Octa core HiSilicon Kirin 990 (7 nm+) Processor. A 8 GB of RAM will ensure phone runs smoothly even the most memory intensive applications &amp; show no signs of lag. 256GB of internal storage will be open for expansion upto 256 GB via a microSD card.</p>\r\n\r\n<p>The Phone will come with a powerful 4500 mAh battery to support it&#39;s 6.53 inch screen with OLED display having a resolution of 1176 X 2400 at 409 ppi. The screen is to be protected by a durable Scratch Resistant glass.</p>\r\n\r\n<p>Huawei Mate 30 Pro 5G 256GB will boast of dual front camera of 32 + 3D TOF megapixel and dual rear Camera of 40 + 8 + 40 + 3D TOF megapixel. The Smartphone will have a low camera aperture of f/1.6. It will support Face Detection and high dynamic range(HDR) imaging as well.</p>', 1, 1, 1, 1, 'image/ca4f9da7af4d6e36f0d3d58f26113de3.jpeg', 1, '2019-12-08 14:24:45', '2019-12-10 11:18:25', NULL),
-(6, 'HUAWEI MATE 30 PRO 5G 256GB 6', 'huawei-mate-30-pro-5G-256GB-6', '<p>Huawei Mate 30 Pro 5G 256GB is announced to be launched in November 2019 &amp; will run on Android 10 OS. The Smartphone will be available in more than three color options i.e.Black, Space Silver, Cosmic Purple, Emerald Green, Orange, Forest Green &amp; will also have a built in fingerprint sensor as the primary security feature, along with the host of connectivity options in terms of 3G, 4G, GPS, Wifi Bluetooth capabilities. The phone will come with 256GB of internal storage.</p>\r\n\r\n<p>The Smartphone will be powered by 2.86 GHz Octa core HiSilicon Kirin 990 (7 nm+) Processor. A 8 GB of RAM will ensure phone runs smoothly even the most memory intensive applications &amp; show no signs of lag. 256GB of internal storage will be open for expansion upto 256 GB via a microSD card.</p>\r\n\r\n<p>The Phone will come with a powerful 4500 mAh battery to support it&#39;s 6.53 inch screen with OLED display having a resolution of 1176 X 2400 at 409 ppi. The screen is to be protected by a durable Scratch Resistant glass.</p>\r\n\r\n<p>Huawei Mate 30 Pro 5G 256GB will boast of dual front camera of 32 + 3D TOF megapixel and dual rear Camera of 40 + 8 + 40 + 3D TOF megapixel. The Smartphone will have a low camera aperture of f/1.6. It will support Face Detection and high dynamic range(HDR) imaging as well.</p>', 1, 1, 1, 1, 'image/ca4f9da7af4d6e36f0d3d58f26113de3.jpeg', 1, '2019-12-08 14:24:45', '2019-12-10 11:18:25', NULL),
-(7, 'HUAWEI MATE 30 PRO 5G 256GB 7', 'huawei-mate-30-pro-5G-256GB-7', '<p>Huawei Mate 30 Pro 5G 256GB is announced to be launched in November 2019 &amp; will run on Android 10 OS. The Smartphone will be available in more than three color options i.e.Black, Space Silver, Cosmic Purple, Emerald Green, Orange, Forest Green &amp; will also have a built in fingerprint sensor as the primary security feature, along with the host of connectivity options in terms of 3G, 4G, GPS, Wifi Bluetooth capabilities. The phone will come with 256GB of internal storage.</p>\r\n\r\n<p>The Smartphone will be powered by 2.86 GHz Octa core HiSilicon Kirin 990 (7 nm+) Processor. A 8 GB of RAM will ensure phone runs smoothly even the most memory intensive applications &amp; show no signs of lag. 256GB of internal storage will be open for expansion upto 256 GB via a microSD card.</p>\r\n\r\n<p>The Phone will come with a powerful 4500 mAh battery to support it&#39;s 6.53 inch screen with OLED display having a resolution of 1176 X 2400 at 409 ppi. The screen is to be protected by a durable Scratch Resistant glass.</p>\r\n\r\n<p>Huawei Mate 30 Pro 5G 256GB will boast of dual front camera of 32 + 3D TOF megapixel and dual rear Camera of 40 + 8 + 40 + 3D TOF megapixel. The Smartphone will have a low camera aperture of f/1.6. It will support Face Detection and high dynamic range(HDR) imaging as well.</p>', 1, 1, 1, 1, 'image/ca4f9da7af4d6e36f0d3d58f26113de3.jpeg', 1, '2019-12-08 14:24:45', '2019-12-10 11:18:25', NULL),
-(8, 'HUAWEI MATE 30 PRO 5G 256GB 8', 'huawei-mate-30-pro-5G-256GB-8', '<p>Huawei Mate 30 Pro 5G 256GB is announced to be launched in November 2019 &amp; will run on Android 10 OS. The Smartphone will be available in more than three color options i.e.Black, Space Silver, Cosmic Purple, Emerald Green, Orange, Forest Green &amp; will also have a built in fingerprint sensor as the primary security feature, along with the host of connectivity options in terms of 3G, 4G, GPS, Wifi Bluetooth capabilities. The phone will come with 256GB of internal storage.</p>\r\n\r\n<p>The Smartphone will be powered by 2.86 GHz Octa core HiSilicon Kirin 990 (7 nm+) Processor. A 8 GB of RAM will ensure phone runs smoothly even the most memory intensive applications &amp; show no signs of lag. 256GB of internal storage will be open for expansion upto 256 GB via a microSD card.</p>\r\n\r\n<p>The Phone will come with a powerful 4500 mAh battery to support it&#39;s 6.53 inch screen with OLED display having a resolution of 1176 X 2400 at 409 ppi. The screen is to be protected by a durable Scratch Resistant glass.</p>\r\n\r\n<p>Huawei Mate 30 Pro 5G 256GB will boast of dual front camera of 32 + 3D TOF megapixel and dual rear Camera of 40 + 8 + 40 + 3D TOF megapixel. The Smartphone will have a low camera aperture of f/1.6. It will support Face Detection and high dynamic range(HDR) imaging as well.</p>', 1, 1, 1, 1, 'image/ca4f9da7af4d6e36f0d3d58f26113de3.jpeg', 1, '2019-12-08 14:24:45', '2019-12-10 11:18:25', NULL),
-(9, 'HUAWEI MATE 30 PRO 5G 256GB 9', 'huawei-mate-30-pro-5G-256GB-9', '<p>Huawei Mate 30 Pro 5G 256GB is announced to be launched in November 2019 &amp; will run on Android 10 OS. The Smartphone will be available in more than three color options i.e.Black, Space Silver, Cosmic Purple, Emerald Green, Orange, Forest Green &amp; will also have a built in fingerprint sensor as the primary security feature, along with the host of connectivity options in terms of 3G, 4G, GPS, Wifi Bluetooth capabilities. The phone will come with 256GB of internal storage.</p>\r\n\r\n<p>The Smartphone will be powered by 2.86 GHz Octa core HiSilicon Kirin 990 (7 nm+) Processor. A 8 GB of RAM will ensure phone runs smoothly even the most memory intensive applications &amp; show no signs of lag. 256GB of internal storage will be open for expansion upto 256 GB via a microSD card.</p>\r\n\r\n<p>The Phone will come with a powerful 4500 mAh battery to support it&#39;s 6.53 inch screen with OLED display having a resolution of 1176 X 2400 at 409 ppi. The screen is to be protected by a durable Scratch Resistant glass.</p>\r\n\r\n<p>Huawei Mate 30 Pro 5G 256GB will boast of dual front camera of 32 + 3D TOF megapixel and dual rear Camera of 40 + 8 + 40 + 3D TOF megapixel. The Smartphone will have a low camera aperture of f/1.6. It will support Face Detection and high dynamic range(HDR) imaging as well.</p>', 1, 1, 1, 1, 'image/ca4f9da7af4d6e36f0d3d58f26113de3.jpeg', 1, '2019-12-08 14:24:45', '2019-12-10 11:18:25', NULL);
+(1, 'BEST 8 GB RAM MOBILE PHONES', 'best-8-gb-ram-mobile-phones', '<p>8 GB RAM seems to be the upgrade of the year and we believe most of you have already bought one of the latest 8 GB RAM smartphones. However, if you are still looking for a 8 GB RAM mobiles and cannot decide which one to buy, here are your options. We list down the best 8 GB RAM phones in India, which offer the right combination of connectivity and performance. These 8 GB RAM mobile phones offer the right balance between performance and build quality.</p>', 1, 1, 1, 1, 'image/0b242bcb9f513a520a4cea6220c11133.jpeg', 1, '2019-12-14 14:04:31', '2019-12-15 08:40:48', NULL),
+(2, 'BEST PHONES UNDER 5000 IN INDIA', 'top-10-best-phone-under-5000-rs-in-india', '<p>While a smartphone under Rs 5000 won&#39;t have all the features of a flagship, there are plenty of options to choose from if you have a tight budget of Rs 5,000. This year, the most exciting features in best phones under 5000 is the taller 18:9 display and 4G connectivity. Google&#39;s Android Oreo (Go Edition) phones have also started coming in that price range which makes budget Android phones run smoother. Here are the best phones you can buy under Rs 5,000.</p>', 1, 1, 1, 1, NULL, 1, '2019-12-14 14:05:59', '2019-12-14 14:05:59', NULL);
 
 -- --------------------------------------------------------
 
@@ -1099,7 +1163,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `add_specifications`
 --
 ALTER TABLE `add_specifications`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 --
 -- AUTO_INCREMENT for table `admin_menu`
 --
@@ -1149,12 +1213,12 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `compare_product`
 --
 ALTER TABLE `compare_product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `comparisions`
 --
 ALTER TABLE `comparisions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `content_types`
 --
@@ -1179,7 +1243,7 @@ ALTER TABLE `menus`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `news_letters`
 --
@@ -1189,7 +1253,7 @@ ALTER TABLE `news_letters`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `second_modules`
 --
@@ -1199,7 +1263,7 @@ ALTER TABLE `second_modules`
 -- AUTO_INCREMENT for table `specifications`
 --
 ALTER TABLE `specifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `third_modules`
 --
@@ -1209,7 +1273,7 @@ ALTER TABLE `third_modules`
 -- AUTO_INCREMENT for table `toptens`
 --
 ALTER TABLE `toptens`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `users`
 --
