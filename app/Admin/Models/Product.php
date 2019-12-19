@@ -49,4 +49,6 @@ class Product extends Model
         return $this->belongsToMany(Comparision::class,'compare_product','compare_id','product_id')->withTimestamps()->withPivot('deleted_at');
     }
 
+
+
 }

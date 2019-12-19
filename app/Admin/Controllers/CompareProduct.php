@@ -46,6 +46,6 @@ class CompareProduct extends Model
     
     public function product()
     {
-        return $this->hasOne(Product::class, $this->attributes['products']);
+        return $this->hasOne(Product::class,'id', 'products');
     }
 }
