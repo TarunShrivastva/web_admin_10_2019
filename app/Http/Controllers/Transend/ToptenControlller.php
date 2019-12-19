@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Transend;
 use Illuminate\Http\Request;
 use App\Admin\Models\TopTen;
 use App\Admin\Models\Comparision;
-use App\Admin\Models\Article;
+use App\Admin\Models\CompareProduct;
 use App\Http\Controllers\Controller;
 
 class ToptenController extends Controller
@@ -51,6 +51,7 @@ class ToptenController extends Controller
     public function show($alias, $id)
     {
         $compares = Comparision::where('status','1')->where('id','=',$id)->get();
+        dd($compares[0]->compareproduct[0]->products[0]->product);
         $data = $compArray = $specification1 = $specification2 = array();
         foreach ($compares as $key => $compare){
                 $specsProductOne = $specsProductTwo = $keyArrayOne = $keyArrayTwo = array();

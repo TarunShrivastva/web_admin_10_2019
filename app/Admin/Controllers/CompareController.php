@@ -103,8 +103,10 @@ class CompareController extends Controller
             $form->image('image','Image')->uniqueName()->rules('required|mimes:jpg,jpeg,png');
             $form->select('top_ten_id','topten')->options(TopTen::all()->pluck('title', 'id'))->rules('required');
             $form->switch('status','Status')->rules('required');
-            $form->multipleSelect('product','Compared Product')->options(Product::all()->pluck('title', 'id'))->rules('required');
-
+            $form->hasMany('compareproduct', function (Form\NestedForm $form){
+                $form->multipleSelect('products')->options(Product::all()->pluck('title', 'id'))->rules('required');
+            });
+                
             $form->display('created_at', 'Created At');
             $form->display('updated_at', 'Updated At');
         });
