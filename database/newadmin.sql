@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 15, 2019 at 07:07 PM
+-- Generation Time: Dec 19, 2019 at 08:35 PM
 -- Server version: 5.7.28-0ubuntu0.16.04.2
 -- PHP Version: 7.2.23-1+ubuntu16.04.1+deb.sury.org+1
 
@@ -527,25 +527,28 @@ CREATE TABLE `comments` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `compare_product`
+-- Table structure for table `compare_products`
 --
 
-CREATE TABLE `compare_product` (
+CREATE TABLE `compare_products` (
   `id` int(11) NOT NULL,
   `compare_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
+  `products` varchar(255) NOT NULL,
+  `status` tinyint(1) DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `compare_product`
+-- Dumping data for table `compare_products`
 --
 
-INSERT INTO `compare_product` (`id`, `compare_id`, `product_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 1, '2019-12-14 08:54:38', '2019-12-14 08:54:38', NULL),
-(2, 1, 2, '2019-12-14 08:54:38', '2019-12-14 08:54:38', NULL);
+INSERT INTO `compare_products` (`id`, `compare_id`, `products`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, '3', 1, '2019-12-19 07:51:51', '2019-12-19 07:51:51', NULL),
+(2, 1, '3,4', 0, '2019-12-19 07:51:51', '2019-12-19 07:51:51', NULL),
+(3, 2, '5,6', 0, '2019-12-19 08:27:29', '2019-12-19 08:27:29', NULL),
+(4, 2, '3,5', 0, '2019-12-19 08:27:29', '2019-12-19 08:27:29', NULL);
 
 -- --------------------------------------------------------
 
@@ -570,7 +573,8 @@ CREATE TABLE `comparisions` (
 --
 
 INSERT INTO `comparisions` (`id`, `title`, `alias`, `image`, `top_ten_id`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'BEST PHONES UNDER 5000 IN INDIA', 'best-phones-under-5000-in-india', 'image/289a2a077fd7f6ed4244bf4381b73101.jpeg', 1, 1, '2019-12-14 08:54:38', '2019-12-14 11:48:45', NULL);
+(1, 'dsadas', 'dadsa', 'image/5bb24b043cf0daf22f23f8f539a68a28.jpeg', 1, 1, '2019-12-19 07:51:51', '2019-12-19 07:51:51', NULL),
+(2, 'dasd', 'dasdas', 'image/5fc6983c03de401f4f08d274a4d69400.jpeg', 1, 1, '2019-12-19 08:27:29', '2019-12-19 08:27:29', NULL);
 
 -- --------------------------------------------------------
 
@@ -1054,9 +1058,9 @@ ALTER TABLE `comments`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `compare_product`
+-- Indexes for table `compare_products`
 --
-ALTER TABLE `compare_product`
+ALTER TABLE `compare_products`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1210,15 +1214,15 @@ ALTER TABLE `categories`
 ALTER TABLE `comments`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `compare_product`
+-- AUTO_INCREMENT for table `compare_products`
 --
-ALTER TABLE `compare_product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `compare_products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `comparisions`
 --
 ALTER TABLE `comparisions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `content_types`
 --
