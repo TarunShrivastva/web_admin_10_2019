@@ -104,7 +104,9 @@ class CompareController extends Controller
             $form->select('top_ten_id','topten')->options(TopTen::all()->pluck('title', 'id'))->rules('required');
             $form->switch('status','Status')->rules('required');
             $form->hasMany('compareproduct', function (Form\NestedForm $form){
-                $form->multipleSelect('products')->options(Product::all()->pluck('title', 'id'))->rules('required');
+                $form->select('product1')->options(Product::all()->pluck('title', 'id'))->rules('required');
+                $form->select('product2')->options(Product::all()->pluck('title', 'id'))->rules('required');
+                $form->switch('status','Status')->rules('required');
             });
                 
             $form->display('created_at', 'Created At');

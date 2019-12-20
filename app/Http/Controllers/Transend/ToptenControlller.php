@@ -51,54 +51,56 @@ class ToptenController extends Controller
     public function show($alias, $id)
     {
         $compares = Comparision::where('status','1')->where('id','=',$id)->whereHas('compareproduct', function($q){
-                $q->where('status','1')->whereHas('product', function($q){
-                    $q->where('status','1');
-                })->with('product');
-            })->with('compareproduct')->get();
-        dd($compares);
+                $q->where('status','1');
+                // ->whereHas('productOne', function($q1){
+                //     $q1->where('products.status','1');
+                // });
+            })->with('compareproduct.productOne')->get();
+        
         $data = $compArray = $specification1 = $specification2 = array();
         foreach ($compares as $key => $compare){
-                $specsProductOne = $specsProductTwo = $keyArrayOne = $keyArrayTwo = array();
-                foreach($compare->product[0]->add_specification as $key1 => $value1){
-                    array_push($specsProductOne, [$value1->specification->title => $value1->value]);
-                }
-
-                foreach($compare->product[1]->add_specification as $key2 => $value2){
-                    array_push($specsProductTwo, [ $value2->specification->title => $value2->value]);
-                }
                 
-                foreach ($specsProductOne as $product){
-                    $key = array_keys($product);
-                    array_push($keyArrayOne, $key[0]);
-                }
+                // $specsProductOne = $specsProductTwo = $keyArrayOne = $keyArrayTwo = array();
+                // foreach($compare->product[0]->add_specification as $key1 => $value1){
+                //     array_push($specsProductOne, [$value1->specification->title => $value1->value]);
+                // }
 
-                foreach ($specsProductTwo as $product){
-                    $key = array_keys($product);
-                    array_push($keyArrayTwo, $key[0]);
-                }
+                // foreach($compare->product[1]->add_specification as $key2 => $value2){
+                //     array_push($specsProductTwo, [ $value2->specification->title => $value2->value]);
+                // }
                 
-                $keyArrayOne = array_unique($keyArrayOne);
-                $keyArrayTwo = array_unique($keyArrayTwo);
+                // foreach ($specsProductOne as $product){
+                //     $key = array_keys($product);
+                //     array_push($keyArrayOne, $key[0]);
+                // }
 
-                if(count($specsProductOne) >= count($specsProductTwo)){
-                    foreach ($keyArrayOne as $key => $value){
-                        $data = array_search($value,$keyArrayTwo);
-                        if($data !== false){
-                            $specsProductOne[$data] = array($value, $specsProductOne[$data][$value],$specsProductTwo[$data][$value]); 
-                        }else{
-                            $specsProductOne[$key] = array($value, $specsProductOne[$key][$value], 'N/A'); 
-                        }
-                    }
-                }else{
-                    foreach ($keyArrayTwo as $key => $value){
-                        $data = array_search($value,$keyArrayOne);
-                        if($data !== false){
-                            $specsProductOne[$data] = array($value, $specsProductOne[$data][$value], $specsProductTwo[$data][$value]);
-                        }else{
-                            $specsProductOne[$key] = array($value, 'N/A', $specsProductTwo[$key][$value]); 
-                        }
-                    }    
-                }
+                // foreach ($specsProductTwo as $product){
+                //     $key = array_keys($product);
+                //     array_push($keyArrayTwo, $key[0]);
+                // }
+                
+                // $keyArrayOne = array_unique($keyArrayOne);
+                // $keyArrayTwo = array_unique($keyArrayTwo);
+
+                // if(count($specsProductOne) >= count($specsProductTwo)){
+                //     foreach ($keyArrayOne as $key => $value){
+                //         $data = array_search($value,$keyArrayTwo);
+                //         if($data !== false){
+                //             $specsProductOne[$data] = array($value, $specsProductOne[$data][$value],$specsProductTwo[$data][$value]); 
+                //         }else{
+                //             $specsProductOne[$key] = array($value, $specsProductOne[$key][$value], 'N/A'); 
+                //         }
+                //     }
+                // }else{
+                //     foreach ($keyArrayTwo as $key => $value){
+                //         $data = array_search($value,$keyArrayOne);
+                //         if($data !== false){
+                //             $specsProductOne[$data] = array($value, $specsProductOne[$data][$value], $specsProductTwo[$data][$value]);
+                //         }else{
+                //             $specsProductOne[$key] = array($value, 'N/A', $specsProductTwo[$key][$value]); 
+                //         }
+                //     }    
+                // }
 
             $data = [   'object' => $compares,
                         'title' => [$compare->product[0]->title, $compare->product[1]->title],

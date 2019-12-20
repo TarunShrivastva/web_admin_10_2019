@@ -49,4 +49,12 @@ class Comparision extends Model
         return $this->belongsTo(TopTen::class,'id');
     }
 
+    /**
+     * Get the comments for the blog post.
+     */
+    public function productOne()
+    {
+        return $this->hasOne(Product::class,'id','id');
+    }
+
 }
