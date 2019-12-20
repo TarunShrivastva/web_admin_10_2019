@@ -51,12 +51,12 @@ class ToptenController extends Controller
     public function show($alias, $id)
     {
         $compares = Comparision::where('status','1')->where('id','=',$id)->whereHas('compareproduct', function($q){
-                $q->where('status','1');
-                // ->whereHas('productOne', function($q1){
-                //     $q1->where('products.status','1');
-                // });
-            })->with('compareproduct.productOne')->get();
-        
+                $q->where('status','1')
+                ->whereHas('productOne', function($q1){
+                    $q1->where('products.status','1');
+                });
+            })->with('compareproduct.productOne.add_specification.specification')->get();
+        dd($compares);
         $data = $compArray = $specification1 = $specification2 = array();
         foreach ($compares as $key => $compare){
                 
@@ -102,12 +102,12 @@ class ToptenController extends Controller
                 //     }    
                 // }
 
-            $data = [   'object' => $compares,
-                        'title' => [$compare->product[0]->title, $compare->product[1]->title],
-                        'image'=> [$compare->product[0]->image, $compare->product[1]->image],
-                        'specifications' => $specsProductOne
-                    ];
-            array_push($compArray, $data);
+            // $data = [   'object' => $compares,
+            //             'title' => [$compare->product[0]->title, $compare->product[1]->title],
+            //             'image'=> [$compare->product[0]->image, $compare->product[1]->image],
+            //             'specifications' => $specsProductOne
+            //         ];
+            // array_push($compArray, $data);
         }
         return view('transend.top-products.toptenCompare',compact('compArray'));
     }
