@@ -7,7 +7,7 @@
                 @foreach($compArray as $key => $compare)
                 <table align="center" class="table-n" style="margin-bottom: 15px">
                     <tr>
-                        <td colspan="3" align="center"><h2>{{ $compare['object'][$key]->title }}</h4></td>
+                        <td colspan="3" align="center"><h2>{{ $compare['object']->title }}</h4></td>
                     </tr>
                     <tr>
                         <td align="center" valign="top" class="hidden-xs"><strong>{{ $compare['title'][0] }}</strong><br><img src="{{ URL::to('upload/'. $compare['image'][0]) }}" width="150px"></td>
@@ -27,17 +27,17 @@
                                 @endforeach
                                 <tr>
                                     <td>
-                                        <div><img src="{{ URL::to('frontend/img/logo-1.jpg') }}" height="25px"> <span>{{ $compare['object'][0]->product[0]->paytm_price }}</span></div>
-                                        <div><img src="{{ URL::to('frontend/img/logo-2.jpg') }}" height="25px"> <span>{{ $compare['object'][0]->product[0]->flipkart_price }}</span></div>
-                                        <div><img src="{{ URL::to('frontend/img/logo-3.jpg') }}" height="25px"> <span>{{ $compare['object'][0]->product[0]->amazon_price }}</span></div>
-                                        <div><img src="{{ URL::to('frontend/img/logo-4.jpg') }}" height="25px"> <span>{{ $compare['object'][0]->product[0]->tata_cliq_price }}</span></div>
+                                        <div><img src="{{ URL::to('frontend/img/logo-1.jpg') }}" height="25px"> <span>{{ $compare['paytm'][0] }}</span></div>
+                                        <div><img src="{{ URL::to('frontend/img/logo-2.jpg') }}" height="25px"> <span>{{ $compare['flipkart'][0] }}</span></div>
+                                        <div><img src="{{ URL::to('frontend/img/logo-3.jpg') }}" height="25px"> <span>{{ $compare['amazon'][0] }}</span></div>
+                                        <div><img src="{{ URL::to('frontend/img/logo-4.jpg') }}" height="25px"> <span>{{ $compare['tata_cliq'][0] }}</span></div>
                                     </td>
                                     <td align="center">Price</td>
                                     <td>
-                                        <div><img src="{{ URL::to('frontend/img/logo-1.jpg') }}" height="25px"> <span>{{ $compare['object'][0]->product[1]->paytm_price }}</span></div>
-                                        <div><img src="{{ URL::to('frontend/img/logo-2.jpg') }}" height="25px"> <span>{{ $compare['object'][0]->product[1]->flipkart_price }}</span></div>
-                                        <div><img src="{{ URL::to('frontend/img/logo-3.jpg') }}" height="25px"> <span>{{ $compare['object'][0]->product[1]->amazon_price }}</span></div>
-                                        <div><img src="{{ URL::to('frontend/img/logo-4.jpg') }}" height="25px"> <span>{{ $compare['object'][0]->product[1]->tata_cliq_price }}</span></div>
+                                        <div><img src="{{ URL::to('frontend/img/logo-1.jpg') }}" height="25px"> <span>{{ $compare['paytm'][1] }}</span></div>
+                                        <div><img src="{{ URL::to('frontend/img/logo-2.jpg') }}" height="25px"> <span>{{ $compare['flipkart'][1] }}</span></div>
+                                        <div><img src="{{ URL::to('frontend/img/logo-3.jpg') }}" height="25px"> <span>{{ $compare['amazon'][1] }}</span></div>
+                                        <div><img src="{{ URL::to('frontend/img/logo-4.jpg') }}" height="25px"> <span>{{ $compare['tata_cliq'][1] }}</span></div>
                                     </td>
                                 </tr>
                             </table>
