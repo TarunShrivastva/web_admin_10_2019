@@ -50,9 +50,11 @@ class ToptenController extends Controller
      */
     public function show($alias, $id)
     {
-        $compares = Comparision::where('status','1')->where('id','=',$id)->whereHas('compareproduct', function($q){
-                $q->where('compare_products.status','1');
-            })->with(['compareproduct.productOne.add_specification.specification','compareproduct.productTwo.add_specification.specification'])->get();
+        $compares = Comparision::where('status','1')->where('id','=',$id)->with(['compareproduct.productOne.add_specification.specification'=> function($query){
+                // $query->where('status', '1'); For last relation
+            },'compareproduct.productTwo.add_specification.specification' => function($query2){
+                // $query2->where('status', '1'); For last relation
+            }])->get();
         
         $actual_data = $compArray = array();
         foreach ($compares as $compare){
