@@ -176,7 +176,7 @@
                             <!-- Single Comments -->
                             <div class="single-comments d-flex">
                                 <div class="comments-thumbnail mr-15">
-                                    <amp-img src="images/30.jpg"  alt="lcomment" width="100" height="100" layout="responsive" sizes="(min-width: 569px) 40px, 40px"></amp-img>
+                                    <amp-img src="{{ URL::to('images/30.jpg') }}"  alt="lcomment" width="100" height="100" layout="responsive" sizes="(min-width: 569px) 40px, 40px"></amp-img>
                                 </div>
                                 <div class="comments-text">
                                     <a href="#">Jamie Smith <span>on</span> Facebook is offering facial recognition...</a>

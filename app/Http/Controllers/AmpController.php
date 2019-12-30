@@ -13,7 +13,7 @@ class AmpController extends Controller
      */
     public function index()
     {
-        return view('amp_layouts.master');
+        return view('transend.top-products-amp.toptenAmpCompare');
     }
 
     /**
