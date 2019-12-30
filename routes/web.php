@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::POST('newsletters','Transend\HomePageController@newsLetters')->name('news.letters');
 
 Route::group(['prefix' => 'hi' ], function () {	
+		Session::forget('previousUrl');
 		Route::GET('/','Transend\HomePageController@index');
 		Route::GET('/about','Transend\CategoryPageController@about');
 		Route::GET('/contact','Transend\CategoryPageController@contact');
@@ -32,7 +33,8 @@ Route::group(['prefix' => 'hi' ], function () {
 		Route::GET('{content}/{category}/{alias}-{id}','Transend\CategoryPageController@show')->where(['id' => '[0-9]+', 'alias' => '[a-z0-9,-]+']);
 	});
 
-Route::group(['prefix' => '' ], function () {	
+Route::group(['prefix' => '' ], function () {
+		Session::forget('previousUrl');
 		Route::GET('/','Frontend\HomePageController@index'); 
 		Route::GET('/about','Frontend\CategoryPageController@about');
 		Route::GET('/contact','Frontend\CategoryPageController@contact');
