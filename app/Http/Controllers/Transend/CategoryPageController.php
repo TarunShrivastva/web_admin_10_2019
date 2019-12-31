@@ -5,14 +5,17 @@ namespace App\Http\Controllers\Transend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App;
+use Auth;
+use MetaTag;
 use App\Admin\Models\Article;
 use App\Admin\Models\Contenttype as Content;
 use App\Admin\Models\Category;
 use App\Admin\Models\Language;
+use App\Admin\Models\Comment;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Lang;
 use Jenssegers\Agent\Agent;
-use MetaTag;
+
 
 class CategoryPageController extends Controller
 {
@@ -132,4 +135,19 @@ class CategoryPageController extends Controller
         return view('transend.contact');
     }
 
+    public function addComment(Request $request){
+        $data = $request->all();
+        unset($data['_token']);
+        if(isset(Auth::user()->id)){
+            $data['user_id'] = Auth::user()->id;
+            $data['status'] = 1;
+            $created = Comment::create($data);
+            if(empty($created)){
+                return redirect()->back()->withError(['comment'=>'Some Error occur in adding the comment']);
+            }
+        }else{
+            return redirect()->back()->withError(['comment'=> 'Please login First to Add Comment']);
+        }
+        return redirect()->back();
+    }
 }

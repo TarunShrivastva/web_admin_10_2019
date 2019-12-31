@@ -24,70 +24,93 @@
                             </div>
                 <!-- Comment Area Start -->
                 <div class="comment_area clearfix">
-                    <h5 class="title">3 Comments</h5>
+                    <h5 class="title">{{ count($articles->comments) }} Comments</h5>
                     <ol>
+                        @foreach($articles->comments as $comment)
                         <!-- Single Comment Area -->
                         <li class="single_comment_area">
                             <!-- Comment Content -->
                             <div class="comment-content d-flex">
                                 <!-- Comment Author -->
-                                <div class="comment-author">
+                                {{-- <div class="comment-author">
                                     <img src="img/bg-img/30.jpg" alt="author">
-                                </div>
+                                </div> --}}
                                 <!-- Comment Meta -->
                                 <div class="comment-meta">
-                                    <a href="#" class="post-author">Christian Williams</a>
-                                    <a href="#" class="post-date">April 15, 2018</a>
-                                    <p>Donec turpis erat, scelerisque id euismod sit amet, fermentum vel dolor. Nulla facilisi. Sed pellen tesque lectus et accu msan aliquam. Fusce lobortis cursus quam, id mattis sapien.</p>
+                                    <a href="#" class="post-author">{{ $comment->user->name }}</a>
+                                    <a href="#" class="post-date"></a>
+                                    {{ ($comment->created_at >= $comment->updated_at)?date('d-M-y', strtotime($comment->created_at)) : date('d-M-y', strtotime($comment->updated_at)) }}
+                                    <p>{{ $comment->comment }}</p>
                                 </div>
                             </div>
                         </li>
+                        @endforeach
                     </ol>
                 </div>
                 @if (!(Auth::check()))        
                     <div class="contact-form-area">    
                         <div class="post-a-comment-area section-padding-80-0">
-                            <h4>Leave a comment</h4>    
+                            <h4>Login For a comment</h4>    
                             <!-- Reply Form -->
                             <div class="contact-form-area">
-                                <form action="{{ route('register') }}" method="post">
+                                <form action="{{ route('login') }}" method="post">
                                     {{ csrf_field() }}
                                     <div class="row">
-                                        <div class="col-12 col-lg-6{{ $errors->has('name') ? ' has-error' : '' }}">
+                                        {{-- <div class="col-12 col-lg-6{{ $errors->has('name') ? ' has-error' : '' }}">
                                             <input type="text" class="form-control" id="name" placeholder="Name*" name="name" value="{{ old('name') }}">
                                             @if ($errors->has('name'))
                                                 <span class="help-block">
                                                     <p style="color:red">{{ $errors->first('name') }}</p>
                                                 </span>
                                             @endif
+                                        </div> --}}
+                                        <div class="col-12 col-lg-6{{ $errors->has('email') ? ' has-error' : '' }}">
+                                            <input type="email" class="form-control" id="email" placeholder="Email*" name="email" value="{{ old('email') }}">
+                                            @if ($errors->has('email'))
+                                                <span class="help-block">
+                                                    <p style="color:red">{{ $errors->first('email') }}</p>
+                                                </span>
+                                            @endif
                                         </div>
-                                    <div class="col-12 col-lg-6{{ $errors->has('email') ? ' has-error' : '' }}">
-                                        <input type="email" class="form-control" id="email" placeholder="Email*" name="email" value="{{ old('email') }}">
-                                        @if ($errors->has('email'))
-                                            <span class="help-block">
-                                                <p style="color:red">{{ $errors->first('email') }}</p>
-                                            </span>
-                                        @endif
-                                    </div>
-                                    <div class="col-12 col-lg-6{{ $errors->has('password') ? ' has-error' : '' }}">
-                                        <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
-                                        @if ($errors->has('password'))
-                                            <span class="help-block">
-                                                <p style="color:red">{{ $errors->first('password') }}</p>
-                                            </span>
-                                        @endif
-                                    </div>
-                                    <div class="col-12 col-lg-6">
-                                        <input type="password" class="form-control" id="password-confirm" name="password_confirmation" placeholder="Password confirmation">
-                                    </div>
+                                        <div class="col-12 col-lg-6{{ $errors->has('password') ? ' has-error' : '' }}">
+                                            <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
+                                            @if ($errors->has('password'))
+                                                <span class="help-block">
+                                                    <p style="color:red">{{ $errors->first('password') }}</p>
+                                                </span>
+                                            @endif
+                                        </div>
+                                        {{-- <div class="col-12 col-lg-6">
+                                            <input type="password" class="form-control" id="password-confirm" name="password_confirmation" placeholder="Password confirmation">
+                                        </div> --}}
                                         <div class="col-12 text-center">
-                                            <button class="btn newspaper-btn mt-30 w-100" type="submit">Submit Comment</button>
+                                            <button class="btn newspaper-btn mt-30 w-100" type="submit">Login To Comment</button>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
+                @else
+                    <div class="contact-form-area">    
+                        <div class="post-a-comment-area section-padding-80-0">
+                            <h4>Leave a comment</h4>    
+                            <!-- Reply Form -->
+                            <div class="contact-form-area">
+                                <form action="{{ route('add_comment',['article_id' => $articles->id]) }}" method="POST">
+                                    {{ csrf_field() }}
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <textarea name="comment" class="form-control" id="comment" cols="30" rows="10" placeholder="Comment"></textarea>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <button class="btn newspaper-btn mt-30 w-100" type="submit">Add Comment</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>                    
                 @endif    
                     </div>
                 </div>

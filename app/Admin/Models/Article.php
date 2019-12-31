@@ -59,4 +59,9 @@ class Article extends Model
     {
         return $this->belongsTo('App\Admin\Models\FirstModule','article_id');
     }    
+
+    public function comments()
+    {
+        return $this->hasMany('App\Admin\Models\Comment','article_id');
+    }
 }

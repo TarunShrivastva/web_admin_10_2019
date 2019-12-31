@@ -20,9 +20,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::POST('newsletters','Transend\HomePageController@newsLetters')->name('news.letters');
 
-Route::group(['prefix' => 'hi' ], function () {	
+Route::group(['prefix' => 'hi' ], function () {
 		Session::forget('previousUrl');
 		Route::GET('/','Transend\HomePageController@index');
+		Route::POST('/add-comment','Transend\CategoryPageController@addComment')->name('add_comment');
 		Route::GET('/about','Transend\CategoryPageController@about');
 		Route::GET('/contact','Transend\CategoryPageController@contact');
 		Route::GET('/top-products','Transend\ToptenController@index');

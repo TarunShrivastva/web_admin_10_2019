@@ -13,7 +13,7 @@ class Comment extends Model
      *
      * @var array
      */
-    protected $fillable = ['article_id' ,'user_id', 'comment'];
+    protected $fillable = ['article_id' ,'user_id', 'comment', 'status'];
 
     /**
      * The attributes that aren't mass assignable.
@@ -35,4 +35,20 @@ class Comment extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    /**
+     * Get the article that owns the comment.
+     */
+    public function article()
+    {
+        return $this->belongsTo('App\Admin\Models\Article');
+    }
+
+    /**
+     * Get the article that owns the comment.
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Admin\Models\User');
+    }
 }
