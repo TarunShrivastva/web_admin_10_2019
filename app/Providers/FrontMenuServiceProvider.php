@@ -14,7 +14,7 @@ class FrontMenuServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer(['frontend_layouts.nav','transend_layouts.nav'], 
+        View::composer(['frontend_layouts.nav','transend_layouts.nav','transend_layouts.amp_layouts.nav'], 
                 'App\Http\FrontMenu\FrontMenu');
     }
 

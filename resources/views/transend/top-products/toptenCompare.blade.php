@@ -7,7 +7,7 @@
                 @foreach($compArray as $key => $compare)
                 <table align="center" class="table-n" style="margin-bottom: 15px">
                     <tr>
-                        <td colspan="3" align="center"><h2>{{ $compare['object']->title }}</h4></td>
+                        <td colspan="3" align="center"><h2>{{ $compare['object']->title }}</h2></td>
                     </tr>
                     <tr>
                         <td align="center" valign="top" class="hidden-xs"><strong>{{ $compare['title'][0] }}</strong><br><img src="{{ URL::to('upload/'. $compare['image'][0]) }}" width="150px"></td>
