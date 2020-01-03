@@ -14,6 +14,7 @@ use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
+use Encore\Admin\Auth\Permission;
 
 class ArticleController extends Controller
 {
@@ -43,6 +44,7 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
+        Permission::check(['can-edit']);
         return Admin::content(function (Content $content) use ($id) {
 
             $content->header('Article');
@@ -59,6 +61,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
+        Permission::check(['can-add']);
         return Admin::content(function (Content $content) {
 
             $content->header('Article');
@@ -75,6 +78,7 @@ class ArticleController extends Controller
      */
     protected function grid()
     {
+        Permission::check(['can-view']);
         return Admin::grid(Article::class, function (Grid $grid) {
             $grid->model()->orderBy('id', 'DESC');
             $grid->id('ID')->sortable();
@@ -97,6 +101,16 @@ class ArticleController extends Controller
                 $filter->like('title');
                 $filter->between('created_at')->datetime();
                 $filter->useModal();
+            });
+            $grid->actions(function ($actions) {
+                if (!Admin::user()->can('can-delete')) {
+                    $actions->disableDelete();
+                }
+                if (!Admin::user()->can('can-edit')) {
+                    $actions->disableEdit();
+                }
+                // $actions->append('<a href=""><i class="fa fa-eye"></i></a>');
+                // $actions->prepend('<a href=""><i class="fa fa-paper-plane"></i></a>');
             });
         });
     }
