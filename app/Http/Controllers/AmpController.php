@@ -4,6 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Admin\Models\Comparision;
+use App;
+use App\Admin\Models\Article;
+use App\Admin\Models\Contenttype as Content;
+use App\Admin\Models\Category;
+use App\Admin\Models\Language;
+use App\Admin\Models\Comment;
+use Illuminate\Support\Str;
 
 class AmpController extends Controller
 {
@@ -162,5 +169,60 @@ class AmpController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function articleShow(Request $request)
+    {
+        $parameters = $request->route()->parameters();
+        foreach ($parameters as $key => $value) {
+            $$key = $value;
+        }
+        $locale = str_replace('/', '', $request->route()->getPrefix());
+        $alias = str_replace(" ","-",$alias);
+        $language = Language::where('alias',$locale)->get();
+        $content = Content::where('status','1')->where('url', '=', $content)->get();
+        if(count($content)==0){
+            return abort(404);
+        }
+        if($category != ''){
+            $category = Category::where('status','1')->where('url', '=', $category)->get();
+            if(count($category)==0){
+                return abort(404);   
+            }    
+        }
+        if(count($content)>0){
+            if($category !='' && count($category)>0){
+                $articles = Article::where('status','1')->where('category_id','=',$category[0]->id)->where('content_id','=',$content[0]->id)->where('language_id',$language[0]->id)->with('author','content','category','language')->findOrFail($id);
+            }
+        }
+
+        $recentArticles = $this->recentArticles($articles->id);
+        $trendingArticles = $this->trendingArticles($articles->id);
+
+        if(Str::lower($articles->alias) == Str::lower($alias)){
+            return view('transend.top-products-amp.articleAmp',compact('articles','recentArticles','trendingArticles'));
+        }else{
+            return redirect()->route('single-article',[$category, $subcategory, $articles->alias, $id]);
+        }
+    }
+
+    public function recentArticles($id=null){
+        $locale = App::getLocale();
+        $language = Language::where('alias',$locale)->get();
+        $recentArticles = Article::where('status','1')->where('language_id','=',$language[0]->id)->where('recent','1')->where('id','!=',$id)->take(5)->get();
+        return view('transend.content.category.recentArticle',compact('recentArticles'));
+    }
+
+    public function trendingArticles($id=null){
+        $locale = App::getLocale();
+        $language = Language::where('alias',$locale)->get();
+        $trendingArticles = Article::where('status','1')->where('language_id','=',$language[0]->id)->where('trending','1')->where('id','!=',$id)->take(5)->get();
+        return view('transend.content.category.trendingArticle',compact('trendingArticles'));
     }
 }

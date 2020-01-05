@@ -24,7 +24,7 @@ class CategoryPageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($content='', $category='', Request $request)
+    public function index(Request $request)
     {
         $agent = new Agent();
         $device = $agent->isMobile();
@@ -48,7 +48,7 @@ class CategoryPageController extends Controller
             return abort(404);
         }
         if(isset($category)){ 
-            if($category != ''){
+            if(!empty($category)){
                 $category = Category::where('status','1')->where('url', '=', $category)->get();
                 if(count($category) ==0){
                     return abort(404);   
@@ -59,7 +59,7 @@ class CategoryPageController extends Controller
         $recentArticles = $this->recentArticles();
         $trendingArticles = $this->trendingArticles();
         if(count($content) >0 ){
-             if($category !='' && count($category)>0){
+             if(isset($category) && !empty($category) && count($category)>0){
                 $articles = Article::where('status','1')->where('category_id','=',$category[0]->id)->where('content_id','=',$content[0]->id)->where('language_id','=',$language[0]->id)->with('author','content','category','language')->paginate(8);
                 return view('transend.content.category.subCatContent',compact('articles','recentArticles','trendingArticles','device'));    
             }else{

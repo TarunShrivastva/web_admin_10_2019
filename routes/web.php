@@ -30,6 +30,7 @@ Route::group(['prefix' => 'hi' ], function () {
 		Route::GET('/top-products/{alias}-{id}','Transend\ToptenController@show')->where(['id'=>'[0-9]+', 'alias'=>'[a-z0-9,-]+']);
 		Route::GET('/amp/top-products/alias-id','AmpController@index');
 		Route::GET('/amp/top-products/{alias}-{id}','AmpController@show')->where(['id'=>'[0-9]+', 'alias'=>'[a-z0-9,-]+']);
+		Route::GET('/amp/{content}/{category}/{alias}-{id}','AmpController@articleShow')->where(['id'=>'[0-9]+', 'alias'=>'[a-z0-9,-]+']);
 		Route::GET('{content}/{category?}','Transend\CategoryPageController@index');
 		Route::GET('{content}/{category}/{alias}-{id}','Transend\CategoryPageController@show')->where(['id' => '[0-9]+', 'alias' => '[a-z0-9,-]+']);
 	});

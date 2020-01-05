@@ -9,9 +9,7 @@
                                 <a href="#" class="post-title">
                                     <h6>{{ $articles->title }}</h6>
                                 </a>
-                                <div class="post-thumb">
-                                    <a href="#"><img src="{{ URL::to('upload/'. $articles->image) }}" alt=""></a>
-                                </div>
+                                <a href="#"><img src="{{ URL::to('upload/'. $articles->image) }}" alt=""></a>
                                 <div class="post-meta">
                                     <p class="post-author">By <a href="#">{{ $articles->author['author'] }}</a></p>
                                     <p class="post-excerp">{{ strip_tags($articles->description) }}</p>
@@ -47,7 +45,7 @@
                         @endforeach
                     </ol>
                 </div>
-                @if (!(Auth::check()))        
+                @if (!(Auth::check()))
                     <div class="contact-form-area">    
                         <div class="post-a-comment-area section-padding-80-0">
                             <h4>Login For a comment</h4>    
