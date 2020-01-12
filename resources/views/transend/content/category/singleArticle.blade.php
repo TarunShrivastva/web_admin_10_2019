@@ -5,13 +5,14 @@
                         <!-- Single Featured Post -->
                         <div class="single-blog-post featured-post mb-30">
                             <div class="post-data">
-                                <a href="#" class="post-catagory">{{ $articles->content['content_type_name'] }}</a>
+                                {{-- <a href="#" class="post-catagory">{{ $articles->content['content_type_name'] }}</a> --}}
                                 <a href="#" class="post-title">
                                     <h6>{{ $articles->title }}</h6>
                                 </a>
+                                <p class="post-author">By <a href="#">{{ $articles->author['author'] }}</a> | Published on {{ date('d-m-Y H:i:s', strtotime($articles->updated_at)) }}
+                                    IST</p>
                                 <a href="#"><img src="{{ URL::to('upload/'. $articles->image) }}" alt=""></a>
                                 <div class="post-meta">
-                                    <p class="post-author">By <a href="#">{{ $articles->author['author'] }}</a></p>
                                     <p class="post-excerp">{{ strip_tags($articles->description) }}</p>
                                     <!-- Post Like & Post Comment -->
                                     <div class="d-flex align-items-center">
@@ -117,7 +118,10 @@
 @section('side_section')
     <div class="col-12 col-lg-4">
         <div class="blog-sidebar-area">
-            {!! $recentArticles !!}
+            <div class="popular-news-widget mb-50">
+                <h3>5 {{ __('hi.Latest News') }}</h3> {{-- recent flag --}}
+                {!! $recentArticles !!}
+            </div>  
             <!-- Popular News Widget -->
             <div class="popular-news-widget mb-50">
                 <h3>5 {{ __('hi.Most Popular News') }}</h3>

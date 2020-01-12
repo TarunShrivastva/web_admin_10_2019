@@ -5,9 +5,15 @@
             <!-- Single Featured Post -->
             <div class="single-blog-post featured-post mb-30">
                 @foreach($compArray as $key => $compare)
+                <h2>{{ $compare['object']->title }}</h2>
+                <p>updated on {{ date('d-m-Y', strtotime($compare['object']->updated_at)) }}</p>
+                <div>
+                    <p>Leader Board Content</p>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                </div>
                 <table align="center" class="table-n" style="margin-bottom: 15px">
                     <tr>
-                        <td colspan="3" align="center"><h2>{{ $compare['object']->title }}</h2></td>
+                        <td colspan="3" align="center"><h2>{{-- $compare['object']->title --}}</h2></td>
                     </tr>
                     <tr>
                         <td align="center" valign="top" class="hidden-xs"><strong>{{ $compare['title'][0] }}</strong><br><img src="{{ URL::to('upload/'. $compare['image'][0]) }}" width="150px"></td>

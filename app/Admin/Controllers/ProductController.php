@@ -74,13 +74,17 @@ class ProductController extends Controller
     protected function grid()
     {
         return Admin::grid(Product::class, function (Grid $grid) {
-
+            $states = [
+                '1'  => ['value' => 1, 'text' => 'YES', 'color' => 'primary'],
+                '0' => ['value' => 0, 'text' => 'NO', 'color' => 'default'],
+            ];
             $grid->id('ID')->sortable();
             $grid->title('Product Title')->limit(20);
             $grid->add_specification('Specification Count')->display(function ($specs) {
                 $count = count($specs);
                 return "<span class='label label-warning'>{$count}</span>";
             });
+            $grid->status('status')->switch($states);
             $grid->created_at();
             $grid->updated_at();
         });

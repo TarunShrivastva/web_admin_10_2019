@@ -25,5 +25,7 @@ Route::group([
     $router->Resource('/specifications', SpecificationController::class);
     $router->Resource('/compares', CompareController::class);
     $router->get('/admin/new/panel/get_data', 'FirstController@getData');
+    $router->get('/admin/new/panel/get_data2', 'SecondController@getData');
+    $router->get('/admin/new/panel/get_data3', 'ThirdController@getData');
     $router->get('/get_child_specification', 'SpecificationController@getChildSpecifications');
 });

@@ -89,7 +89,7 @@ class FirstController extends Controller
             $form->action(admin_url('firstmodule'));
             $form->display('id', 'ID');
             $form->select('language_id','Language')->options(Language::all()->pluck('name', 'id'))->rules('required')->load('article_id','admin/new/panel/get_data');
-            $form->select('article_id')->options(Article::where('status','1')->pluck('title', 'id'))->rules('required');
+            $form->select('article_id')->options(Article::where('status','1')->where('popular','1')->pluck('title', 'id'))->rules('required');
             $form->switch('status','status')->rules('required');
             $form->display('created_at', trans('admin::lang.created_at'));
             $form->display('updated_at', trans('admin::lang.updated_at'));
@@ -104,12 +104,11 @@ class FirstController extends Controller
     public function getData()
     {
         $lang_id = request()->q;
-        $articles = Article::where('language_id', '=', $lang_id)->get()->toArray();
+        $articles = Article::where('language_id', '=', $lang_id)->where('status','1')->where('popular','1')->get()->toArray();
         $articleArr = array();
         foreach ($articles as $key => $value) {
             array_push($articleArr, ['id'=>$value['id'], 'text'=>$value['title']]);
         }
         return $articleArr;
     }
-    
 }

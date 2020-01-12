@@ -33,7 +33,7 @@ class SecondController extends Controller
                 $row->column(6, function (Column $column) {
                     $form = new \Encore\Admin\Widgets\Form();
                     $form->action(admin_url('secondmodule'));
-                    $form->select('language_id','Language')->options(Language::all()->pluck('name', 'id'))->rules('required')->load('article_id','/admin/get_data');
+                    $form->select('language_id','Language')->options(Language::all()->pluck('name', 'id'))->rules('required')->load('article_id','admin/new/panel/get_data2');
                     $form->select('article_id')->options(Article::where('language_id','=','1')->where('status','1')->pluck('alias','id'));
                     $form->switch('status','status');
                     $form->display('created_at', trans('admin::lang.created_at'));
@@ -89,12 +89,27 @@ class SecondController extends Controller
     {
         return SecondModule::form(function (Form $form) {
             $form->display('id', 'ID');
-            $form->select('language_id','Language')->options(Language::all()->pluck('name', 'id'))->rules('required')->load('article_id','/admin/new/panel/get_data');
-            $form->select('article_id')->options(Article::where('status','1')->pluck('alias','id'))->rules('required');
+            $form->select('language_id','Language')->options(Language::all()->pluck('name', 'id'))->rules('required')->load('article_id','/admin/new/panel/get_data2');
+            $form->select('article_id')->options(Article::where('status','1')->orderBy('created_at','DESC')->pluck('alias','id'))->rules('required');
             $form->switch('status','status')->rules('required');
             $form->display('created_at', trans('admin::lang.created_at'));
             $form->display('updated_at', trans('admin::lang.updated_at'));
         });
     }
-    
+
+    /**
+     * Load by ajax.
+     *
+     * @return $articles
+     */
+    public function getData()
+    {
+        $lang_id = request()->q;
+        $articles = Article::where('language_id', '=', $lang_id)->where('status','1')->orderBy('created_at','DESC')->take(10)->get()->toArray();
+        $articleArr = array();
+        foreach ($articles as $key => $value) {
+            array_push($articleArr, ['id'=>$value['id'], 'text'=>$value['title']]);
+        }
+        return $articleArr;
+    }
 }

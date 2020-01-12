@@ -90,7 +90,7 @@ class ArticleController extends Controller
             $grid->author()->author('Author');
             $grid->status('status')->switch($states);
             $grid->recent('recent')->switch($states);
-            $grid->trending('trending')->switch($states);
+            $grid->feature('feature')->switch($states);
             $grid->popular('popular')->switch($states);
             $grid->how('how')->switch($states); 
             $grid->published('published')->switch($states); // editable(); 
@@ -140,7 +140,7 @@ class ArticleController extends Controller
             $form->image('image','Image')->uniqueName()->rules('required|mimes:jpg,jpeg,png');
             $form->switch('status','status')->rules('required');
             $form->switch('recent','Recent')->rules('required');
-            $form->switch('trending','Trending')->rules('required');
+            $form->switch('feature','Feature')->rules('required');
             $form->switch('popular','Popular')->rules('required');
             $form->switch('how','How')->rules('required');
             $form->switch('published','Published')->rules('required');

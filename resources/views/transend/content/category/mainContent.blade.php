@@ -10,11 +10,12 @@
                                 <a href="{{ URL::to( 'hi/'.$article->content['content_type_name']. '/' . $article->category['url'] . '/' . $article->alias . '-' . $article->id) }}" class="post-title">
                                     <h6>{{ $article->title }}</h6>
                                 </a>
+                                <p class="post-author">By <a href="#">{{ $article->author['author'] }}</a> | Published on {{ date('d-m-Y H:i:s', strtotime($article->updated_at)) }}
+                                    IST</p>
                                 <div class="post-thumb">
                                     <a href="{{ URL::to( 'hi/'.$article->content['content_type_name']. '/' . $article->category['url'] . '/' . $article->alias . '-' . $article->id) }}"><img src="{{ URL::to('upload/'.$article->image) }}" alt="{{URL::to('uploads/'.$article->image) }}"></a>
                                 </div>
                                 <div class="post-meta">
-                                    <p class="post-author">By <a href="#">{{ $article->author['author'] }}</a></p>
                                     <p class="post-excerp">{{ str_limit(strip_tags($article->description),200) }}</p>
                                     <!-- Post Like & Post Comment -->
                                     <div class="d-flex align-items-center">

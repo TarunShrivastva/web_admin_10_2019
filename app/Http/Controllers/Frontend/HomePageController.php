@@ -95,7 +95,7 @@ class HomePageController extends Controller
     }
     
     public function trendingArticles(){
-        $trendingArticles =Article::where('status','1')->where('language_id','=','1')->where('trending','1')->take(5)->get();
+        $trendingArticles =Article::where('status','1')->where('language_id','=','1')->where('feature','1')->take(5)->get();
         return view('frontend.content.category.HometrendingArticle',compact('trendingArticles'));
     }
 

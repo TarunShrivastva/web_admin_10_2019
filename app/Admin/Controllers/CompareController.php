@@ -98,9 +98,10 @@ class CompareController extends Controller
         return Admin::form(Comparision::class, function (Form $form) {
 
             $form->display('id', 'ID');
-            $form->text('title','Compare Title')->rules('required|min:3');
-            $form->text('alias','Alias')->rules('required|min:3');
-            $form->image('image','Image')->uniqueName()->rules('required|mimes:jpg,jpeg,png');
+            $form->ckeditor('description','Description')->rules('required');
+            $form->text('title','Table Title')->rules('required|min:3');
+            // $form->text('alias','Alias')->rules('required|min:3');
+            // $form->image('image','Image')->uniqueName()->rules('required|mimes:jpg,jpeg,png');
             $form->select('top_ten_id','topten')->options(TopTen::all()->pluck('title', 'id'))->rules('required');
             $form->switch('status','Status')->rules('required');
             $form->hasMany('compareproduct', function (Form\NestedForm $form){
