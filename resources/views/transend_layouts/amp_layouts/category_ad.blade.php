@@ -41,12 +41,20 @@
                     <div class="breadcrumbwrap">
                         <nav>
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item pt4">
-                                    <a href="#"><amp-img src="{{ URL::to('images/homeicon.png') }}" width="18" height="15" layout="responsive" sizes="(min-width: 569px) 18px, 18px"></amp-img></a>
-                                </li>
-                                <li class="breadcrumb-item active">
-                                    <a href="#">Mobile Phones</a>
-                                </li>
+                                @php 
+                                    $url = '' 
+                                @endphp
+                               @foreach($data as $key => $value)
+                                @if($key === 0)
+                                    <li class="breadcrumb-item pt4">
+                                        <a href="#"><amp-img src="{{ URL::to('images/homeicon.png') }}" width="18" height="15" layout="responsive" sizes="(min-width: 569px) 18px, 18px"></amp-img></a>
+                                    </li>
+                                @else
+                                    <li class="breadcrumb-item {{ (count($data)-1==$key)?'active':''}}">
+                                        <a href="#">{{ strtoupper($value) }}</a>
+                                    </li>
+                                @endif
+                                @endforeach
                             </ol>
                         </nav>
                     </div>

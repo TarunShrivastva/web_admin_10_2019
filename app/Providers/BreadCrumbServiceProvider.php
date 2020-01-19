@@ -14,7 +14,7 @@ class BreadCrumbServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer(['frontend_layouts.category_ad','transend_layouts.category_ad'], 
+        View::composer(['frontend_layouts.category_ad','transend_layouts.category_ad','transend_layouts.amp_layouts.category_ad'], 
                 'App\Http\ViewMenu\BreadCrumb');
     }
 

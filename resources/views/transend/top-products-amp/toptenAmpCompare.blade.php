@@ -57,168 +57,83 @@
             @endforeach 
             <p><h4>Best Camera Mobile Phones under Rs 8000 in India</h4></p>
             <table class="table-n" align="center">
-                                            <tbody><tr>
-                                                <td align="center">
-                                                    {{-- <h4>Best Camera Mobile Phones under Rs 8000 in India</h4> --}}
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <table class="prodt" cellspacing="0" cellpadding="0">
-                                                        <tbody>
-                                                        <tr>
-                                                            <td class="f600" style="background: #f7ecec;"><h3>Product</h3></td>
-                                                            <td class="tleft f600" style="background: #f7ecec;"><h3>Price</h3></td>
-                                                            <td class="f600" style="background: #f7ecec;"><h3>Available at</h3></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Redmi 7</td>
-                                                            <td>7999</td>
-                                                            <td>Amazon</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Realme C2</td>
-                                                            <td>6999</td>
-                                                            <td>Flipkart</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Infinix Smart 3 Plus</td>
-                                                            <td>6999</td>
-                                                            <td>Flipkart</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Redmi 6</td>
-                                                            <td>7499</td>
-                                                            <td>Flipkart</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Realme C1</td>
-                                                            <td>7499</td>
-                                                            <td>Flipkart</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Honor 7A</td>
-                                                            <td>7999</td>
-                                                            <td>Flipkart</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Samsung Galaxy M10</td>
-                                                            <td>7999</td>
-                                                            <td>Amazon</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Asus Zenfone Max M1</td>
-                                                            <td>6999</td>
-                                                            <td>Flipkart</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Vivo Y91i</td>
-                                                            <td>7999</td>
-                                                            <td>Amazon</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>InFocus Turbo 5 Plus</td>
-                                                            <td>7999</td>
-                                                            <td>Amazon</td>
-                                                        </tr>
-                                                    </tbody></table>
-                                                </td>
-                                            
-                                            </tr>
-                                        </tbody></table>   
+                <tbody>
+                <tr>
+                    <td align="center">
+                        {{-- <h4>Best Camera Mobile Phones under Rs 8000 in India</h4> --}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="prodt" cellspacing="0" cellpadding="0">
+                            <tbody>
+                                <tr>
+                                    <td class="f600" style="background: #f7ecec;"><h3>Product</h3></td>
+                                    <td class="tleft f600" style="background: #f7ecec;"><h3>Price</h3></td>
+                                    <td class="f600" style="background: #f7ecec;"><h3>Available at</h3></td>
+                                </tr>
+                                <tr>
+                                    <td>Redmi 7</td>
+                                    <td>7999</td>
+                                    <td>Amazon</td>
+                                </tr>                
+                            </tbody>
+                        </table>
+                    </td>
+                
+                </tr>
+            </tbody></table>   
         </div>
     </div>
 </div>
-<!-- Latest Comments Widget -->
-                        <div class="latest-comments-widget">
-                            <h3>Latest Comments</h3>
-
-                            <!-- Single Comments -->
-                            <div class="single-comments d-flex">
-                                <div class="comments-thumbnail mr-15">
-                                    <amp-img src="images/29.jpg"  alt="lcomment" width="100" height="100" layout="responsive" sizes="(min-width: 569px) 40px, 40px"></amp-img>
-                                </div>
-                                <div class="comments-text">
-                                    <a href="#">Jamie Smith <span>on</span> Facebook is offering facial recognition...</a>
-                                    <p>06:34 am, April 14, 2018</p>
-                                </div>
-                            </div>
-
-                            <!-- Single Comments -->
-                            <div class="single-comments d-flex">
-                                <div class="comments-thumbnail mr-15">
-                                    <amp-img src="images/30.jpg"  alt="lcomment" width="100" height="100" layout="responsive" sizes="(min-width: 569px) 40px, 40px"></amp-img>
-                                </div>
-                                <div class="comments-text">
-                                    <a href="#">Jamie Smith <span>on</span> Facebook is offering facial recognition...</a>
-                                    <p>06:34 am, April 14, 2018</p>
-                                </div>
-                            </div>
-
-                            <!-- Single Comments -->
-                            <div class="single-comments d-flex">
-                                <div class="comments-thumbnail mr-15">
-                                    <amp-img src="images/31.jpg"   alt="lcomment" width="100" height="100" layout="responsive" sizes="(min-width: 569px) 40px, 40px"></amp-img>
-                                </div>
-                                <div class="comments-text">
-                                    <a href="#">Jamie Smith <span>on</span> Facebook is offering facial recognition...</a>
-                                    <p>06:34 am, April 14, 2018</p>
-                                </div>
-                            </div>
-
-                            <!-- Single Comments -->
-                            <div class="single-comments d-flex">
-                                <div class="comments-thumbnail mr-15">
-                                    <amp-img src="images/32.jpg"  alt="lcomment" width="100" height="100" layout="responsive" sizes="(min-width: 569px) 40px, 40px"></amp-img>
-                                </div>
-                                <div class="comments-text">
-                                    <a href="#">Jamie Smith <span>on</span> Facebook is offering facial recognition...</a>
-                                    <p>06:34 am, April 14, 2018</p>
-                                </div>
-                            </div>
-                        </div>        
 @endsection
 @section('side_section')
-    <!-- Popular News Widget -->
-    <div class="popular-news-widget mb-50">
-        <h3>Most Popular Topten</h3>
-        <!-- Single Popular Blog -->
-        <div class="single-popular-post">
-            <a href="#">
-                <h6><span>*</span> Amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales.</h6> {{-- on hover it is red --}} 
-            </a>
-            <p>April 14, 2018</p>
+<div class="col-12">
+    <div class="blog-posts-area">
+        <div class="blog-sidebar-area">
+            <!-- Popular News Widget -->
+            <div class="popular-news-widget mb-50">
+                <h3>Most Popular Topten</h3>
+                <!-- Single Popular Blog -->
+                <div class="single-popular-post">
+                    <a href="#">
+                        <h6><span>*</span> Amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales.</h6> {{-- on hover it is red --}} 
+                    </a>
+                    <p>April 14, 2018</p>
+                </div>
+            </div>
+            <!-- Popular News Widget -->
+            <div class="popular-news-widget mb-50">
+                <h3>Most Popular Mobile News</h3>
+                <!-- Single Popular Blog -->
+                <div class="single-popular-post">
+                    <a href="#">
+                        <h6><span>*</span> Amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales.</h6>
+                    </a>
+                    <p>April 14, 2018</p>
+                </div>
+            </div>
+            <!-- Popular News Widget -->
+            <div class="popular-news-widget mb-50">
+                <h3>Latest Mobile Phone News</h3>
+                <!-- Single Popular Blog -->
+                <div class="single-popular-post">
+                    <a href="#">
+                        <h6><span>*</span> Amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales.</h6>
+                    </a>
+                    <p>April 14, 2018</p>
+                </div>
+            </div>
+            <!-- Popular News Widget -->
+            <div class="popular-news-widget mb-50">
+                <!-- Single Popular Blog -->
+                <div class="single-popular-post">
+                    <h6><span>*</span>Dynamic content from the backend</h6>
+                </div>
+            </div>
         </div>
     </div>
-    <!-- Popular News Widget -->
-    <div class="popular-news-widget mb-50">
-        <h3>Most Popular Mobile News</h3>
-        <!-- Single Popular Blog -->
-        <div class="single-popular-post">
-            <a href="#">
-                <h6><span>*</span> Amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales.</h6>
-            </a>
-            <p>April 14, 2018</p>
-        </div>
-    </div>
-    <!-- Popular News Widget -->
-    <div class="popular-news-widget mb-50">
-        <h3>Latest Mobile Phone News</h3>
-        <!-- Single Popular Blog -->
-        <div class="single-popular-post">
-            <a href="#">
-                <h6><span>*</span> Amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales.</h6>
-            </a>
-            <p>April 14, 2018</p>
-        </div>
-    </div>
-    <!-- Popular News Widget -->
-    <div class="popular-news-widget mb-50">
-        <!-- Single Popular Blog -->
-        <div class="single-popular-post">
-            <h6><span>*</span>Dynamic content from the backend</h6>
-        </div>
-    </div>
+</div>    
 {{-- <div class="col-12">
     <div class="blog-posts-area">
         @include('transend_layouts.amp_layouts.comments')

@@ -43,6 +43,76 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Comment Area Start -->
+                    <div class="col-12">
+                        <div class="comment_area clearfix">
+                            <h5 class="title">{{ count($articles->comments) }} Comments</h5>
+                            <ol>
+                                @foreach($articles->comments as $comment)
+                                <li class="single_comment_area">
+                                    <div class="comment-content d-flex">
+                                        {{-- <!-- Comment Author -->
+                                        <div class="comment-author">
+                                            <amp-img src="images/30.jpg"  alt="comment-author" width="100" height="100" layout="responsive" sizes="(min-width: 569px) 50px, 50px"></amp-img>
+                                        </div> --}}
+                                        <!-- Comment Meta -->
+                                        <div class="comment-meta">
+                                            <a href="#" class="post-author">{{ $comment->user->name }}</a>
+                                            <a href="#" class="post-date">{{ ($comment->created_at >= $comment->updated_at)?date('d-M-y', strtotime($comment->created_at)) : date('d-M-y', strtotime($comment->updated_at)) }}</a>
+                                            <p>{{ $comment->comment }}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                @endforeach   
+                            </ol>
+                        </div>
+                    </div>    
+                @if (!(Auth::check()))
+                <div class="col-12">
+                    <div class="blog-posts-area">
+                        <div class="post-a-comment-area section-padding-80-0">
+                            <h4>Login For a Comment</h4>
+                            <!-- Reply Form -->
+                            <div class="contact-form-area">
+                                <form method="post" action-xhr="#" target="_blank">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <input type="email" class="form-control" id="email" placeholder="Email*">
+                                        </div>
+                                        <div class="col-12">
+                                            <input type="password" class="form-control" id="password" placeholder="Password*">
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <button class="btn newspaper-btn mt-30 w-100" type="submit">Submit Comment</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @else
+                <div class="col-12">
+                    <div class="blog-posts-area">
+                        <div class="post-a-comment-area section-padding-80-0">
+                            <h4>Add a Comment</h4>
+                            <div class="contact-form-area">
+                                <form method="post" action-xhr="#" target="_blank">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <button class="btn newspaper-btn mt-30 w-100" type="submit">Submit Comment</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endif
             </div>
         </div>
     </div>
@@ -51,6 +121,17 @@
 @section('side_section')
 <div class="col-12">
     <div class="blog-posts-area">
+        <div class="blog-sidebar-area">
+            <!-- Popular News Widget -->
+            <div class="popular-news-widget mb-50">
+                <!-- Single Popular Blog -->
+                    {!! $recentArticles !!}
+            </div>
+        </div>
+        <!-- Latest Posts Widget -->
+        <div class="latest-posts-widget mb-50">
+            {!! $trendingArticles !!}
+        </div>
         {{-- @include('transend_layouts.amp_layouts.authorAmp') --}}
         {{-- @include('transend_layouts.amp_layouts.related') --}}
         {{-- @include('transend_layouts.amp_layouts.comments') --}}

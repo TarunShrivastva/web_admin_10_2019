@@ -37,8 +37,9 @@
                                 <!-- Comment Meta -->
                                 <div class="comment-meta">
                                     <a href="#" class="post-author">{{ $comment->user->name }}</a>
-                                    <a href="#" class="post-date"></a>
+                                    <a href="#" class="post-date">
                                     {{ ($comment->created_at >= $comment->updated_at)?date('d-M-y', strtotime($comment->created_at)) : date('d-M-y', strtotime($comment->updated_at)) }}
+                                    </a>
                                     <p>{{ $comment->comment }}</p>
                                 </div>
                             </div>

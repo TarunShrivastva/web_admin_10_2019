@@ -15,7 +15,7 @@
                                 @else        
                                     <a href="{{ URL::to('/login') }}">Login</a>
                                     <a href="{{ URL::to('/register') }}">Register</a>
-                                @endif   --}}  
+                                @endif     --}}
                                 </div>
                                 <div class="search-form">
                                     <form method="post" action-xhr="#" target="_blank">

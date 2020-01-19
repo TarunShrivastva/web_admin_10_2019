@@ -15,22 +15,28 @@ class BreadCrumb
     unset($url[0]);
     unset($url[1]);
     unset($url[2]);
+    if(isset($url[4])){
+      if($url[4] == 'amp'){
+        unset($url[4]);
+      }
+    }
     $data = array();
-    foreach ($url as $key => $value) {
+    $getVal = 0;
+    $urlNew = array_values($url);
+    foreach ($urlNew as $key => $value) {
       if($value == 'hi'){
         $data[$key] = 'HOME';
-      }elseif($key == 6){
+      }elseif($key == count($urlNew)-1){
         $val = explode('-', $value);
         $count = count($val);
         unset($val[$count-1]);
         $val = implode('-', $val);
-        $data[$key] = $val;
+        $data[$key] = $val;  
       }
       else{
         $data[$key] = $value;
       }
     }
-    $data = array_values($data);
     $view->with('data', $data);    
   }
 
